@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Prato Feito Nutrição</title>
+<meta name="description" content="Consultório de nutrição no Setor Sul, em Goiânia. Comida de verdade, sem dieta da moda: plano alimentar com lista de substituições, consulta presencial e online. Projeto demonstrativo da Porta Studio.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Prato Feito Nutrição">
+<meta property="og:title" content="Prato Feito Nutrição · Setor Sul, Goiânia">
+<meta property="og:description" content="Pode comer arroz com feijão. Nutrição de comida de verdade, presencial e online.">
+<meta property="og:image" content="og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Gabarito:wght@600..900&family=Kalam:wght@400;700&display=swap">
+<script>
+  (function(){var d=document.documentElement;d.lang='pt-BR';d.classList.add('js');
+  var calmo=false;try{calmo=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
+  if(calmo)d.classList.add('calmo');})();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MedicalBusiness","name":"Prato Feito Nutrição (projeto demonstrativo)","medicalSpecialty":"Dietetic","description":"Consultório de nutrição no Setor Sul, Goiânia: consulta presencial e online, plano alimentar com lista de substituições.","address":{"@type":"PostalAddress","addressLocality":"Goiânia","addressRegion":"GO","addressCountry":"BR"},"areaServed":"Goiânia","priceRange":"R$ 150–590","paymentAccepted":"Pix, cartão","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"12:00"}]}
+</script>
+<style>
+:root{
+  /* Layout: o topo é um receituário em cima da toalha xadrez, carimbado com "PODE". Depois vêm a consulta, o plano preso na porta da geladeira, pra quem é, os valores e a mesa posta de novo no fim. */
+  --branco:#FFFFFF;
+  --papel:#F5F6F1;
+  --tinta:#1F2420;
+  --tinta-2:#4F5650;
+  --caneta:#1F2A8A;
+  --carimbo:#2F3BAF;
+  --carimbo-2:#232C8C;
+  --pauta:#C9D6EA;
+  --margem:rgba(214,72,72,.38);
+  --xadrez:#C9892E;
+  --xadrez-escuro:#8A5A14;
+  --couve:#2E6A3A;
+  --cenoura:#B8481A;
+  --repolho:#7B2D7C;
+  --geladeira:#EAF2EE;
+  --display:"Gabarito","Arial Black",system-ui,sans-serif;
+  --sans:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mao:"Kalam","Segoe Print","Bradley Hand",cursive;
+  --gut-l:max(20px,env(safe-area-inset-left,0px));
+  --gut-r:max(20px,env(safe-area-inset-right,0px));
+  --topo-h:62px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --mola:cubic-bezier(.3,1.45,.5,1);
+}
+@media (min-width:900px){:root{--topo-h:70px;--gut-l:max(32px,env(safe-area-inset-left,0px));--gut-r:max(32px,env(safe-area-inset-right,0px))}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--topo-h) + env(safe-area-inset-top,0px) + 8px)}
+.calmo{scroll-behavior:auto}
+body{margin:0;background:var(--branco);color:var(--tinta);font:400 17px/1.55 var(--sans);overflow-x:hidden;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--branco)}
+h1,h2,h3,h4,p,figure,ul,ol,dl,dd{margin:0}
+ul,ol{padding:0;list-style:none}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1.5px}
+button{font:inherit;color:inherit}
+::selection{background:var(--carimbo);color:var(--branco)}
+:focus-visible{outline:3px solid var(--foco,var(--carimbo));outline-offset:3px}
+main{overflow-x:clip}
+.hero,.geladeira,.final{overflow:hidden}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.mao{font-family:var(--mao)}
+
+.s-branco{background:var(--branco);color:var(--tinta);--sub:var(--tinta-2);--rot:var(--carimbo);--linha:rgba(31,36,32,.14)}
+.s-papel{background:var(--papel);color:var(--tinta);--sub:var(--tinta-2);--rot:var(--carimbo);--linha:rgba(31,36,32,.16)}
+.s-tinta{background:var(--carimbo);color:var(--branco);--sub:#E4E7FF;--rot:#FFFFFF;--linha:rgba(255,255,255,.25);--foco:#FFFFFF}
+.secao{position:relative;padding-block:clamp(80px,10vw,140px)}
+.secao-cab{display:grid;gap:16px;max-width:820px}
+.rotulo{font:700 13px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--rot)}
+.tit{font:900 clamp(32px,7.4vw,62px)/1.02 var(--display);letter-spacing:-.025em;text-wrap:balance}
+.lede{font-size:clamp(17px,2.1vw,20px);line-height:1.55;color:var(--sub);max-width:34em}
+.nota{font-size:14.5px;color:var(--sub)}
+
+/* toalha xadrez da mesa */
+.toalha{background-color:#FFFDF8;background-image:linear-gradient(90deg,rgba(201,137,46,.4) 50%,transparent 50%),linear-gradient(rgba(201,137,46,.4) 50%,transparent 50%);background-size:30px 30px}
+
+/* ===== Botões ===== */
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border:2px solid transparent;border-radius:12px;font:700 16.5px/1.1 var(--sans);text-decoration:none;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .2s var(--mola),background-color .2s,box-shadow .2s}
+.bt svg{width:20px;height:20px;flex:none}
+.bt:hover{transform:translateY(-2px)}
+.bt:active{transform:scale(.96)}
+.bt-tinta{background:var(--carimbo);color:var(--branco);box-shadow:0 10px 20px -12px rgba(35,44,140,.9)}
+.bt-tinta:hover{background:var(--carimbo-2)}
+.bt-linha{background:transparent;color:inherit;border-color:currentColor}
+.bt-linha:hover{background:rgba(47,59,175,.07)}
+.bt-branco{background:var(--branco);color:var(--carimbo)}
+.s-tinta .bt-linha:hover{background:rgba(255,255,255,.12)}
+
+/* ===== Carimbo ===== */
+.carimbo{flex:none;display:inline-block;padding:.24em .55em .16em;border:3px solid currentColor;border-radius:7px;color:var(--carimbo);font:900 clamp(17px,4.4vw,24px)/1 var(--display);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;transform:rotate(var(--r,-7deg));filter:url(#tinta);mix-blend-mode:multiply}
+.js-carimbo .carimbo:not(.batido),.js-carimbo .carimbo-grande:not(.batido){opacity:0}
+
+/* ===== Topo ===== */
+.topo{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(31,36,32,.1)}
+.topo-in{height:var(--topo-h);display:flex;align-items:center;gap:22px}
+.marca{display:inline-flex;align-items:baseline;gap:8px;font:900 23px/1 var(--display);letter-spacing:-.02em;color:var(--tinta);text-decoration:none;white-space:nowrap}
+.marca small{font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--carimbo)}
+.topo-nav{display:none;gap:26px;margin-left:auto}
+.topo-nav a{font-weight:700;font-size:15px;text-decoration:none;color:var(--tinta-2);transition:color .2s}
+.topo-nav a:hover{color:var(--carimbo)}
+.topo-cta{margin-left:auto;min-height:44px;padding:0 18px;font-size:15px}
+@media (min-width:1000px){.topo-nav{display:flex}.topo-cta{margin-left:0}}
+
+.status{display:inline-flex;align-items:center;gap:9px;font:700 14px/1.25 var(--sans);color:var(--sub)}
+.status i{width:10px;height:10px;border-radius:50%;background:currentColor;opacity:.5;flex:none}
+.status.aberto i{background:#2E9E4F;opacity:1;box-shadow:0 0 0 4px rgba(46,158,79,.2)}
+.selo{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--tinta);color:var(--branco);font:700 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+
+/* ===== Abertura: o receituário ===== */
+.hero{padding:calc(var(--topo-h) + 18px) max(10px,env(safe-area-inset-right,0px)) 48px max(10px,env(safe-area-inset-left,0px))}
+@media (min-width:700px){.hero{padding:calc(var(--topo-h) + 44px) max(24px,env(safe-area-inset-right,0px)) 90px max(24px,env(safe-area-inset-left,0px))}}
+.folha{position:relative;max-width:1020px;margin-inline:auto;padding:22px 16px 26px 36px;background:var(--branco);border-radius:3px;box-shadow:0 34px 50px -32px rgba(80,50,10,.6),0 2px 0 rgba(0,0,0,.04);transform:rotate(-.5deg)}
+.folha::before{content:"";position:absolute;top:0;bottom:0;left:24px;width:2px;background:var(--margem)}
+@media (min-width:700px){.folha{padding:40px 48px 46px 82px}.folha::before{left:56px}}
+.folha-topo{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px 20px;padding-bottom:14px;border-bottom:2px solid var(--tinta)}
+.folha-marca{font:900 clamp(26px,6vw,40px)/1 var(--display);letter-spacing:-.025em}
+.folha-marca small{display:block;margin-top:6px;font:700 12px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2)}
+.folha-meta{font-size:13.5px;line-height:1.4;color:var(--tinta-2)}
+.folha-meta b{display:block;font:800 14px/1.2 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--tinta)}
+.folha-meta .mao{font-size:19px;color:var(--caneta)}
+.paciente{margin-top:16px;font:400 clamp(20px,5vw,24px)/1.2 var(--mao);color:var(--caneta)}
+.paciente span{color:var(--tinta-2);font:700 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;margin-right:8px}
+.hero-tit{margin-top:12px;font:900 clamp(40px,10.6vw,100px)/.95 var(--display);letter-spacing:-.035em;text-wrap:balance;max-width:11em}
+.hero-tit em{font-style:normal;color:var(--carimbo)}
+.hero-lede{margin-top:16px;max-width:34em;font-size:clamp(17px,4.3vw,20px);color:var(--tinta-2)}
+.receita-lista{margin-top:22px;border-top:1px solid var(--pauta)}
+.receita-lista li{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;padding:6px 4px 6px 0;border-bottom:1px solid var(--pauta);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.receita-lista .mao{font-size:clamp(21px,5.4vw,30px);line-height:1.15;color:var(--caneta)}
+@media (min-width:860px){.receita-lista{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}.receita-lista li{min-height:68px}}
+.folha-pe{display:grid;gap:26px;margin-top:28px}
+.assina{display:flex;align-items:center;flex-wrap:wrap;gap:14px 22px}
+.assinatura{width:170px;height:62px;overflow:visible}
+.assinatura path{fill:none;stroke:var(--caneta);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.carimbo-grande{display:grid;gap:5px;padding:10px 14px;border:4px double currentColor;border-radius:12px;color:var(--carimbo);text-align:center;font:900 15px/1.1 var(--display);letter-spacing:.07em;text-transform:uppercase;transform:rotate(-6deg);filter:url(#tinta);mix-blend-mode:multiply}
+.carimbo-grande small{font:700 11px/1.2 var(--sans);letter-spacing:.1em}
+.hero-acoes{display:grid;gap:16px}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.pe-linha{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.dica{font:400 17px/1.2 var(--mao);color:var(--tinta-2)}
+@media (min-width:860px){.folha-pe{grid-template-columns:auto minmax(0,1fr);align-items:end;column-gap:56px}.hero-acoes{justify-items:end;text-align:right}.hero-acoes .ctas,.hero-acoes .pe-linha{justify-content:flex-end}}
+
+/* ===== A consulta ===== */
+.consulta-grade{display:grid;gap:40px}
+@media (min-width:900px){.consulta-grade{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:72px;align-items:start}}
+.etapas{display:grid;margin-top:36px}
+.etapa{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:16px;row-gap:8px;padding-block:24px;border-top:1px solid var(--linha)}
+.etapa-n{grid-row:1/3;font:900 34px/1 var(--display);color:var(--carimbo)}
+.etapa-cab{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.etapa h3{font:800 clamp(21px,4.4vw,26px)/1.15 var(--display);letter-spacing:-.01em}
+.etapa .carimbo{font-size:13px;border-width:2px;padding:.3em .55em .2em}
+.etapa p{color:var(--sub);max-width:34em}
+.consulta-foto{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:700/1000;background:var(--papel)}
+.consulta-foto img{width:100%;height:100%;object-fit:cover}
+@media (min-width:900px){.consulta-foto{position:sticky;top:calc(var(--topo-h) + 40px)}}
+.etiqueta{position:absolute;left:14px;bottom:14px;padding:5px 12px 6px;border-radius:6px;background:var(--branco);color:var(--caneta);font:400 18px/1.1 var(--mao);box-shadow:0 4px 10px -4px rgba(0,0,0,.3)}
+
+/* ===== Porta da geladeira ===== */
+.geladeira{background:linear-gradient(90deg,#E3ECE7,#F1F7F3 38%,#F1F7F3 62%,#E1EAE5);color:var(--tinta);--sub:var(--tinta-2);--rot:var(--carimbo);--linha:rgba(31,36,32,.14)}
+.puxador{display:none}
+@media (min-width:1100px){.puxador{display:block;position:absolute;right:max(14px,env(safe-area-inset-right,0px));top:140px;width:16px;height:300px;border-radius:10px;background:linear-gradient(90deg,#C8D3CD,#FFFFFF 45%,#BCC8C1);box-shadow:-4px 8px 14px rgba(30,40,35,.18)}}
+.plano-grade{display:grid;gap:44px;margin-top:clamp(36px,5vw,56px)}
+@media (min-width:960px){.plano-grade{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:start}}
+.ima{position:absolute;top:-13px;z-index:2;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.75),rgba(255,255,255,0) 42%),var(--c,#E3672B);box-shadow:0 5px 7px -2px rgba(0,0,0,.35)}
+.plano{position:relative;padding:32px 20px 24px;background:var(--branco);box-shadow:0 24px 34px -24px rgba(30,40,35,.55);transform:rotate(-.6deg)}
+@media (min-width:700px){.plano{padding:40px 34px 30px}}
+.plano .ima:nth-of-type(1){left:14%;--c:#E3672B}.plano .ima:nth-of-type(2){right:14%;--c:#7B2D7C}
+.plano-cab{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px;padding-bottom:12px;border-bottom:2px solid var(--tinta)}
+.plano-cab h3{font:900 clamp(22px,4.6vw,30px)/1.05 var(--display);letter-spacing:-.02em}
+.plano-cab p{font:400 18px/1.2 var(--mao);color:var(--caneta)}
+.refeicao{padding-block:14px;border-bottom:1px dashed var(--linha)}
+.refeicao h4{display:flex;justify-content:space-between;gap:12px;font:800 13.5px/1.2 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-2)}
+.troca{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px}
+.troca>div{min-width:0}
+.porcao{display:block;font:400 clamp(19px,4.6vw,22px)/1.25 var(--mao);color:var(--caneta)}
+.troca-n{display:block;margin-top:2px;font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--tinta-2)}
+.trocar{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:42px;padding:0 14px;border:2px solid var(--carimbo);border-radius:999px;background:transparent;color:var(--carimbo);font:700 14.5px/1 var(--sans);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background-color .2s,color .2s,transform .2s var(--mola)}
+.trocar svg{width:16px;height:16px}
+.trocar:hover{background:var(--carimbo);color:var(--branco)}
+.trocar:active{transform:scale(.92)}
+.vontade{font:700 12.5px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--couve);white-space:nowrap}
+.plano-nota{margin-top:16px;font-size:14px;color:var(--tinta-2)}
+.fotos-ima{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px;padding-top:14px}
+.polaroid{position:relative;padding:8px 8px 40px;background:var(--branco);box-shadow:0 18px 26px -18px rgba(30,40,35,.6);transform:rotate(var(--r,0deg));transition:transform .8s var(--mola)}
+.polaroid img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.polaroid figcaption{position:absolute;left:10px;right:10px;bottom:9px;font:400 17px/1.1 var(--mao);color:var(--caneta)}
+.polaroid .ima{left:50%;margin-left:-15px}
+.js-anima .polaroid:not(.preso){transform:translateY(-18px) rotate(calc(var(--r,0deg) * 3))}
+
+/* ===== Pra quem é ===== */
+.cards{display:grid;gap:14px;margin-top:clamp(36px,5vw,56px)}
+@media (min-width:720px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1080px){.cards{grid-template-columns:repeat(4,minmax(0,1fr))}.card-foto{grid-column:span 2}}
+.card{position:relative;isolation:isolate;display:grid;align-content:end;gap:10px;min-height:250px;padding:24px;border-radius:18px;overflow:hidden;color:var(--branco);--foco:var(--branco)}
+.card h3{font:800 clamp(22px,4vw,27px)/1.1 var(--display);letter-spacing:-.01em;text-wrap:balance}
+.card p{font-size:16px;line-height:1.45;color:rgba(255,255,255,.94)}
+.card-foto{min-height:360px}
+.card-foto img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.card-foto::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(20,24,21,.86),rgba(20,24,21,.3) 55%,rgba(20,24,21,0))}
+@media (hover:hover){.card-foto:hover img{transform:scale(1.05)}}
+.c-cenoura{background:var(--cenoura)}.c-repolho{background:var(--repolho)}.c-couve{background:var(--couve)}.c-xadrez{background:var(--xadrez-escuro)}
+.card .ico{position:absolute;top:22px;right:22px;width:56px;height:56px;opacity:.9}
+.card .ico svg{width:100%;height:100%}
+
+/* ===== Online ===== */
+.online-grade{display:grid;gap:40px}
+@media (min-width:900px){.online-grade{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center}}
+.online-foto{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 30px 40px -26px rgba(0,0,0,.6);transform:rotate(1.2deg)}
+.online-foto img{width:100%;aspect-ratio:820/515;object-fit:cover}
+.vantagens{display:grid;gap:0;margin-top:24px}
+.vantagens li{display:flex;gap:14px;align-items:baseline;padding-block:14px;border-top:1px solid var(--linha);font-size:17.5px}
+.vantagens li::before{content:"✓";flex:none;font:900 18px/1 var(--display)}
+.online-ctas{margin-top:28px}
+
+/* ===== Avaliações ===== */
+.recado{display:grid;justify-items:center;gap:16px;max-width:760px;margin-inline:auto;padding:36px 26px;border-radius:20px;background:var(--branco);text-align:center;box-shadow:0 26px 40px -30px rgba(31,36,32,.45)}
+.recado .carimbo{font-size:clamp(15px,3.6vw,20px);--r:-4deg}
+
+/* ===== Valores e onde fica ===== */
+.valores-grade{display:grid;gap:52px}
+@media (min-width:900px){.valores-grade{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start}}
+.precos{display:grid;margin-top:28px}
+.preco-linha{display:flex;align-items:baseline;gap:12px;padding-block:16px;border-bottom:1px solid var(--linha)}
+.preco-linha div{min-width:0}
+.preco-linha h3{font:700 18px/1.3 var(--sans)}
+.preco-linha p{font-size:14.5px;color:var(--sub)}
+.preco-linha i{flex:1;min-width:16px;border-bottom:2px dotted rgba(31,36,32,.3);transform:translateY(-5px)}
+.preco-linha b{font:900 24px/1 var(--display);white-space:nowrap;font-variant-numeric:tabular-nums}
+.onde-info{display:grid;gap:20px}
+.croqui{position:relative;border-radius:6px;overflow:hidden;background:var(--branco);box-shadow:0 26px 40px -30px rgba(31,36,32,.45)}
+.croqui svg{width:100%;height:auto}
+.croqui figcaption{padding:12px 16px;font-size:14px;color:var(--sub);border-top:1px solid var(--linha)}
+.horas{display:grid}
+.horas div{display:flex;justify-content:space-between;gap:16px;padding:13px 10px;border-top:1px solid var(--linha)}
+.horas div:last-child{border-bottom:1px solid var(--linha)}
+.horas dt{color:var(--sub)}
+.horas dd{font-weight:700;text-align:right}
+.horas .hoje{border-radius:8px;background:var(--branco)}
+.horas .hoje dt{color:var(--tinta);font-weight:700}
+.horas .hoje dt::after{content:" · hoje"}
+.mapa-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mapa-ctas .bt{padding:0 12px;font-size:15px}
+
+/* ===== Final ===== */
+.final{padding-block:clamp(70px,10vw,130px)}
+.final-folha{position:relative;display:grid;gap:22px;justify-items:start;max-width:880px;margin-inline:auto;padding:36px 24px 36px 40px;background:var(--branco);border-radius:3px;box-shadow:0 34px 50px -32px rgba(80,50,10,.6);transform:rotate(.6deg)}
+.final-folha::before{content:"";position:absolute;top:0;bottom:0;left:24px;width:2px;background:var(--margem)}
+@media (min-width:700px){.final-folha{padding:56px 56px 56px 84px}.final-folha::before{left:56px}}
+.final-tit{font:900 clamp(42px,10vw,92px)/.95 var(--display);letter-spacing:-.035em;text-wrap:balance}
+.final-tit em{font-style:normal;color:var(--carimbo)}
+
+/* ===== Rodapé ===== */
+.rodape{background:#1A1F1B;color:#EEF1EC;padding-block:56px calc(env(safe-area-inset-bottom,0px) + 110px);--foco:#FFFFFF}
+.rodape-in{display:grid;gap:30px}
+.rodape .marca{color:#FFFFFF;font-size:30px}
+.rodape .marca small{color:#B9C2FF}
+.rodape h3{margin-bottom:10px;font:700 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#B9C2FF}
+.rodape p{font-size:15px;color:#C8CEC9}
+.rodape .aviso{display:grid;gap:8px}
+@media (min-width:900px){.rodape{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 56px)}.rodape-in{grid-template-columns:1.2fr 1fr 1fr 1.4fr}}
+
+/* ===== WhatsApp no celular ===== */
+.fab{position:fixed;right:calc(var(--gut-r) - 4px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:45;display:flex;align-items:center;gap:10px;min-height:56px;padding:0 20px 0 16px;border-radius:999px;background:var(--carimbo);color:var(--branco);box-shadow:0 14px 28px -12px rgba(35,44,140,.9);font:700 15.5px/1 var(--sans);text-decoration:none;transform:translateY(180%);visibility:hidden;transition:transform .5s var(--ease),visibility 0s .5s}
+.fab svg{width:24px;height:24px}
+.fab.on{transform:none;visibility:visible;transition:transform .5s var(--ease),visibility 0s}
+@media (min-width:1000px){.fab{display:none}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-delay:0s!important}
+}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="tinta" x="-6%" y="-12%" width="112%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="4" result="ruido"/>
+      <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -4 0 0 0 3.1" result="falhas"/>
+      <feComposite in="SourceGraphic" in2="falhas" operator="in" result="gasto"/>
+      <feDisplacementMap in="gasto" in2="ruido" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4.5 19.5l1.1-3.6A8 8 0 1 1 8.4 18.6z"/><path fill="currentColor" d="M9.3 8.6c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c-.1.1-.1.3 0 .4.5.9 1.3 1.6 2.2 2.1.2.1.3.1.4 0l.6-.6c.2-.2.4-.2.6-.1l1.4.7c.3.1.3.3.3.5 0 .5-.3 1.3-1.1 1.6-.6.2-1.6.2-3.2-.7-1.8-1-3-2.7-3.4-3.6-.4-.8-.3-1.8.5-3z"/></symbol>
+    <symbol id="i-troca" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M4 7h11l-3-3M16 13H5l3 3"/></symbol>
+    <symbol id="i-pino" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M10 18s5.5-5.3 5.5-9.6A5.5 5.5 0 0 0 4.5 8.4C4.5 12.7 10 18 10 18z"/><circle cx="10" cy="8.5" r="2" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<header class="topo">
+  <div class="wrap topo-in">
+    <a class="marca" href="#inicio">Prato Feito <small>nutrição</small><span class="sr">, voltar ao início</span></a>
+    <nav class="topo-nav" aria-label="Seções">
+      <a href="#consulta">A consulta</a>
+      <a href="#plano">O plano</a>
+      <a href="#pra-quem">Pra quem é</a>
+      <a href="#valores">Valores</a>
+    </nav>
+    <a class="bt bt-tinta topo-cta" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener">Agendar</a>
+  </div>
+</header>
+
+<main>
+  <!-- Abertura: o receituário em cima da toalha -->
+  <section class="hero toalha" id="inicio">
+    <div class="folha">
+      <div class="folha-topo">
+        <p class="folha-marca">Prato Feito<small>Nutrição · Setor Sul, Goiânia</small></p>
+        <p class="folha-meta"><b>Receituário</b>Goiânia, <span class="mao" data-hoje>hoje</span></p>
+      </div>
+      <p class="paciente"><span>Paciente</span>você</p>
+      <h1 class="hero-tit"><span class="sr">Prato Feito Nutrição. </span><em>Pode</em> comer arroz com feijão.</h1>
+      <p class="hero-lede">Nutrição sem dieta da moda e sem terrorismo. O seu prato feito de sempre, ajustado pro seu objetivo e pra sua rotina.</p>
+      <ol class="receita-lista" aria-label="Alimentos liberados">
+        <li><span class="mao">Pão francês no café</span><span class="carimbo" style="--r:-8deg">Pode</span></li>
+        <li><span class="mao">Arroz com feijão</span><span class="carimbo" style="--r:5deg">Pode</span></li>
+        <li><span class="mao">Ovo todo dia</span><span class="carimbo" style="--r:-4deg">Pode</span></li>
+        <li><span class="mao">Banana à noite</span><span class="carimbo" style="--r:7deg">Pode</span></li>
+        <li><span class="mao">Café com leite</span><span class="carimbo" style="--r:-6deg">Pode</span></li>
+        <li><span class="mao">Pequi no almoço</span><span class="carimbo" style="--r:3deg">Pode, sim</span></li>
+      </ol>
+      <div class="folha-pe">
+        <div class="assina">
+          <svg class="assinatura" viewBox="0 0 170 62" aria-hidden="true"><path d="M6 44C14 18 30 8 30 24S16 52 26 48S44 20 50 30S48 50 58 42S72 22 78 34S80 48 90 40S104 26 110 36S118 46 128 38S146 28 152 34L164 30"/></svg>
+          <p class="carimbo-grande">Prato Feito Nutrição<small>CRN-1 · nº do profissional</small></p>
+        </div>
+        <div class="hero-acoes">
+          <div class="ctas">
+            <a class="bt bt-tinta" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener">Agendar consulta</a>
+            <a class="bt bt-linha" href="#plano">Ver como é o plano</a>
+          </div>
+          <div class="pe-linha"><p class="status" data-status><i></i><span>Segunda a sábado, a partir das 8h</span></p><span class="selo">Demo · Porta Studio</span></div>
+          <p class="dica" data-dica hidden>Toque num alimento pra carimbar de novo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A consulta -->
+  <section class="secao s-papel" id="consulta">
+    <div class="wrap consulta-grade">
+      <div>
+        <div class="secao-cab">
+          <p class="rotulo">A consulta</p>
+          <h2 class="tit">Primeiro a gente conversa. A balança vem depois, se vier.</h2>
+          <p class="lede">A consulta parte da sua rotina e do que você gosta de comer. O plano sai daí, com comida que você encontra no mercado do bairro.</p>
+        </div>
+        <ol class="etapas">
+          <li class="etapa"><span class="etapa-n" aria-hidden="true">1</span><div class="etapa-cab"><h3>Primeira consulta, 60 minutos</h3><span class="carimbo" style="--r:-5deg">1ª consulta</span></div><p>Rotina, horários, o que tem na sua geladeira, exames recentes e o seu objetivo. Sem julgamento sobre o que você come hoje.</p></li>
+          <li class="etapa"><span class="etapa-n" aria-hidden="true">2</span><div class="etapa-cab"><h3>Avaliação</h3><span class="carimbo" style="--r:4deg">Avaliado</span></div><p>Peso, medidas e bioimpedância, se fizer sentido pra você. Tem gente que prefere nem olhar a balança, e tudo bem.</p></li>
+          <li class="etapa"><span class="etapa-n" aria-hidden="true">3</span><div class="etapa-cab"><h3>Plano em até 3 dias</h3><span class="carimbo" style="--r:-3deg">Plano pronto</span></div><p>Cardápio da semana, lista de substituições e lista de compras, no aplicativo e em PDF pra imprimir e pôr na geladeira.</p></li>
+          <li class="etapa"><span class="etapa-n" aria-hidden="true">4</span><div class="etapa-cab"><h3>Retorno em 30 dias</h3><span class="carimbo" style="--r:6deg">Retorno</span></div><p>No retorno a gente ajusta o que não funcionou. Entre uma consulta e outra, as dúvidas vão pelo WhatsApp.</p></li>
+        </ol>
+      </div>
+      <figure class="consulta-foto"><img src="img/consultorio.jpg" width="700" height="1155" alt="Mesa do consultório com notebook, uma maçã e duas tangerinas, e a mão da nutricionista no teclado" loading="lazy" decoding="async"><figcaption class="etiqueta">O consultório · foto ilustrativa</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- O plano na porta da geladeira -->
+  <section class="secao geladeira" id="plano">
+    <span class="puxador" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="secao-cab">
+        <p class="rotulo">O plano</p>
+        <h2 class="tit">Ele mora na porta da geladeira. E tudo nele tem troca.</h2>
+        <p class="lede">Cada item do plano vem com substituições equivalentes, em medida caseira. Enjoou do pão? Troca pela tapioca. Toque em trocar pra ver.</p>
+      </div>
+      <div class="plano-grade">
+        <div class="plano">
+          <span class="ima" aria-hidden="true"></span><span class="ima" aria-hidden="true"></span>
+          <div class="plano-cab"><h3>Plano alimentar</h3><p>terça-feira · exemplo</p></div>
+          <div class="refeicao">
+            <h4><span>Café da manhã</span><span>7h</span></h4>
+            <div class="troca" data-troca="pao"><div><span class="porcao" aria-live="polite">1 pão francês</span><span class="troca-n">1 de 4</span></div><button class="trocar" type="button"><svg aria-hidden="true"><use href="#i-troca"/></svg>Trocar</button></div>
+            <div class="troca" data-troca="ovo"><div><span class="porcao" aria-live="polite">2 ovos mexidos</span><span class="troca-n">1 de 3</span></div><button class="trocar" type="button"><svg aria-hidden="true"><use href="#i-troca"/></svg>Trocar</button></div>
+            <div class="troca" data-troca="cafe"><div><span class="porcao" aria-live="polite">1 xícara de café com leite</span><span class="troca-n">1 de 3</span></div><button class="trocar" type="button"><svg aria-hidden="true"><use href="#i-troca"/></svg>Trocar</button></div>
+          </div>
+          <div class="refeicao">
+            <h4><span>Almoço</span><span>12h</span></h4>
+            <div class="troca" data-troca="arroz"><div><span class="porcao" aria-live="polite">4 colheres de sopa de arroz</span><span class="troca-n">1 de 4</span></div><button class="trocar" type="button"><svg aria-hidden="true"><use href="#i-troca"/></svg>Trocar</button></div>
+            <div class="troca" data-troca="feijao"><div><span class="porcao" aria-live="polite">1 concha de feijão</span><span class="troca-n">1 de 3</span></div><button class="trocar" type="button"><svg aria-hidden="true"><use href="#i-troca"/></svg>Trocar</button></div>
+            <div class="troca" data-troca="proteina"><div><span class="porcao" aria-live="polite">1 filé de frango grelhado</span><span class="troca-n">1 de 4</span></div><button class="trocar" type="button"><svg aria-hidden="true"><use href="#i-troca"/></svg>Trocar</button></div>
+            <div class="troca"><div><span class="porcao">Salada e legumes</span></div><span class="vontade">À vontade</span></div>
+          </div>
+          <div class="refeicao">
+            <h4><span>Lanche</span><span>16h</span></h4>
+            <div class="troca" data-troca="fruta"><div><span class="porcao" aria-live="polite">1 banana com 1 colher de aveia</span><span class="troca-n">1 de 4</span></div><button class="trocar" type="button"><svg aria-hidden="true"><use href="#i-troca"/></svg>Trocar</button></div>
+          </div>
+          <div class="refeicao">
+            <h4><span>Jantar</span><span>20h</span></h4>
+            <div class="troca" data-troca="jantar"><div><span class="porcao" aria-live="polite">Omelete de 2 ovos com legumes</span><span class="troca-n">1 de 3</span></div><button class="trocar" type="button"><svg aria-hidden="true"><use href="#i-troca"/></svg>Trocar</button></div>
+          </div>
+          <p class="plano-nota">Exemplo para demonstração. Plano alimentar é individual e só sai depois da consulta.</p>
+        </div>
+        <div class="fotos-ima">
+          <figure class="polaroid" style="--r:-3deg"><span class="ima" aria-hidden="true" style="--c:#2E6A3A"></span><img src="img/marmitas.jpg" width="1000" height="749" alt="Oito potes de lanche com frutas, castanhas, sanduíches, queijo e pepino, vistos de cima" loading="lazy" decoding="async"><figcaption>Lanches da semana</figcaption></figure>
+          <figure class="polaroid" style="--r:2.5deg"><span class="ima" aria-hidden="true" style="--c:#E3672B"></span><img src="img/feira.jpg" width="900" height="1350" alt="Banca de feira com bananas, laranjas, maracujás, pitaias e pimentas penduradas" loading="lazy" decoding="async"><figcaption>Lista de compras pronta</figcaption></figure>
+          <figure class="polaroid" style="--r:2deg"><span class="ima" aria-hidden="true" style="--c:#7B2D7C"></span><img src="img/cozinha.jpg" width="1200" height="800" alt="Mãos cortando pepino numa tábua, com brócolis e pimentões ao lado" loading="lazy" decoding="async"><figcaption>Cozinha de verdade</figcaption></figure>
+          <figure class="polaroid" style="--r:-2deg"><span class="ima" aria-hidden="true" style="--c:#C9892E"></span><img src="img/graos.jpg" width="1000" height="1000" alt="Prato com nozes, feijão, lentilha, grão-de-bico, arroz integral, sementes de abóbora e amendoim" loading="lazy" decoding="async"><figcaption>Fibra no prato</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pra quem é -->
+  <section class="secao s-branco" id="pra-quem">
+    <div class="wrap">
+      <div class="secao-cab">
+        <p class="rotulo">Pra quem é</p>
+        <h2 class="tit">Cada prato tem um motivo.</h2>
+        <p class="lede">Do emagrecimento sem sofrimento ao intestino que não funciona. O plano muda conforme o seu objetivo.</p>
+      </div>
+      <div class="cards">
+        <article class="card card-foto"><img src="img/tigela.jpg" width="1000" height="1333" alt="Tigela com couve, couve-flor, cenoura, repolho roxo, queijo e ovo sobre toalha de frutas" loading="lazy" decoding="async" style="object-position:50% 62%"><h3>Emagrecer sem passar fome</h3><p>Sem cortar o arroz, o pão ou o churrasco de domingo. A gente ajusta a quantidade e a rotina, não a sua vida.</p></article>
+        <article class="card card-foto"><img src="img/estufado.jpg" width="900" height="1350" alt="Homem sentado à mesa depois do almoço, com as mãos na barriga, olhando os pratos vazios" loading="lazy" decoding="async" style="object-position:50% 30%"><h3>Estufado depois do almoço?</h3><p>Inchaço, gases e intestino preso têm muito a ver com o que vai no prato. Dá pra melhorar sem cortar tudo.</p></article>
+        <article class="card c-cenoura"><span class="ico" aria-hidden="true"><svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M10 28h36M14 20v16M42 20v16M8 23v10M48 23v10"/></svg></span><h3>Treino e ganho de massa</h3><p>Proteína na medida certa, com comida de verdade antes de pensar em suplemento.</p></article>
+        <article class="card c-repolho"><span class="ico" aria-hidden="true"><svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><circle cx="28" cy="14" r="6"/><path d="M28 22c-8 0-10 8-8 14 2 5 4 6 4 12M28 22c10 2 14 10 10 18-2 4-6 4-8 8"/></svg></span><h3>Gestação e amamentação</h3><p>O que comer em cada fase, sem neura e com os exames em dia.</p></article>
+        <article class="card c-couve"><span class="ico" aria-hidden="true"><svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M28 8C20 20 16 27 16 34a12 12 0 0 0 24 0c0-7-4-14-12-26z"/><path d="M23 36h10M28 31v10" stroke-linecap="round"/></svg></span><h3>Diabetes e colesterol</h3><p>Plano feito junto com os seus exames, pra glicemia e colesterol entrarem nos eixos.</p></article>
+        <article class="card c-xadrez"><span class="ico" aria-hidden="true"><svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 44C12 24 24 12 46 10c0 22-12 34-32 34z"/><path d="M12 44L32 24"/></svg></span><h3>Vegetarianos e veganos</h3><p>Ferro, vitamina B12 e proteína sem carne, com feijão, grão-de-bico e o que mais você gosta.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Online -->
+  <section class="secao s-tinta" id="online">
+    <div class="wrap online-grade">
+      <div>
+        <div class="secao-cab">
+          <p class="rotulo">Consulta online</p>
+          <h2 class="tit">Mora longe? A consulta vai até você.</h2>
+          <p class="lede">O mesmo cuidado da consulta presencial, por vídeo, de qualquer cidade.</p>
+        </div>
+        <ul class="vantagens">
+          <li>Chamada de vídeo de 60 minutos, no celular ou no computador</li>
+          <li>Plano no aplicativo e em PDF, com lista de compras</li>
+          <li>Retorno também online, a cada 30 dias</li>
+          <li>Dúvidas pelo WhatsApp entre uma consulta e outra</li>
+        </ul>
+        <div class="ctas online-ctas"><a class="bt bt-branco" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Agendar consulta online</a></div>
+      </div>
+      <figure class="online-foto"><img src="img/online.jpg" width="820" height="515" alt="Notebook numa mesa mostrando uma paciente numa chamada de vídeo" loading="lazy" decoding="async"><figcaption class="etiqueta">Consulta por vídeo · foto ilustrativa</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- Avaliações -->
+  <section class="secao s-papel" id="avaliacoes">
+    <div class="wrap">
+      <div class="recado">
+        <p class="rotulo">Avaliações</p>
+        <span class="carimbo">Aguardando avaliações</span>
+        <h2 class="tit" style="font-size:clamp(28px,5.6vw,44px)">As avaliações de verdade entram aqui.</h2>
+        <p class="lede">Quando o site for do seu consultório, a nota e os comentários do Google aparecem neste espaço. A gente não inventa depoimento de paciente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valores e onde fica -->
+  <section class="secao s-branco" id="valores">
+    <div class="wrap valores-grade">
+      <div>
+        <div class="secao-cab">
+          <p class="rotulo">Valores</p>
+          <h2 class="tit">Quanto custa e como funciona.</h2>
+        </div>
+        <div class="precos">
+          <div class="preco-linha"><div><h3>Primeira consulta presencial</h3><p>60 min, com avaliação</p></div><i aria-hidden="true"></i><b>R$ 250</b></div>
+          <div class="preco-linha"><div><h3>Consulta online</h3><p>60 min, por vídeo</p></div><i aria-hidden="true"></i><b>R$ 220</b></div>
+          <div class="preco-linha"><div><h3>Retorno</h3><p>30 min, presencial ou online</p></div><i aria-hidden="true"></i><b>R$ 150</b></div>
+          <div class="preco-linha"><div><h3>Acompanhamento de 3 meses</h3><p>1 consulta, 2 retornos e WhatsApp</p></div><i aria-hidden="true"></i><b>R$ 590</b></div>
+        </div>
+        <p class="nota" style="margin-top:16px">Pix ou cartão em até 3x. O consultório emite recibo pra reembolso do plano de saúde. Valores de exemplo, para demonstração.</p>
+      </div>
+      <div class="onde-info">
+        <p class="rotulo">Onde fica</p>
+        <figure class="croqui">
+          <svg viewBox="0 0 520 340" role="img" aria-label="Croqui ilustrativo do caminho até o consultório no Setor Sul">
+            <rect width="520" height="340" fill="#FFFFFF"/>
+            <g stroke="#C9D6EA" stroke-width="1"><path d="M0 40H520M0 80H520M0 120H520M0 160H520M0 200H520M0 240H520M0 280H520M0 320H520"/></g>
+            <path d="M34 0V340" stroke="rgba(214,72,72,.38)" stroke-width="2"/>
+            <g fill="none" stroke="#1F2A8A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M60 96C150 92 260 102 498 90"/><path d="M58 128C160 124 270 132 500 122"/>
+              <path d="M232 20C236 110 228 210 238 330"/><path d="M262 18C266 112 258 214 268 332"/>
+              <path d="M60 246C170 240 330 252 500 244"/>
+              <path d="M392 150c-18 4-26 26-12 40 16 14 42 6 44-14s-14-30-32-26z" stroke-width="2.4"/>
+              <path d="M396 160l22 22M418 160l-22 22" stroke="#2F3BAF" stroke-width="3.4"/>
+              <path d="M120 200C160 190 190 170 214 144" stroke-dasharray="2 9"/>
+              <path d="M286 110C320 120 348 140 372 160" stroke-dasharray="2 9"/>
+            </g>
+            <circle cx="112" cy="204" r="6" fill="#1F2A8A"/>
+            <g fill="#1F2A8A" font-family="Kalam, Segoe Print, cursive" font-size="22">
+              <text x="78" y="232">você</text>
+              <text x="372" y="226">consultório</text>
+              <text x="300" y="76">praça</text>
+              <text x="64" y="318" font-size="18" fill="#4F5650">Setor Sul · croqui ilustrativo</text>
+            </g>
+          </svg>
+          <figcaption>Endereço e croqui ilustrativos, para demonstração.</figcaption>
+        </figure>
+        <p class="status" data-status><i></i><span>Segunda a sábado, a partir das 8h</span></p>
+        <dl class="horas">
+          <div data-dias="1 2 3 4 5"><dt>Segunda a sexta</dt><dd>8h às 18h</dd></div>
+          <div data-dias="6"><dt>Sábado</dt><dd>8h às 12h</dd></div>
+          <div data-dias="0"><dt>Domingo</dt><dd>Fechado</dd></div>
+        </dl>
+        <div class="mapa-ctas">
+          <a class="bt bt-linha" href="https://www.google.com/maps/search/?api=1&amp;query=Setor%20Sul%2C%20Goi%C3%A2nia%20-%20GO" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pino"/></svg> Abrir no mapa</a>
+          <a class="bt bt-tinta" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final: a mesa posta -->
+  <section class="toalha final">
+    <div class="wrap">
+      <div class="final-folha">
+        <p class="paciente"><span>Receita pra</span>a semana que vem</p>
+        <h2 class="final-tit">Seu prato feito, <em>do seu jeito.</em></h2>
+        <p class="lede">Chama no WhatsApp, conta o seu objetivo e escolhe se prefere presencial ou online. A primeira consulta já sai com data marcada.</p>
+        <div class="ctas"><a class="bt bt-tinta" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Agendar pelo WhatsApp</a><a class="bt bt-linha" href="#valores">Ver valores</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap rodape-in">
+    <div><p class="marca">Prato Feito <small>nutrição</small></p><p style="margin-top:12px">Comida de verdade, sem dieta da moda.</p></div>
+    <div><h3>Consultório</h3><p>Setor Sul, Goiânia</p><p>Endereço ilustrativo</p></div>
+    <div><h3>Atendimento</h3><p>Segunda a sexta, 8h às 18h</p><p>Sábado, 8h às 12h</p></div>
+    <div class="aviso"><h3>Sobre este site</h3><p>Projeto demonstrativo da Porta Studio. Nome, valores, endereço, registro profissional e fotos são ilustrativos. O cardápio é um exemplo e não substitui consulta.</p><p>WhatsApp do demo: (62) 99151-7901</p><p><a data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener">Site por Porta Studio</a></p></div>
+  </div>
+</footer>
+
+<a class="fab" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Agendar</a>
+
+<script>
+(function(){
+  var root=document.documentElement, calmo=root.classList.contains('calmo');
+  var $=function(s,c){return (c||document).querySelector(s)};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var anima=!calmo&&!!Element.prototype.animate;
+
+  /* WhatsApp: no demo, tudo vai para a Porta Studio */
+  var WA='https://wa.me/5562991517901', MSG='Olá! Vi o demo da Prato Feito Nutrição e quero um site assim.';
+  $$('[data-wa]').forEach(function(a){a.href=WA+'?text='+encodeURIComponent(MSG)});
+
+  /* Consultório aberto ou fechado, no horário de Goiânia */
+  var DIAS=['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+  var ABRE={0:null,1:[8,18],2:[8,18],3:[8,18],4:[8,18],5:[8,18],6:[8,12]};
+  function agora(){
+    try{
+      var o={};
+      new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){o[x.type]=x.value});
+      return {d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday),min:(+o.hour%24)*60+(+o.minute)};
+    }catch(e){var n=new Date();return {d:n.getDay(),min:n.getHours()*60+n.getMinutes()}}
+  }
+  function status(){
+    var a=agora(), h=ABRE[a.d], txt='', aberto=false;
+    if(h&&a.min>=h[0]*60&&a.min<h[1]*60){aberto=true;txt='Consultório aberto · até '+h[1]+'h'}
+    else if(h&&a.min<h[0]*60){txt='Consultório fechado · abre hoje às '+h[0]+'h'}
+    else{for(var i=1;i<=7;i++){var d=(a.d+i)%7;if(ABRE[d]){txt='Consultório fechado · abre '+(i===1?'amanhã':DIAS[d])+' às '+ABRE[d][0]+'h';break}}}
+    $$('[data-status]').forEach(function(el){el.classList.toggle('aberto',aberto);el.querySelector('span').textContent=txt});
+    $$('.horas [data-dias]').forEach(function(r){r.classList.toggle('hoje',r.getAttribute('data-dias').split(' ').indexOf(String(a.d))>-1)});
+  }
+  status();setInterval(status,60000);
+
+  /* data de hoje no receituário */
+  var hoje=new Date();
+  $$('[data-hoje]').forEach(function(el){el.textContent=String(hoje.getDate()).padStart(2,'0')+'/'+String(hoje.getMonth()+1).padStart(2,'0')+'/'+hoje.getFullYear()});
+
+  /* O carimbo: bate "PODE" em cada alimento */
+  function bate(el,atraso){
+    if(!el)return;
+    el.classList.add('batido');
+    if(!anima)return;
+    var r=el.style.getPropertyValue('--r')||(el.classList.contains('carimbo-grande')?'-6deg':'-7deg');
+    el.animate([{transform:'rotate('+r+') scale(2.4)',opacity:0},{transform:'rotate('+r+') scale(.9)',opacity:1,offset:.72},{transform:'rotate('+r+') scale(1)',opacity:1}],{delay:atraso||0,duration:380,easing:'cubic-bezier(.55,0,.8,.3)',fill:'backwards'});
+    var linha=el.closest('li')||el.parentNode;
+    linha.animate([{transform:'translate(0,0)'},{transform:'translate(1.5px,2px)'},{transform:'translate(-1px,-1px)'},{transform:'translate(0,0)'}],{delay:(atraso||0)+270,duration:200});
+  }
+  var itens=$$('.receita-lista li'), grande=$('.carimbo-grande'), assinatura=$('.assinatura path');
+  if(anima){
+    root.classList.add('js-carimbo');
+    var L=assinatura.getTotalLength();assinatura.style.strokeDasharray=L;assinatura.style.strokeDashoffset=L;
+    var t0=700, passo=430;
+    itens.forEach(function(li,i){bate($('.carimbo',li),t0+i*passo)});
+    var tA=t0+itens.length*passo+120;
+    var traco=assinatura.animate([{strokeDashoffset:L+'px'},{strokeDashoffset:'0px'}],{delay:tA,duration:900,easing:'ease-in-out',fill:'forwards'});
+    traco.onfinish=function(){assinatura.style.strokeDashoffset='0'};
+    bate(grande,tA+950);
+    setTimeout(function(){var d=$('[data-dica]');if(d)d.hidden=false},tA+1500);
+    itens.forEach(function(li){li.addEventListener('click',function(){bate($('.carimbo',li),0)})});
+  }
+
+  /* Etapas da consulta ganham carimbo ao aparecer */
+  var etapas=$$('.etapa .carimbo');
+  if(anima&&'IntersectionObserver' in window){
+    var ioE=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){bate(e.target,120);ioE.unobserve(e.target)}})},{rootMargin:'0px 0px -18% 0px'});
+    etapas.forEach(function(c){ioE.observe(c)});
+    var rec=$('.recado .carimbo');
+    var ioR=new IntersectionObserver(function(es){if(es[0].isIntersecting){bate(rec,150);ioR.disconnect()}},{rootMargin:'0px 0px -20% 0px'});
+    ioR.observe(rec);
+  }else{
+    $$('.carimbo,.carimbo-grande').forEach(function(c){c.classList.add('batido')});
+  }
+
+  /* Lista de substituições */
+  var TROCAS={
+    pao:['1 pão francês','2 fatias de pão integral','1 tapioca média','4 colheres de sopa de cuscuz'],
+    ovo:['2 ovos mexidos','2 fatias de queijo minas frescal','3 fatias de peito de peru'],
+    cafe:['1 xícara de café com leite','1 pote de iogurte natural','1 copo de leite com cacau'],
+    arroz:['4 colheres de sopa de arroz','1 batata média cozida','3 colheres de sopa de macarrão','1 pedaço médio de mandioca cozida'],
+    feijao:['1 concha de feijão','1 concha de lentilha','1 concha de grão-de-bico'],
+    proteina:['1 filé de frango grelhado','1 posta de tilápia','1 bife de patinho','2 ovos cozidos'],
+    fruta:['1 banana com 1 colher de aveia','1 fatia média de mamão','1 maçã','10 morangos'],
+    jantar:['Omelete de 2 ovos com legumes','Sopa de legumes com frango desfiado','O mesmo PF do almoço, no prato de sobremesa']
+  };
+  $$('[data-troca]').forEach(function(linha){
+    var lista=TROCAS[linha.getAttribute('data-troca')], i=0, alvo=$('.porcao',linha), cont=$('.troca-n',linha), bt=$('.trocar',linha);
+    if(!lista||!bt)return;
+    bt.setAttribute('aria-label','Trocar '+lista[0]+' por um equivalente');
+    bt.addEventListener('click',function(){
+      i=(i+1)%lista.length;
+      var muda=function(){alvo.textContent=lista[i];cont.textContent=(i+1)+' de '+lista.length;bt.setAttribute('aria-label','Trocar '+lista[i]+' por um equivalente')};
+      if(anima){
+        var sai=alvo.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-35%)'}],{duration:150,easing:'ease-in'});
+        sai.onfinish=function(){muda();alvo.animate([{opacity:0,transform:'translateY(35%)'},{opacity:1,transform:'translateY(0)'}],{duration:240,easing:'cubic-bezier(.2,.8,.2,1)'})};
+      }else muda();
+    });
+  });
+
+  /* Fotos presas com ímã */
+  if(anima&&'IntersectionObserver' in window){
+    root.classList.add('js-anima');
+    var ioP=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('preso');ioP.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});
+    $$('.polaroid').forEach(function(p,i){p.style.transitionDelay=(i*90)+'ms';ioP.observe(p)});
+  }
+
+  /* Botão do WhatsApp aparece depois da abertura */
+  var fab=$('.fab');
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){fab.classList.toggle('on',!es[0].isIntersecting)}).observe($('.hero'))}
+  else fab.classList.add('on');
+})();
+</script>
+
+<style>
+.ps-outros{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:44;display:flex;align-items:center;gap:8px;height:46px;padding:0 16px 0 12px;border-radius:999px;background:#FFFFFF;color:#16171A;font:700 14px/1 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;text-decoration:none;box-shadow:0 0 0 2px #16171A,0 12px 24px -12px rgba(0,0,0,.5);transform:translateY(180%);visibility:hidden;transition:transform .6s cubic-bezier(.3,1.4,.5,1),visibility 0s .6s}
+.ps-outros.on{transform:none;visibility:visible;transition:transform .6s cubic-bezier(.3,1.4,.5,1),visibility 0s}
+.tem-pedido .ps-outros{transform:translateY(180%);visibility:hidden}
+.ps-outros svg{width:18px;height:18px;flex:none}
+.ps-outros em{font-style:normal}
+@media (max-width:979px){.ps-outros em{display:none}.ps-outros{padding:0 14px 0 12px}}
+</style>
+<a class="ps-outros" href="../index.html"><svg viewBox="0 0 18 18" aria-hidden="true"><rect x="1.5" y="1.5" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="10.5" y="1.5" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="1.5" y="10.5" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="10.5" y="10.5" width="6" height="6" rx="1.2" fill="currentColor"/></svg>Outros <em>modelos</em></a>
+<script>(function(){var b=document.querySelector('.ps-outros');if(!b)return;var f=function(){b.classList.toggle('on',scrollY>innerHeight*.7)};addEventListener('scroll',f,{passive:true});f()})();</script></body>
+</html>

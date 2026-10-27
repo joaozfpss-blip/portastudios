@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Mola Pilates</title>
+<meta name="description" content="Estúdio de pilates em aparelhos no Jardim América, em Goiânia. Turmas de até 3 alunos, reformer, cadillac e aula experimental. Projeto demonstrativo da Porta Studio.">
+<meta name="theme-color" content="#F4F4F1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Mola Pilates">
+<meta property="og:title" content="Mola Pilates · Jardim América, Goiânia">
+<meta property="og:description" content="Estica, respira, volta pro centro. Pilates em aparelhos com turmas de até 3 alunos.">
+<meta property="og:image" content="og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400..600&family=Manrope:wght@400..800&family=Unbounded:wght@300..800&display=swap">
+<script>
+  (function(){var d=document.documentElement;d.lang='pt-BR';d.classList.add('js');
+  var calmo=false;try{calmo=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
+  if(calmo)d.classList.add('calmo');})();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ExerciseGym","name":"Mola Pilates (projeto demonstrativo)","description":"Estúdio de pilates em aparelhos no Jardim América, Goiânia, com turmas de até 3 alunos.","address":{"@type":"PostalAddress","addressLocality":"Goiânia","addressRegion":"GO","addressCountry":"BR"},"areaServed":"Goiânia","priceRange":"R$ 40–490","paymentAccepted":"Pix, cartão","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"06:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"07:00","closes":"12:00"}]}
+</script>
+<style>
+:root{
+  /* Layout: o topo é um reformer visto de lado, ocupando a largura da tela; a pessoa estica a mola e o carrinho respira sozinho. Depois o estúdio, os aparelhos, os planos e a madeira do aparelho no fim. */
+  --parede:#F4F4F1;
+  --branco:#FFFFFF;
+  --estofado:#1C1C1E;
+  --estofado-2:#2A2A2E;
+  --texto:#1C1C1E;
+  --texto-2:#5C5C62;
+  --madeira:#D9AE78;
+  --madeira-2:#B9874E;
+  --aco:#B8BCC0;
+  --mola-leve:#E2A812;
+  --mola-media:#2F6FD1;
+  --mola-forte:#D8463A;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"Azeret Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --gut-l:max(20px,env(safe-area-inset-left,0px));
+  --gut-r:max(20px,env(safe-area-inset-right,0px));
+  --topo-h:62px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --mola:cubic-bezier(.34,1.56,.5,1);
+}
+@media (min-width:900px){:root{--topo-h:70px;--gut-l:max(32px,env(safe-area-inset-left,0px));--gut-r:max(32px,env(safe-area-inset-right,0px))}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--topo-h) + env(safe-area-inset-top,0px) + 8px)}
+.calmo{scroll-behavior:auto}
+body{margin:0;background:var(--parede);color:var(--texto);font:400 17px/1.6 var(--sans);overflow-x:hidden;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--parede)}
+h1,h2,h3,h4,p,figure,ul,ol,dl,dd,fieldset{margin:0}
+ul,ol{padding:0;list-style:none}
+fieldset{border:0;padding:0;min-width:0}
+legend{padding:0}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1.5px}
+button,input{font:inherit;color:inherit}
+::selection{background:var(--mola-media);color:var(--branco)}
+:focus-visible{outline:3px solid var(--foco,var(--mola-media));outline-offset:3px}
+main{overflow-x:clip}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+.s-parede{background:var(--parede);color:var(--texto);--sub:var(--texto-2);--rot:var(--mola-media);--linha:rgba(28,28,30,.12)}
+.s-branco{background:var(--branco);color:var(--texto);--sub:var(--texto-2);--rot:var(--mola-media);--linha:rgba(28,28,30,.12)}
+.s-estofado{background:var(--estofado);color:#F2F2F0;--sub:#B9B9BE;--rot:var(--madeira);--linha:rgba(242,242,240,.14);--foco:var(--madeira)}
+.madeira{background-color:#DDB37D;background-image:repeating-linear-gradient(91deg,rgba(140,90,40,.07) 0 2px,rgba(140,90,40,0) 2px 9px),repeating-linear-gradient(89deg,rgba(255,255,255,.08) 0 1px,rgba(255,255,255,0) 1px 14px),linear-gradient(170deg,#E6C291,#D3A56A);color:var(--estofado);--sub:#3E3428;--rot:var(--estofado);--linha:rgba(28,28,30,.2)}
+.secao{position:relative;padding-block:clamp(80px,10vw,140px)}
+.secao-cab{display:grid;gap:16px;max-width:820px}
+.rotulo{display:inline-flex;align-items:center;gap:10px;font:600 12.5px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--rot)}
+.rotulo::before{content:"";width:22px;height:8px;background:radial-gradient(circle at 4px 4px,currentColor 0 3px,transparent 3.5px) 0 0/8px 8px repeat-x}
+.tit{font:600 clamp(28px,6.4vw,54px)/1.1 var(--display);letter-spacing:-.02em;text-wrap:balance}
+.lede{font-size:clamp(17px,2.1vw,20px);line-height:1.6;color:var(--sub);max-width:34em}
+.nota{font-size:14.5px;color:var(--sub)}
+
+/* ===== Botões ===== */
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border:2px solid transparent;border-radius:999px;font:700 16px/1.1 var(--sans);text-decoration:none;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .35s var(--mola),background-color .2s}
+.bt svg{width:20px;height:20px;flex:none}
+.bt:hover{transform:translateY(-2px) scaleX(1.03)}
+.bt:active{transform:scaleX(.94)}
+.bt-escuro{background:var(--estofado);color:var(--branco)}
+.bt-escuro:hover{background:#000}
+.bt-linha{background:transparent;color:inherit;border-color:currentColor}
+.bt-madeira{background:var(--madeira);color:var(--estofado)}
+
+/* ===== Topo ===== */
+.topo{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(244,244,241,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(28,28,30,.08)}
+.topo-in{height:var(--topo-h);display:flex;align-items:center;gap:22px}
+.marca{display:inline-flex;align-items:center;gap:10px;font:700 21px/1 var(--display);letter-spacing:-.02em;color:var(--texto);text-decoration:none;white-space:nowrap}
+.marca svg{width:34px;height:14px}
+.topo-nav{display:none;gap:26px;margin-left:auto}
+.topo-nav a{font-weight:700;font-size:15px;text-decoration:none;color:var(--texto-2);transition:color .2s}
+.topo-nav a:hover{color:var(--texto)}
+.topo-cta{margin-left:auto;min-height:44px;padding:0 18px;font-size:15px}
+@media (min-width:1000px){.topo-nav{display:flex}.topo-cta{margin-left:0}}
+
+.status{display:inline-flex;align-items:center;gap:9px;font:700 14px/1.25 var(--sans);color:var(--sub)}
+.status i{width:10px;height:10px;border-radius:50%;background:currentColor;opacity:.5;flex:none}
+.status.aberto i{background:#2E9E4F;opacity:1;box-shadow:0 0 0 4px rgba(46,158,79,.2)}
+.selo{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--estofado);color:var(--branco);font:600 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+
+/* ===== Abertura: o reformer ===== */
+.hero{position:relative;overflow:hidden;padding-top:calc(var(--topo-h) + clamp(28px,5vw,64px))}
+.hero-cab{display:grid;gap:16px;max-width:980px}
+.hero-tit{font:700 clamp(38px,9.6vw,98px)/1.02 var(--display);letter-spacing:-.035em;text-wrap:balance}
+.hero-tit em{font-style:normal;color:var(--mola-media)}
+.hero-lede{font-size:clamp(17px,4.3vw,21px);line-height:1.55;max-width:32em;color:var(--texto-2)}
+.reformer{position:relative;margin-top:clamp(24px,4vw,48px)}
+.chao{position:relative;padding-bottom:clamp(20px,4vw,48px)}
+.ref-palco{position:relative;max-width:1200px;margin-inline:auto;padding-inline:max(6px,env(safe-area-inset-left,0px)) max(6px,env(safe-area-inset-right,0px));background:linear-gradient(transparent 86%,rgba(217,174,120,.3) 86%)}
+@media (max-width:639px){.ref-palco{padding-right:0}}
+.ref-svg{width:100%;height:auto;touch-action:pan-y;cursor:grab;-webkit-user-select:none;user-select:none;overflow:visible}
+.ref-svg.puxando{cursor:grabbing}
+.ref-fala{position:absolute;top:2%;left:var(--fx,63%);transform:translateX(-50%);padding:6px 12px;border-radius:999px;background:var(--branco);color:var(--texto);font:500 clamp(12px,2.6vw,15px)/1 var(--display);letter-spacing:.02em;white-space:nowrap;box-shadow:0 8px 18px -10px rgba(28,28,30,.4);opacity:0;transition:opacity .4s;pointer-events:none}
+.ref-fala.on{opacity:1}
+.ref-ctl{display:grid;gap:14px;margin-top:6px}
+.molas-escolha{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (min-width:640px){.molas-escolha{display:flex}}
+.molas-escolha button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 12px 0 10px;border:2px solid rgba(28,28,30,.16);border-radius:999px;background:var(--branco);font:700 15px/1 var(--sans);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .2s,transform .3s var(--mola)}
+.molas-escolha button:active{transform:scaleX(.92)}
+.molas-escolha button[aria-pressed="true"]{border-color:var(--c)}
+.molas-escolha i{width:24px;height:12px;flex:none;background:repeating-linear-gradient(90deg,var(--c) 0 3px,transparent 3px 6px);border-radius:3px}
+.leitura{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;font:500 14px/1.4 var(--mono);color:var(--texto-2)}
+.leitura b{font:600 clamp(26px,6vw,36px)/1 var(--mono);color:var(--texto);font-variant-numeric:tabular-nums}
+.ref-dica{font-size:14.5px;color:var(--texto-2)}
+.hero-pe{display:grid;gap:18px;margin-top:clamp(28px,4vw,40px)}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.pe-linha{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+@media (min-width:900px){.ref-ctl{grid-template-columns:auto 1fr auto;align-items:center;gap:24px}.leitura{justify-content:center}.hero-pe{grid-template-columns:auto 1fr;align-items:center}.hero-pe .pe-linha{justify-content:flex-end}}
+
+/* ===== O método ===== */
+.metodo-grade{display:grid;gap:44px}
+@media (min-width:960px){.metodo-grade{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:64px;align-items:start}}
+.principios{display:grid;gap:12px;margin-top:clamp(32px,4vw,48px)}
+@media (min-width:640px){.principios{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.principio{display:grid;gap:8px;padding:22px;border-radius:18px;background:var(--parede);transition:transform .8s var(--mola)}
+.principio h3{display:flex;align-items:center;gap:10px;font:600 18px/1.2 var(--display);letter-spacing:-.01em}
+.principio h3::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--c,var(--mola-media));flex:none}
+.principio p{font-size:16px;color:var(--sub)}
+.js-anima .principio:not(.visto){transform:translateY(26px) scaleX(.94)}
+.molas-foto{display:grid;gap:12px}
+.molas-foto figure{position:relative;border-radius:18px;overflow:hidden;background:var(--estofado)}
+.molas-foto img{width:100%}
+.molas-foto figcaption{font-size:15px;color:var(--sub)}
+.cores{display:grid;gap:8px;margin-top:6px}
+.cores li{display:flex;align-items:center;gap:12px;font-size:15px}
+.cores i{width:34px;height:12px;flex:none;background:repeating-linear-gradient(90deg,var(--c) 0 3px,transparent 3px 6px);border-radius:3px}
+.cores b{font-weight:800}
+@media (min-width:960px){.molas-foto{position:sticky;top:calc(var(--topo-h) + 40px)}}
+
+/* ===== Aparelhos ===== */
+.aparelhos-cab{display:grid;gap:32px}
+@media (min-width:960px){.aparelhos-cab{grid-template-columns:minmax(0,1fr) 260px;align-items:end;gap:56px}}
+.polias{display:none}
+@media (min-width:960px){.polias{display:block;border-radius:16px;overflow:hidden;aspect-ratio:2/3}.polias img{width:100%;height:100%;object-fit:cover}}
+.aparelhos{display:grid;gap:16px;margin-top:clamp(36px,5vw,56px)}
+@media (min-width:760px){.aparelhos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.aparelho{display:grid;align-content:start;border-radius:20px;overflow:hidden;background:var(--estofado-2)}
+.aparelho figure{aspect-ratio:4/5;overflow:hidden;background:#000}
+.aparelho img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+@media (hover:hover){.aparelho:hover img{transform:scale(1.05)}}
+.aparelho-txt{display:grid;gap:10px;padding:22px 22px 26px}
+.aparelho h3{font:600 22px/1.15 var(--display)}
+.aparelho p{font-size:16px;color:var(--sub)}
+.bom{font:500 12.5px/1.5 var(--mono);letter-spacing:.04em;color:var(--madeira)}
+
+/* ===== O estúdio ===== */
+.estudio{position:relative}
+.estudio figure{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;background:var(--estofado)}
+@media (min-width:760px){.estudio figure{aspect-ratio:16/8}}
+.estudio img{width:100%;height:100%;object-fit:cover}
+.estudio figcaption{position:absolute;left:0;right:0;bottom:0;display:grid;gap:14px;padding:clamp(20px,4vw,40px);color:var(--branco);background:linear-gradient(to top,rgba(20,20,22,.85),rgba(20,20,22,0))}
+.estudio h2{font:600 clamp(24px,5vw,44px)/1.1 var(--display);letter-spacing:-.02em;max-width:16em;text-wrap:balance}
+.fatos{display:flex;flex-wrap:wrap;gap:10px}
+.fatos li{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font:500 13.5px/1.2 var(--mono)}
+
+/* ===== Pra quem é ===== */
+.publico{display:grid;gap:14px;margin-top:clamp(36px,5vw,56px)}
+@media (min-width:760px){.publico{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1080px){.publico{grid-template-columns:repeat(3,minmax(0,1fr))}.p-foto{grid-row:span 2}}
+.p-card{position:relative;isolation:isolate;display:grid;align-content:end;gap:10px;min-height:240px;padding:24px;border-radius:20px;overflow:hidden;background:var(--branco)}
+.p-card h3{font:600 clamp(20px,3.6vw,24px)/1.15 var(--display);letter-spacing:-.01em}
+.p-card p{font-size:16px;color:var(--sub)}
+.p-foto{min-height:380px;color:var(--branco);--sub:rgba(255,255,255,.92)}
+.p-foto img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.p-foto::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(20,20,22,.86),rgba(20,20,22,.2) 55%,rgba(20,20,22,0))}
+.p-card .linha-mola{width:56px;height:12px;background:repeating-linear-gradient(90deg,var(--c) 0 3px,transparent 3px 6px);border-radius:3px;margin-bottom:auto}
+
+/* ===== Planos ===== */
+.planos-grade{display:grid;gap:40px}
+@media (min-width:960px){.planos-grade{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start}}
+.escolha{display:grid;gap:22px;margin-top:28px}
+.passo-rot{font:600 12.5px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;color:var(--sub)}
+.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.seg.dois{grid-template-columns:repeat(2,minmax(0,1fr))}
+.seg legend{grid-column:1/-1}
+.seg label{position:relative;display:grid;justify-items:center;gap:4px;padding:14px 8px;border-radius:16px;background:var(--parede);box-shadow:inset 0 0 0 2px transparent;cursor:pointer;text-align:center;transition:box-shadow .2s,transform .35s var(--mola)}
+.seg label:active{transform:scaleX(.95)}
+.seg input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.seg b{font:700 22px/1 var(--display)}
+.seg span{font-size:13.5px;font-weight:700;color:var(--sub)}
+.seg label:has(input:checked){background:var(--branco);box-shadow:inset 0 0 0 2px var(--estofado)}
+.seg label:has(input:focus-visible){outline:3px solid var(--mola-media);outline-offset:2px}
+.resultado{position:relative;display:grid;gap:14px;padding:clamp(24px,4vw,36px);border-radius:24px;background:var(--estofado);color:#F2F2F0}
+.resultado .preco{font:700 clamp(46px,11vw,76px)/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.resultado .preco small{font:500 16px/1 var(--mono);letter-spacing:0;margin-left:6px;color:#B9B9BE}
+.resultado p{color:#D4D4D8}
+.resultado .por-aula{font:500 15px/1.5 var(--mono);color:var(--madeira)}
+.resultado .molinhas{display:flex;gap:6px}
+.resultado .molinhas i{width:40px;height:12px;background:repeating-linear-gradient(90deg,var(--mola-media) 0 3px,transparent 3px 6px);border-radius:3px;transform-origin:0 50%;transition:transform .6s var(--mola)}
+.extras-plano{display:grid;margin-top:8px}
+.extras-plano li{display:flex;justify-content:space-between;gap:16px;padding-block:13px;border-top:1px solid var(--linha);font-size:15.5px}
+.extras-plano li b{white-space:nowrap}
+
+/* ===== Avaliações ===== */
+.recado{display:grid;justify-items:center;gap:16px;max-width:760px;margin-inline:auto;padding:36px 26px;border-radius:24px;background:var(--branco);text-align:center}
+.recado .linha-mola{width:90px;height:14px;background:repeating-linear-gradient(90deg,var(--mola-leve) 0 3px,transparent 3px 6px);border-radius:3px}
+
+/* ===== Onde fica ===== */
+.onde-grade{display:grid;gap:44px}
+@media (min-width:900px){.onde-grade{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:72px;align-items:start}}
+.onde-info{display:grid;gap:22px;align-content:start}
+.horas{display:grid}
+.horas div{display:flex;justify-content:space-between;gap:16px;padding:13px 10px;border-top:1px solid var(--linha)}
+.horas div:last-child{border-bottom:1px solid var(--linha)}
+.horas dt{color:var(--sub)}
+.horas dd{font-weight:700;text-align:right}
+.horas .hoje{border-radius:10px;background:var(--branco)}
+.horas .hoje dt{color:var(--texto);font-weight:700}
+.horas .hoje dt::after{content:" · hoje"}
+.mapa{border-radius:22px;overflow:hidden;background:var(--branco)}
+.mapa svg{width:100%;height:auto}
+.mapa figcaption{padding:12px 16px;font-size:14px;color:var(--sub);border-top:1px solid var(--linha)}
+.mapa-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.mapa-ctas .bt{padding:0 12px;font-size:15px}
+
+/* ===== Final ===== */
+.final{overflow:hidden;padding-block:clamp(90px,13vw,170px)}
+.final-in{display:grid;gap:24px;justify-items:start}
+.final-tit{font:700 clamp(40px,10vw,104px)/1 var(--display);letter-spacing:-.04em;text-wrap:balance;max-width:12em}
+.respira{width:min(100%,520px);height:auto;overflow:visible}
+.respira path{fill:none;stroke:var(--estofado);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.js .respira g{transform-origin:20px 30px;animation:respira 10s ease-in-out infinite}
+@keyframes respira{0%,100%{transform:scaleX(.62)}40%{transform:scaleX(1)}}
+
+/* ===== Rodapé ===== */
+.rodape{background:var(--estofado);color:#F2F2F0;padding-block:56px calc(env(safe-area-inset-bottom,0px) + 110px);--foco:var(--madeira)}
+.rodape-in{display:grid;gap:30px}
+.rodape .marca{color:#FFFFFF;font-size:26px}
+.rodape h3{margin-bottom:10px;font:600 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--madeira)}
+.rodape p{font-size:15px;color:#C4C4C9}
+.rodape .aviso{display:grid;gap:8px}
+@media (min-width:900px){.rodape{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 56px)}.rodape-in{grid-template-columns:1.2fr 1fr 1fr 1.4fr}}
+
+/* ===== WhatsApp no celular ===== */
+.fab{position:fixed;right:calc(var(--gut-r) - 4px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:45;display:flex;align-items:center;gap:10px;min-height:56px;padding:0 20px 0 16px;border-radius:999px;background:var(--estofado);color:var(--branco);box-shadow:0 14px 28px -12px rgba(0,0,0,.6);font:700 15.5px/1 var(--sans);text-decoration:none;transform:translateY(180%);visibility:hidden;transition:transform .5s var(--ease),visibility 0s .5s}
+.fab svg{width:24px;height:24px}
+.fab.on{transform:none;visibility:visible;transition:transform .5s var(--ease),visibility 0s}
+@media (min-width:1000px){.fab{display:none}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
+}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-madeira" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9C48F"/><stop offset="1" stop-color="#C9955A"/></linearGradient>
+    <linearGradient id="g-madeira-esc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C99258"/><stop offset="1" stop-color="#9E6E3A"/></linearGradient>
+    <linearGradient id="g-estofado" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A3A3F"/><stop offset=".5" stop-color="#1C1C1E"/><stop offset="1" stop-color="#111113"/></linearGradient>
+    <linearGradient id="g-aco" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8E9398"/><stop offset=".5" stop-color="#E4E7EA"/><stop offset="1" stop-color="#8E9398"/></linearGradient>
+    <symbol id="i-mola" viewBox="0 0 34 14"><path d="M1 7h4c1.5-6 4-6 4 0s2.5 6 4 0 2.5-6 4 0 2.5 6 4 0 2.5-6 4 0h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4.5 19.5l1.1-3.6A8 8 0 1 1 8.4 18.6z"/><path fill="currentColor" d="M9.3 8.6c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c-.1.1-.1.3 0 .4.5.9 1.3 1.6 2.2 2.1.2.1.3.1.4 0l.6-.6c.2-.2.4-.2.6-.1l1.4.7c.3.1.3.3.3.5 0 .5-.3 1.3-1.1 1.6-.6.2-1.6.2-3.2-.7-1.8-1-3-2.7-3.4-3.6-.4-.8-.3-1.8.5-3z"/></symbol>
+    <symbol id="i-pino" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M10 18s5.5-5.3 5.5-9.6A5.5 5.5 0 0 0 4.5 8.4C4.5 12.7 10 18 10 18z"/><circle cx="10" cy="8.5" r="2" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<header class="topo">
+  <div class="wrap topo-in">
+    <a class="marca" href="#inicio"><svg aria-hidden="true" style="color:var(--mola-media)"><use href="#i-mola"/></svg>Mola<span class="sr"> Pilates, voltar ao início</span></a>
+    <nav class="topo-nav" aria-label="Seções">
+      <a href="#metodo">O método</a>
+      <a href="#aparelhos">Aparelhos</a>
+      <a href="#pra-quem">Pra quem é</a>
+      <a href="#planos">Planos</a>
+    </nav>
+    <a class="bt bt-escuro topo-cta" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener">Aula experimental</a>
+  </div>
+</header>
+
+<main>
+  <!-- Abertura: o reformer que estica e respira -->
+  <section class="hero s-parede" id="inicio">
+    <div class="wrap hero-cab">
+      <p class="rotulo">Pilates em aparelhos · Jardim América, Goiânia</p>
+      <h1 class="hero-tit"><span class="sr">Mola Pilates. </span>Estica, respira, volta pro <em>centro.</em></h1>
+      <p class="hero-lede">Pilates em aparelhos com turmas de até 3 alunos e a instrutora do seu lado a aula inteira. Do primeiro alongamento à reabilitação.</p>
+    </div>
+    <div class="reformer chao" data-reformer>
+      <div class="ref-palco">
+        <p class="ref-fala" aria-hidden="true" data-fala>inspira</p>
+        <svg class="ref-svg" viewBox="0 0 1000 250" role="img" aria-label="Reformer de pilates desenhado de lado, com as molas presas no carrinho. Arraste o carrinho para esticar a mola.">
+          <ellipse cx="500" cy="236" rx="470" ry="9" fill="rgba(28,28,30,.13)"/>
+          <rect x="58" y="184" width="26" height="46" rx="3" fill="url(#g-madeira-esc)"/>
+          <rect x="916" y="184" width="26" height="46" rx="3" fill="url(#g-madeira-esc)"/>
+          <rect x="40" y="150" width="920" height="38" rx="7" fill="url(#g-madeira)"/>
+          <path d="M44 160H956" stroke="rgba(120,80,40,.18)" stroke-width="1.5"/>
+          <path d="M300 152H948" stroke="#C9CDD1" stroke-width="3" stroke-linecap="round"/>
+          <rect x="58" y="74" width="30" height="84" rx="5" fill="url(#g-madeira)"/>
+          <circle cx="92" cy="114" r="4" fill="#8E9398"/><circle cx="92" cy="128" r="4" fill="#8E9398"/><circle cx="92" cy="142" r="4" fill="#8E9398"/>
+          <path d="M150 150L182 70" stroke="url(#g-aco)" stroke-width="9" stroke-linecap="round"/>
+          <path d="M226 150L194 70" stroke="url(#g-aco)" stroke-width="9" stroke-linecap="round" opacity=".55"/>
+          <rect x="160" y="52" width="58" height="24" rx="12" fill="#1C1C1E"/>
+          <g data-molas><path d="M92 120C150 112 210 128 330 120" fill="none" stroke="#2F6FD1" stroke-width="3"/><path d="M92 136C150 128 210 144 330 136" fill="none" stroke="#2F6FD1" stroke-width="3"/></g>
+          <g data-carrinho transform="translate(330 0)">
+            <rect x="0" y="112" width="300" height="34" rx="6" fill="url(#g-madeira-esc)"/>
+            <rect x="0" y="94" width="300" height="24" rx="9" fill="url(#g-estofado)"/>
+            <rect x="8" y="76" width="58" height="22" rx="9" fill="#2A2A2E"/>
+            <rect x="236" y="56" width="22" height="44" rx="8" fill="#1C1C1E"/>
+            <rect x="266" y="56" width="22" height="44" rx="8" fill="#1C1C1E"/>
+            <circle cx="42" cy="149" r="7" fill="#8E9398"/><circle cx="258" cy="149" r="7" fill="#8E9398"/>
+            <rect x="-20" y="30" width="340" height="140" fill="transparent"/>
+          </g>
+        </svg>
+      </div>
+      <div class="wrap ref-ctl">
+        <div class="molas-escolha" role="group" aria-label="Escolha a mola">
+          <button type="button" data-mola="leve" aria-pressed="false" style="--c:var(--mola-leve)"><i aria-hidden="true"></i>Leve</button>
+          <button type="button" data-mola="media" aria-pressed="true" style="--c:var(--mola-media)"><i aria-hidden="true"></i>Média</button>
+          <button type="button" data-mola="forte" aria-pressed="false" style="--c:var(--mola-forte)"><i aria-hidden="true"></i>Forte</button>
+        </div>
+        <p class="leitura" aria-live="polite"><b data-cm>0 cm</b><span data-nome-mola>2 molas azuis · carga média</span></p>
+        <p class="ref-dica">Arraste o carrinho pra esticar a mola.</p>
+      </div>
+    </div>
+    <div class="wrap hero-pe" style="padding-bottom:clamp(56px,8vw,100px)">
+      <div class="ctas">
+        <a class="bt bt-escuro" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener">Agendar aula experimental</a>
+        <a class="bt bt-linha" href="#planos">Ver planos</a>
+      </div>
+      <div class="pe-linha"><p class="status" data-status><i></i><span>Segunda a sábado, a partir das 6h</span></p><span class="selo">Demo · Porta Studio</span></div>
+    </div>
+  </section>
+
+  <!-- O método -->
+  <section class="secao s-branco" id="metodo">
+    <div class="wrap metodo-grade">
+      <div>
+        <div class="secao-cab">
+          <p class="rotulo">O método</p>
+          <h2 class="tit">Seis princípios, e nenhum deles é ficar flexível.</h2>
+          <p class="lede">O pilates foi criado por Joseph Pilates há quase cem anos, em cima de seis princípios. Toda aula aqui passa por todos eles.</p>
+        </div>
+        <ul class="principios">
+          <li class="principio" style="--c:var(--mola-media)"><h3>Respiração</h3><p>Expira no esforço, inspira pra preparar. Parece simples e muda tudo.</p></li>
+          <li class="principio" style="--c:var(--mola-forte)"><h3>Centro</h3><p>Abdômen, lombar e quadril trabalhando juntos. É daí que sai o movimento.</p></li>
+          <li class="principio" style="--c:var(--mola-leve)"><h3>Controle</h3><p>Nada no embalo. A mola puxa e você segura, na volta também.</p></li>
+          <li class="principio" style="--c:var(--mola-media)"><h3>Concentração</h3><p>Cinquenta minutos prestando atenção no próprio corpo. O celular fica na bolsa.</p></li>
+          <li class="principio" style="--c:var(--mola-forte)"><h3>Precisão</h3><p>Poucas repetições, bem feitas. Qualidade antes de quantidade.</p></li>
+          <li class="principio" style="--c:var(--mola-leve)"><h3>Fluidez</h3><p>Um exercício emenda no outro, sem pressa e sem tranco.</p></li>
+        </ul>
+      </div>
+      <div class="molas-foto">
+        <figure><img src="img/molas.jpg" width="633" height="360" alt="Molas do reformer de perto, com ganchos vermelho, amarelo e verde" loading="lazy" decoding="async"></figure>
+        <p class="rotulo" style="margin-top:8px">As cores das molas</p>
+        <p class="nota">Cada cor é uma carga. A instrutora troca as molas durante a aula conforme o exercício e o seu momento.</p>
+        <ul class="cores">
+          <li style="--c:var(--mola-leve)"><i aria-hidden="true"></i><span><b>Amarela:</b> leve, pra mobilidade e reabilitação</span></li>
+          <li style="--c:var(--mola-media)"><i aria-hidden="true"></i><span><b>Azul:</b> média, a do dia a dia</span></li>
+          <li style="--c:var(--mola-forte)"><i aria-hidden="true"></i><span><b>Vermelha:</b> forte, pra pernas e força</span></li>
+        </ul>
+        <p class="nota" style="font-size:13px">As cores mudam de fabricante pra fabricante. Estas são as do estúdio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aparelhos -->
+  <section class="secao s-estofado" id="aparelhos">
+    <div class="wrap">
+      <div class="aparelhos-cab">
+        <div class="secao-cab">
+          <p class="rotulo">Os aparelhos</p>
+          <h2 class="tit">Madeira, mola e polia. O resto é o seu corpo.</h2>
+          <p class="lede">Cada aparelho trabalha de um jeito. Na mesma aula você pode passar por dois ou três, conforme o seu plano de exercícios.</p>
+        </div>
+        <figure class="polias"><img src="img/polias.jpg" width="800" height="1200" alt="Polias pretas e cabos de aço de um aparelho de pilates, em preto e branco" loading="lazy" decoding="async"></figure>
+      </div>
+      <div class="aparelhos">
+        <article class="aparelho">
+          <figure><img src="img/reformer-aula.jpg" width="900" height="1080" alt="Aluna deitada no reformer, com as mãos nas alças e os joelhos dobrados" loading="lazy" decoding="async"></figure>
+          <div class="aparelho-txt"><h3>Reformer</h3><p>Um carrinho que desliza sobre trilhos, preso por molas que ajustam a carga. É o aparelho mais versátil do estúdio.</p><p class="bom">Bom pra: força, postura e primeira aula</p></div>
+        </article>
+        <article class="aparelho">
+          <figure><img src="img/cadillac.jpg" width="900" height="1350" alt="Aluna pendurada de cabeça pra baixo na barra do cadillac, sorrindo" loading="lazy" decoding="async"></figure>
+          <div class="aparelho-txt"><h3>Cadillac</h3><p>Uma cama com estrutura de barras, molas e alças por cima. Dá pra treinar deitado, sentado e até de cabeça pra baixo.</p><p class="bom">Bom pra: alongamento, coluna e quem gosta de desafio</p></div>
+        </article>
+        <article class="aparelho">
+          <figure><img src="img/acessorios.jpg" width="900" height="1350" alt="Colchonete enrolado, halter, faixa elástica e bola de pilates sobre o chão claro" loading="lazy" decoding="async"></figure>
+          <div class="aparelho-txt"><h3>Solo e acessórios</h3><p>Colchonete, bola, faixa elástica e halter. Os exercícios mais clássicos do método, que você aprende e leva pra casa.</p><p class="bom">Bom pra: gestantes, aquecimento e treino em casa</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- O estúdio -->
+  <section class="secao s-parede estudio" id="estudio">
+    <div class="wrap">
+      <figure>
+        <img src="img/estudio.jpg" width="1600" height="1066" alt="Estúdio claro com quatro reformers de madeira lado a lado, cortinas brancas e piso de madeira" loading="lazy" decoding="async">
+        <figcaption>
+          <p class="rotulo" style="color:var(--madeira)">O estúdio</p>
+          <h2>Quatro reformers, um cadillac e no máximo três alunos por instrutora.</h2>
+          <ul class="fatos"><li>Aulas de 50 min</li><li>Até 3 alunos por turma</li><li>Avaliação postural na 1ª aula</li></ul>
+        </figcaption>
+      </figure>
+      <p class="nota" style="margin-top:14px">Fotos ilustrativas.</p>
+    </div>
+  </section>
+
+  <!-- Pra quem é -->
+  <section class="secao s-parede" id="pra-quem" style="padding-top:0">
+    <div class="wrap">
+      <div class="secao-cab">
+        <p class="rotulo">Pra quem é</p>
+        <h2 class="tit">Não precisa ser flexível pra começar.</h2>
+        <p class="lede">A flexibilidade vem com as aulas. Começa onde você está hoje, com a mola certa pra você.</p>
+      </div>
+      <div class="publico">
+        <article class="p-card p-foto"><img src="img/gestantes.jpg" width="1200" height="800" alt="Três gestantes sentadas em bolas de pilates numa sala com janelas grandes" loading="lazy" decoding="async"><h3>Gestantes</h3><p>Com liberação médica: postura, respiração e preparo pro parto, em cada trimestre.</p></article>
+        <article class="p-card p-foto"><img src="img/instrutora.jpg" width="900" height="1347" alt="Instrutora ajustando a perna de uma aluna deitada no cadillac" loading="lazy" decoding="async" style="object-position:50% 35%"><h3>Dor nas costas e reabilitação</h3><p>Exercícios com mola leve e acompanhamento de perto, junto com o seu fisioterapeuta.</p></article>
+        <article class="p-card" style="--c:var(--mola-leve)"><span class="linha-mola" aria-hidden="true"></span><h3>Terceira idade</h3><p>Equilíbrio, força e mobilidade pra continuar fazendo tudo sozinho por muito tempo.</p></article>
+        <article class="p-card" style="--c:var(--mola-forte)"><span class="linha-mola" aria-hidden="true"></span><h3>Quem já treina</h3><p>Core e mobilidade pra render mais na corrida, na musculação e no beach tennis.</p></article>
+        <article class="p-card" style="--c:var(--mola-media)"><span class="linha-mola" aria-hidden="true"></span><h3>Quem nunca fez</h3><p>A primeira aula é experimental, com avaliação postural. Você sai sabendo por onde começar.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planos -->
+  <section class="secao s-branco" id="planos">
+    <div class="wrap planos-grade">
+      <div>
+        <div class="secao-cab">
+          <p class="rotulo">Planos</p>
+          <h2 class="tit">Quantas vezes por semana?</h2>
+          <p class="lede">O preço depende da frequência. Escolha e veja quanto sai o mês e cada aula.</p>
+        </div>
+        <div class="escolha">
+          <fieldset class="seg">
+            <legend class="passo-rot">Frequência</legend>
+            <label for="f1"><input type="radio" name="freq" id="f1" value="1"><b>1x</b><span>por semana</span></label>
+            <label for="f2"><input type="radio" name="freq" id="f2" value="2" checked><b>2x</b><span>por semana</span></label>
+            <label for="f3"><input type="radio" name="freq" id="f3" value="3"><b>3x</b><span>por semana</span></label>
+          </fieldset>
+          <fieldset class="seg dois">
+            <legend class="passo-rot">Plano</legend>
+            <label for="p-mes"><input type="radio" name="periodo" id="p-mes" value="mes" checked><b>Mensal</b><span>sem fidelidade</span></label>
+            <label for="p-tri"><input type="radio" name="periodo" id="p-tri" value="tri"><b>Trimestral</b><span>10% de desconto</span></label>
+          </fieldset>
+        </div>
+      </div>
+      <div>
+        <div class="resultado" aria-live="polite">
+          <div class="molinhas" aria-hidden="true" data-molinhas><i></i><i></i><i></i></div>
+          <p class="preco" data-preco>R$ 380<small>/mês</small></p>
+          <p data-aulas>8 aulas por mês, 2 por semana.</p>
+          <p class="por-aula" data-por-aula>R$ 47,50 por aula</p>
+          <p data-total hidden></p>
+          <div class="ctas" style="margin-top:6px"><a class="bt bt-madeira" data-wa-plano href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Quero esse plano</a></div>
+        </div>
+        <ul class="extras-plano">
+          <li><span>Aula experimental com avaliação postural</span><b>R$ 40</b></li>
+          <li><span>Aula avulsa</span><b>R$ 80</b></li>
+          <li><span>Reposição de aula</span><b>com 24h de aviso</b></li>
+        </ul>
+        <p class="nota" style="margin-top:12px">A experimental é descontada se você fechar um plano. Valores de exemplo, para demonstração.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avaliações -->
+  <section class="secao s-parede" id="avaliacoes">
+    <div class="wrap">
+      <div class="recado">
+        <p class="rotulo">Avaliações</p>
+        <span class="linha-mola" aria-hidden="true"></span>
+        <h2 class="tit" style="font-size:clamp(24px,5vw,38px)">As avaliações de verdade entram aqui.</h2>
+        <p class="lede">Quando o site for do seu estúdio, a nota e os comentários do Google aparecem neste espaço. A gente não inventa depoimento de aluno.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Onde fica -->
+  <section class="secao s-parede" id="onde" style="padding-top:0">
+    <div class="wrap onde-grade">
+      <div class="onde-info">
+        <div class="secao-cab">
+          <p class="rotulo">Onde fica</p>
+          <h2 class="tit">No Jardim América, com aula das 6h às 21h.</h2>
+        </div>
+        <p class="status" data-status><i></i><span>Segunda a sábado, a partir das 6h</span></p>
+        <dl class="horas">
+          <div data-dias="1 2 3 4 5"><dt>Segunda a sexta</dt><dd>6h às 21h</dd></div>
+          <div data-dias="6"><dt>Sábado</dt><dd>7h às 12h</dd></div>
+          <div data-dias="0"><dt>Domingo</dt><dd>Fechado</dd></div>
+        </dl>
+        <p class="nota">Estacionamento na rua e bicicletário na porta. Endereço ilustrativo, para demonstração.</p>
+      </div>
+      <div>
+        <figure class="mapa">
+          <svg viewBox="0 0 600 380" role="img" aria-label="Mapa ilustrativo do Jardim América com a localização do estúdio">
+            <rect width="600" height="380" fill="#FFFFFF"/>
+            <rect x="380" y="40" width="180" height="120" rx="18" fill="#E7EFE3"/>
+            <g stroke="#ECECE8" stroke-width="18" fill="none" stroke-linecap="round">
+              <path d="M-20 110H620M-20 250H620M150 -20V400M330 -20V400M480 -20V400"/>
+            </g>
+            <path d="M-20 180C180 170 400 200 620 186" stroke="#E0D2BE" stroke-width="22" fill="none"/>
+            <path d="M80 320C140 300 150 260 150 250S200 240 270 240 330 220 330 190" fill="none" stroke="#2F6FD1" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 10"/>
+            <circle cx="80" cy="320" r="7" fill="#1C1C1E"/>
+            <text x="54" y="352" fill="#5C5C62" font-family="Azeret Mono, monospace" font-size="15">você</text>
+            <g transform="translate(330 176)">
+              <rect x="-24" y="-18" width="48" height="36" rx="10" fill="#1C1C1E"/>
+              <path d="M-16 0h4c1.5-6 3-6 3 0s1.5 6 3 0 1.5-6 3 0 1.5 6 3 0 1.5-6 3 0h4" fill="none" stroke="#2F6FD1" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <text x="364" y="214" fill="#1C1C1E" font-family="Unbounded, Arial Black, sans-serif" font-size="20" font-weight="700">Mola</text>
+            <text x="28" y="40" fill="#5C5C62" font-family="Azeret Mono, monospace" font-size="13" letter-spacing="2">JARDIM AMÉRICA · GOIÂNIA</text>
+          </svg>
+          <figcaption>Mapa e endereço ilustrativos, para demonstração.</figcaption>
+        </figure>
+        <div class="mapa-ctas">
+          <a class="bt bt-linha" href="https://www.google.com/maps/search/?api=1&amp;query=Jardim%20Am%C3%A9rica%2C%20Goi%C3%A2nia%20-%20GO" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pino"/></svg> Abrir no mapa</a>
+          <a class="bt bt-escuro" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final: a madeira do aparelho -->
+  <section class="madeira final">
+    <div class="wrap final-in">
+      <p class="rotulo">Aula experimental</p>
+      <h2 class="final-tit">Respira fundo. A primeira aula é com a gente.</h2>
+      <svg class="respira" viewBox="0 0 520 60" aria-hidden="true"><g><path d="M20 30H44C50 6 62 6 62 30S74 54 80 30 92 6 98 30 110 54 116 30 128 6 134 30 146 54 152 30 164 6 170 30 182 54 188 30 200 6 206 30 218 54 224 30 236 6 242 30 254 54 260 30 272 6 278 30 290 54 296 30 308 6 314 30 326 54 332 30 344 6 350 30 362 54 368 30 380 6 386 30 398 54 404 30 416 6 422 30 434 54 440 30H500"/></g></svg>
+      <p class="lede">Agenda pelo WhatsApp, chega 10 minutos antes e vem de meia. A gente faz a avaliação postural e escolhe a mola certa pra você.</p>
+      <div class="ctas"><a class="bt bt-escuro" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Agendar pelo WhatsApp</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap rodape-in">
+    <div><p class="marca"><svg aria-hidden="true" style="color:var(--mola-media);width:34px;height:14px"><use href="#i-mola"/></svg>Mola</p><p style="margin-top:12px">Pilates em aparelhos. Estica, respira, volta pro centro.</p></div>
+    <div><h3>Estúdio</h3><p>Jardim América, Goiânia</p><p>Endereço ilustrativo</p></div>
+    <div><h3>Aulas</h3><p>Segunda a sexta, 6h às 21h</p><p>Sábado, 7h às 12h</p></div>
+    <div class="aviso"><h3>Sobre este site</h3><p>Projeto demonstrativo da Porta Studio. Nome, planos, valores, endereço e fotos são ilustrativos.</p><p>WhatsApp do demo: (62) 99151-7901</p><p><a data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener">Site por Porta Studio</a></p></div>
+  </div>
+</footer>
+
+<a class="fab" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Aula experimental</a>
+
+<script>
+(function(){
+  var root=document.documentElement, calmo=root.classList.contains('calmo');
+  var $=function(s,c){return (c||document).querySelector(s)};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var brl=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+  var brl0=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:0,maximumFractionDigits:0});
+
+  /* WhatsApp: no demo, tudo vai para a Porta Studio */
+  var WA='https://wa.me/5562991517901', MSG='Olá! Vi o demo da Mola Pilates e quero um site assim.';
+  var linkWa=function(t){return WA+'?text='+encodeURIComponent(t)};
+  $$('[data-wa]').forEach(function(a){a.href=linkWa(MSG)});
+
+  /* Estúdio aberto ou fechado, no horário de Goiânia */
+  var DIAS=['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+  var ABRE={0:null,1:[6,21],2:[6,21],3:[6,21],4:[6,21],5:[6,21],6:[7,12]};
+  function agora(){
+    try{
+      var o={};
+      new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){o[x.type]=x.value});
+      return {d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday),min:(+o.hour%24)*60+(+o.minute)};
+    }catch(e){var n=new Date();return {d:n.getDay(),min:n.getHours()*60+n.getMinutes()}}
+  }
+  function status(){
+    var a=agora(), h=ABRE[a.d], txt='', aberto=false;
+    if(h&&a.min>=h[0]*60&&a.min<h[1]*60){aberto=true;txt='Estúdio aberto · última aula às '+(h[1]-1)+'h'}
+    else if(h&&a.min<h[0]*60){txt='Estúdio fechado · abre hoje às '+h[0]+'h'}
+    else{for(var i=1;i<=7;i++){var d=(a.d+i)%7;if(ABRE[d]){txt='Estúdio fechado · abre '+(i===1?'amanhã':DIAS[d])+' às '+ABRE[d][0]+'h';break}}}
+    $$('[data-status]').forEach(function(el){el.classList.toggle('aberto',aberto);el.querySelector('span').textContent=txt});
+    $$('.horas [data-dias]').forEach(function(r){r.classList.toggle('hoje',r.getAttribute('data-dias').split(' ').indexOf(String(a.d))>-1)});
+  }
+  status();setInterval(status,60000);
+
+  /* O reformer: a mola estica quando você puxa e o carrinho volta balançando; parado, ele respira */
+  var MOLAS={
+    leve:{n:1,cor:'#E2A812',k:55,s:1.7,nome:'1 mola amarela · carga leve'},
+    media:{n:2,cor:'#2F6FD1',k:110,s:1.15,nome:'2 molas azuis · carga média'},
+    forte:{n:3,cor:'#D8463A',k:190,s:.75,nome:'3 molas vermelhas · carga forte'}
+  };
+  var svg=$('.ref-svg'), gMolas=$('[data-molas]'), carrinho=$('[data-carrinho]'), fala=$('[data-fala]'), cmEl=$('[data-cm]'), nomeEl=$('[data-nome-mola]');
+  var POSTE=92, REPOUSO=330, MAX=330, YS={1:[128],2:[120,136],3:[114,128,142]};
+  var atual='media', X=0, V=0, puxando=false, p0=0, raw0=0, ultimoToque=0, visivel=true, rodando=false, tAnt=0, respirando=false, tResp=0;
+  var NS='http://www.w3.org/2000/svg';
+  function caminho(x0,x1,y){
+    var voltas=13, a0=x0+8, a1=x1-6, len=a1-a0, r=8.5, d='M'+x0+' '+y+'L'+a0+' '+y, n=voltas*10;
+    for(var i=1;i<=n;i++){var t=i/n, ang=t*voltas*Math.PI*2, x=a0+len*t+(Math.cos(ang)-1)*r*.55, yy=y+Math.sin(ang)*r;d+='L'+x.toFixed(1)+' '+yy.toFixed(1)}
+    return d+'L'+x1+' '+y;
+  }
+  function montaMolas(){
+    var m=MOLAS[atual], html='';
+    YS[m.n].forEach(function(){html+='<path fill="none" stroke="rgba(28,28,30,.25)" stroke-width="3.4" transform="translate(0 1.6)"/><path fill="none" stroke="'+m.cor+'" stroke-width="3"/>'});
+    gMolas.innerHTML=html;
+    nomeEl.textContent=m.nome;
+  }
+  function desenha(){
+    var m=MOLAS[atual], x1=REPOUSO+X, ps=gMolas.querySelectorAll('path');
+    YS[m.n].forEach(function(y,i){var d=caminho(POSTE,x1,y);ps[i*2].setAttribute('d',d);ps[i*2+1].setAttribute('d',d)});
+    carrinho.setAttribute('transform','translate('+x1.toFixed(1)+' 0)');
+    cmEl.textContent=Math.round(X/MAX*60)+' cm';
+    var vb=svg.viewBox.baseVal, fx=(x1+150-vb.x)/vb.width*100;
+    fala.style.setProperty('--fx',Math.max(14,Math.min(86,fx)).toFixed(1)+'%');
+  }
+  /* no celular o aparelho aparece maior, saindo pela borda direita */
+  function enquadra(){
+    var estreito=innerWidth<640, maxNovo=estreito?220:330;
+    svg.setAttribute('viewBox',estreito?'30 30 650 215':'0 0 1000 250');
+    if(maxNovo!==MAX){X=X*maxNovo/MAX;MAX=maxNovo}
+  }
+  function pontoSvg(ev){var pt=svg.createSVGPoint();pt.x=ev.clientX;pt.y=ev.clientY;var m=svg.getScreenCTM();return m?pt.matrixTransform(m.inverse()).x:0}
+  var falaAtual=null;
+  function falar(txt){
+    if(txt===falaAtual)return;falaAtual=txt;
+    if(txt){fala.textContent=txt;fala.classList.add('on')}else fala.classList.remove('on');
+  }
+  function liga(){if(!rodando&&visivel){rodando=true;tAnt=0;requestAnimationFrame(passo)}}
+  var eo=function(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2};
+  function passo(ts){
+    if(!visivel){rodando=false;return}
+    var dt=tAnt?Math.min(.034,(ts-tAnt)/1000):.016;tAnt=ts;
+    var m=MOLAS[atual];
+    if(puxando){/* posição vem do arraste */}
+    else if(respirando){
+      var t=(ts-tResp)%10000, B=MAX*.36*(m.s/1.15);
+      if(t<4000){X=B*eo(t/4000);falar('inspira')}else{X=B*(1-eo((t-4000)/6000));falar('expira')}
+      V=0;
+    }else{
+      var c=2*(calmo?1:.14)*Math.sqrt(m.k), a=-m.k*X-c*V;
+      V+=a*dt;X+=V*dt;
+      if(X<0){X=0;V=Math.abs(V)*.28;if(V<25)V=0}
+      if(Math.abs(X)<.3&&Math.abs(V)<3){X=0;V=0}
+      if(X===0&&V===0){if(!calmo&&ts-ultimoToque>2600){respirando=true;tResp=ts}else falar('')}
+      else falar(X>4?'volta pro centro':'');
+    }
+    desenha();
+    requestAnimationFrame(passo);
+  }
+  if(svg&&gMolas){
+    enquadra();montaMolas();desenha();
+    addEventListener('resize',function(){enquadra();desenha()});
+    svg.addEventListener('pointerdown',function(ev){
+      puxando=true;respirando=false;ultimoToque=performance.now();
+      svg.classList.add('puxando');try{svg.setPointerCapture(ev.pointerId)}catch(e){}
+      var m=MOLAS[atual];p0=pontoSvg(ev);raw0=X>=MAX-1?MAX*3:-MAX/m.s*Math.log(1-Math.min(X,MAX-1)/MAX);
+      falar('segura...');liga();
+    });
+    svg.addEventListener('pointermove',function(ev){
+      if(!puxando)return;
+      var m=MOLAS[atual], raw=Math.max(0,raw0+(pontoSvg(ev)-p0)), novo=MAX*(1-Math.exp(-raw*m.s/MAX));
+      V=(novo-X)/.016;X=novo;ultimoToque=performance.now();
+      falar(X>MAX*.6?'segura... e volta devagar':'estica');
+    });
+    var solta=function(){if(!puxando)return;puxando=false;svg.classList.remove('puxando');ultimoToque=performance.now();V=Math.max(-900,Math.min(900,V*.3));liga()};
+    svg.addEventListener('pointerup',solta);svg.addEventListener('pointercancel',solta);svg.addEventListener('lostpointercapture',solta);
+    $$('[data-mola]').forEach(function(b){b.addEventListener('click',function(){
+      atual=b.getAttribute('data-mola');
+      $$('[data-mola]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+      montaMolas();respirando=false;ultimoToque=performance.now();
+      if(!calmo){V=-260}
+      desenha();liga();
+    })});
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){visivel=es[0].isIntersecting;if(visivel)liga()}).observe(svg)}
+    ultimoToque=performance.now()-1800;liga();
+  }
+
+  /* Princípios entram com balanço de mola */
+  if(!calmo&&'IntersectionObserver' in window){
+    root.classList.add('js-anima');
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
+    $$('.principio').forEach(function(p,i){p.style.transitionDelay=(i%2*90)+'ms';io.observe(p)});
+  }
+
+  /* Planos */
+  var PLANOS={1:{mes:240,aulas:4},2:{mes:380,aulas:8},3:{mes:490,aulas:12}};
+  function plano(){
+    var f=+($('input[name="freq"]:checked')||{value:2}).value, tri=($('input[name="periodo"]:checked')||{}).value==='tri';
+    var p=PLANOS[f], mes=tri?Math.round(p.mes*.9):p.mes, porAula=mes/p.aulas;
+    $('[data-preco]').innerHTML=brl0.format(mes)+'<small>/mês</small>';
+    $('[data-aulas]').textContent=p.aulas+' aulas por mês, '+f+(f===1?' por semana.':' por semana.');
+    $('[data-por-aula]').textContent=brl.format(porAula)+' por aula';
+    var tot=$('[data-total]');
+    if(tri){tot.hidden=false;tot.textContent='No trimestre: '+brl0.format(mes*3)+', em até 3x no cartão.'}else tot.hidden=true;
+    $$('[data-molinhas] i').forEach(function(i,n){i.style.transform=n<f?'scaleX(1)':'scaleX(.15)';i.style.opacity=n<f?'1':'.35'});
+    $('[data-wa-plano]').href=linkWa(MSG+'\n\nTeste do simulador de planos: '+f+'x por semana, '+(tri?'trimestral':'mensal')+', '+brl0.format(mes)+'/mês.');
+  }
+  $$('input[name="freq"],input[name="periodo"]').forEach(function(r){r.addEventListener('change',plano)});
+  plano();
+
+  /* Botão do WhatsApp aparece depois da abertura */
+  var fab=$('.fab');
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){fab.classList.toggle('on',!es[0].isIntersecting)}).observe($('.hero'))}
+  else fab.classList.add('on');
+})();
+</script>
+
+<style>
+.ps-outros{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:44;display:flex;align-items:center;gap:8px;height:46px;padding:0 16px 0 12px;border-radius:999px;background:#FFFFFF;color:#16171A;font:700 14px/1 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;text-decoration:none;box-shadow:0 0 0 2px #16171A,0 12px 24px -12px rgba(0,0,0,.5);transform:translateY(180%);visibility:hidden;transition:transform .6s cubic-bezier(.3,1.4,.5,1),visibility 0s .6s}
+.ps-outros.on{transform:none;visibility:visible;transition:transform .6s cubic-bezier(.3,1.4,.5,1),visibility 0s}
+.tem-pedido .ps-outros{transform:translateY(180%);visibility:hidden}
+.ps-outros svg{width:18px;height:18px;flex:none}
+.ps-outros em{font-style:normal}
+@media (max-width:979px){.ps-outros em{display:none}.ps-outros{padding:0 14px 0 12px}}
+</style>
+<a class="ps-outros" href="../index.html"><svg viewBox="0 0 18 18" aria-hidden="true"><rect x="1.5" y="1.5" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="10.5" y="1.5" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="1.5" y="10.5" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="10.5" y="10.5" width="6" height="6" rx="1.2" fill="currentColor"/></svg>Outros <em>modelos</em></a>
+<script>(function(){var b=document.querySelector('.ps-outros');if(!b)return;var f=function(){b.classList.toggle('on',scrollY>innerHeight*.7)};addEventListener('scroll',f,{passive:true});f()})();</script></body>
+</html>

@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Laço Confeitaria</title>
+<meta name="description" content="Confeitaria de encomenda no Jardim Goiás, em Goiânia. Docinhos enrolados na mão, bolos de encomenda e caixas de presente com laço. Projeto demonstrativo da Porta Studio.">
+<meta name="theme-color" content="#FBF0EC">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Laço Confeitaria">
+<meta property="og:title" content="Laço Confeitaria · Jardim Goiás, Goiânia">
+<meta property="og:description" content="Cada caixa é uma festinha. Docinhos, bolos de encomenda e caixas de presente pelo WhatsApp.">
+<meta property="og:image" content="og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Caveat:wght@500;700&family=Figtree:ital,wght@0,400..800;1,400..800&display=swap">
+<script>
+  (function(){var d=document.documentElement;d.lang='pt-BR';d.classList.add('js');
+  var calmo=false;try{calmo=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
+  if(calmo)d.classList.add('calmo');})();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Bakery","name":"Laço Confeitaria (projeto demonstrativo)","description":"Confeitaria de encomenda no Jardim Goiás, Goiânia: docinhos, bolos e caixas de presente.","address":{"@type":"PostalAddress","addressLocality":"Goiânia","addressRegion":"GO","addressCountry":"BR"},"areaServed":"Goiânia","priceRange":"R$ 6–150","paymentAccepted":"Pix, cartão, dinheiro","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"15:00"}]}
+</script>
+<style>
+:root{
+  /* Layout: a página é uma caixa de presente vista de cima, numa mesa. A caixa abre no topo, as seções escorrem uma na outra como ganache e o cardápio vira uma caixa que a pessoa monta. */
+  --seda:#FBF0EC;
+  --seda-2:#F4DED6;
+  --branco:#FFFFFF;
+  --chocolate:#3A1E14;
+  --chocolate-2:#6B4A3A;
+  --chocolate-3:#2A140D;
+  --creme:#FFF7F1;
+  --creme-2:#E9D3C6;
+  --framboesa:#C2185B;
+  --framboesa-2:#9E1049;
+  --framboesa-3:#D8357A;
+  --pistache:#A8C98F;
+  --pistache-2:#8DB473;
+  --pistache-3:#C9DFB8;
+  --kraft:#EBD9C6;
+  --kraft-2:#D6BEA6;
+  --ouro:#C9A14E;
+  --display:"Caprasimo","Cooper Black",Georgia,serif;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mao:"Caveat","Segoe Print","Bradley Hand",cursive;
+  --gut-l:max(20px,env(safe-area-inset-left,0px));
+  --gut-r:max(20px,env(safe-area-inset-right,0px));
+  --topo-h:62px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --mola:cubic-bezier(.3,1.45,.5,1);
+}
+@media (min-width:900px){:root{--topo-h:70px;--gut-l:max(32px,env(safe-area-inset-left,0px));--gut-r:max(32px,env(safe-area-inset-right,0px))}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--topo-h) + env(safe-area-inset-top,0px) + 8px)}
+.calmo{scroll-behavior:auto}
+body{margin:0;background:var(--seda);color:var(--chocolate);font:400 17px/1.55 var(--sans);overflow-x:hidden;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--seda)}
+h1,h2,h3,h4,p,figure,ul,ol,dl,dd,fieldset{margin:0}
+ul,ol{padding:0;list-style:none}
+fieldset{border:0;padding:0;min-width:0}
+legend{padding:0}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1.5px}
+button,input{font:inherit;color:inherit}
+::selection{background:var(--framboesa);color:var(--creme)}
+:focus-visible{outline:3px solid var(--foco,var(--framboesa));outline-offset:3px}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+/* ===== Cores de cada seção ===== */
+.s-seda{background:var(--seda);color:var(--chocolate);--sub:var(--chocolate-2);--rot:var(--framboesa-2);--linha:rgba(58,30,20,.16)}
+.s-seda2{background:var(--seda-2);color:var(--chocolate);--sub:var(--chocolate-2);--rot:var(--framboesa-2);--linha:rgba(58,30,20,.18)}
+.s-chocolate{background:var(--chocolate);color:var(--creme);--sub:var(--creme-2);--rot:var(--pistache-3);--linha:rgba(255,247,241,.16);--foco:var(--pistache-3)}
+.s-pistache{background:var(--pistache);color:var(--chocolate);--sub:#3F2A1F;--rot:var(--chocolate);--linha:rgba(58,30,20,.2)}
+.s-framboesa{background:var(--framboesa);color:var(--creme);--sub:var(--creme);--rot:var(--creme);--linha:rgba(255,247,241,.28);--foco:var(--creme)}
+
+.secao{position:relative;padding-block:clamp(80px,10vw,140px)}
+.apos-gota{padding-top:calc(clamp(80px,10vw,140px) + clamp(28px,4vw,60px))}
+.secao-cab{display:grid;gap:16px;max-width:820px}
+.rotulo{font:700 12.5px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--rot)}
+.tit{font:400 clamp(32px,7.6vw,62px)/1.04 var(--display);letter-spacing:-.005em;text-wrap:balance}
+.lede{font-size:clamp(17px,2.1vw,20px);line-height:1.5;color:var(--sub);max-width:34em}
+.nota{font-size:14px;color:var(--sub)}
+.mao{font-family:var(--mao);font-weight:700}
+
+/* ===== Botões ===== */
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border:2px solid transparent;border-radius:999px;font:700 16px/1.1 var(--sans);text-decoration:none;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .25s var(--mola),background-color .2s,box-shadow .25s}
+.bt svg{width:20px;height:20px;flex:none}
+.bt:hover{transform:translateY(-2px)}
+.bt:active{transform:scale(.95)}
+.bt-framboesa{background:var(--framboesa);color:var(--creme);box-shadow:0 10px 22px -12px rgba(158,16,73,.8)}
+.bt-framboesa:hover{background:var(--framboesa-2)}
+.bt-linha{background:transparent;color:inherit;border-color:currentColor}
+.bt-linha:hover{background:rgba(58,30,20,.06)}
+.bt-creme{background:var(--creme);color:var(--chocolate)}
+.bt-creme:hover{background:var(--branco)}
+.s-chocolate .bt-linha:hover,.s-framboesa .bt-linha:hover{background:rgba(255,247,241,.1)}
+
+/* ===== Topo ===== */
+.topo{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(251,240,236,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(58,30,20,.1)}
+.topo-in{height:var(--topo-h);display:flex;align-items:center;gap:22px}
+.marca{display:inline-flex;align-items:center;gap:8px;font:400 28px/1 var(--display);color:var(--chocolate);text-decoration:none}
+.marca svg{width:30px;height:22px}
+.topo-nav{display:none;gap:26px;margin-left:auto}
+.topo-nav a{font-weight:600;font-size:15px;text-decoration:none;color:var(--chocolate-2);transition:color .2s}
+.topo-nav a:hover{color:var(--framboesa-2)}
+.topo-cta{margin-left:auto;min-height:44px;padding:0 18px;font-size:15px}
+@media (min-width:980px){.topo-nav{display:flex}.topo-cta{margin-left:0}}
+
+.status{display:inline-flex;align-items:center;gap:9px;font:600 14px/1.25 var(--sans);color:var(--sub)}
+.status i{width:10px;height:10px;border-radius:50%;background:currentColor;opacity:.5;flex:none}
+.status.aberto i{background:var(--pistache-2);opacity:1;box-shadow:0 0 0 4px rgba(141,180,115,.3)}
+.selo{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--chocolate);color:var(--creme);font:700 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+
+/* ===== Abertura: a caixa ===== */
+.hero{position:relative;overflow:hidden;padding-top:calc(var(--topo-h) + clamp(22px,4vw,56px));padding-bottom:clamp(56px,8vw,110px)}
+.hero-grade{display:grid;gap:22px;grid-template-columns:minmax(0,1fr);grid-template-areas:"topo" "palco" "pe"}
+.hero-topo{grid-area:topo;display:grid;gap:14px}
+.hero-tit{font:400 clamp(42px,11.4vw,104px)/.98 var(--display);letter-spacing:-.01em;text-wrap:balance}
+.hero-tit em{font-style:normal;color:var(--framboesa)}
+.hero-palco{grid-area:palco;display:grid;justify-items:center;gap:8px}
+.hero-pe{grid-area:pe;display:grid;gap:18px;align-content:start}
+.hero-lede{font-size:clamp(17px,4.4vw,21px);line-height:1.5;max-width:30em;color:var(--chocolate-2)}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.pe-linha{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.legenda{min-height:1.6em;font:700 clamp(20px,5vw,26px)/1.2 var(--mao);color:var(--framboesa-2);text-align:center}
+.reabrir{display:none;min-height:40px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:var(--chocolate-2);font:600 14px/1 var(--sans);text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
+.ja-abriu .reabrir{display:inline-block}
+@media (min-width:900px){
+  .hero{padding-top:calc(var(--topo-h) + 40px)}
+  .hero-grade{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);grid-template-rows:auto auto;grid-template-areas:"topo palco" "pe palco";column-gap:56px;row-gap:28px}
+  .hero-topo{align-self:end}
+  .hero-palco{align-self:center}
+  .hero-tit{font-size:clamp(56px,6.4vw,104px)}
+}
+
+/* palco e caixa vistos de cima */
+.caixa-palco{--palco:min(calc(100vw - 40px),420px);position:relative;width:var(--palco);aspect-ratio:1/1.2}
+@media (min-width:900px){.caixa-palco{--palco:min(44vw,560px)}}
+.granulado{position:absolute;inset:0;z-index:0;pointer-events:none}
+.granulado i{position:absolute;width:calc(var(--palco) * .016);height:calc(var(--palco) * .042);border-radius:99px;background:var(--c);transform:rotate(var(--r))}
+.fita-solta{position:absolute;z-index:0;left:-2%;bottom:0;width:46%;overflow:visible;pointer-events:none}
+.caixa{position:absolute;z-index:1;left:13%;top:30%;width:74%;aspect-ratio:1/1;perspective:calc(var(--palco) * 2.2);perspective-origin:50% 20%}
+.caixa-fundo{position:absolute;inset:0;z-index:1;padding:5.5%;border-radius:7px;background:linear-gradient(135deg,#B6D3A1,#93B97D);box-shadow:0 22px 34px -20px rgba(58,30,20,.6),0 3px 0 #7EA569,inset 0 0 0 1px rgba(255,255,255,.4)}
+.caixa-grade{display:grid;grid-template-columns:repeat(var(--cols,3),minmax(0,1fr));grid-template-rows:repeat(var(--cols,3),minmax(0,1fr));gap:3.2%;height:100%;padding:3.2%;border-radius:4px;background:var(--kraft-2);box-shadow:inset 0 3px 6px rgba(90,60,40,.35)}
+.cela{position:relative;display:grid;place-items:center;min-width:0;min-height:0;padding:0;border:0;border-radius:3px;background:var(--kraft);box-shadow:inset 0 0 0 1px rgba(90,60,40,.14),inset 0 6px 7px -6px rgba(90,60,40,.5);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cela .doce{transition:transform .3s var(--mola)}
+@media (hover:hover){.cela:hover .doce{transform:scale(1.08)}}
+.cela:focus-visible{outline-offset:-3px}
+/* forminhas de papel */
+.forminha{position:absolute;inset:8%;border-radius:50%;--f1:#FFFFFF;--f2:#EDE3DC;background:radial-gradient(circle,var(--f2) 0 52%,rgba(0,0,0,.05) 53%,transparent 54%),repeating-conic-gradient(var(--f1) 0 6deg,var(--f2) 6deg 12deg);box-shadow:0 1px 2px rgba(58,30,20,.22)}
+.f-dourada{--f1:#EBCB82;--f2:#C49A47}
+.f-rosa{--f1:#FCD9E2;--f2:#F1B2C3}
+.f-marrom{--f1:#7A4A33;--f2:#53301F}
+.f-vazia{background:none;box-shadow:none;border:2px dashed rgba(90,60,40,.3)}
+/* os docinhos */
+.doce{position:relative;z-index:1;display:block;width:var(--d,62%);aspect-ratio:1/1;border-radius:50%;box-shadow:0 2px 3px rgba(58,30,20,.3)}
+.doce::after{content:"";position:absolute}
+.d-brigadeiro{background:radial-gradient(ellipse 7% 16% at 50% 50%,#160803 88%,transparent 100%) 0 0/23% 21%,radial-gradient(ellipse 16% 7% at 50% 50%,#1D0B05 88%,transparent 100%) 11% 9%/27% 24%,radial-gradient(ellipse 6% 14% at 50% 50%,#8E5638 86%,transparent 100%) 5% 14%/31% 29%,radial-gradient(circle at 34% 28%,#8A5236 0,#4E2617 38%,#26110A 80%)}
+.d-beijinho{background:radial-gradient(circle,rgba(255,255,255,.95) 0 22%,transparent 32%) 0 0/17% 15%,radial-gradient(circle,rgba(214,196,172,.9) 0 18%,transparent 28%) 8% 6%/21% 19%,radial-gradient(circle at 34% 28%,#FFFDF8 0,#F1E5D3 50%,#C9B293 100%)}
+.d-beijinho::after{left:50%;top:44%;width:17%;height:17%;transform:translate(-50%,-50%) rotate(45deg);border-radius:30%;background:linear-gradient(#5A3520,#5A3520) 50% 50%/26% 100% no-repeat,linear-gradient(#5A3520,#5A3520) 50% 50%/100% 26% no-repeat,radial-gradient(circle,#3B2214 0 30%,transparent 34%)}
+.d-docedeleite{background:radial-gradient(circle,rgba(255,250,240,.92) 0 16%,transparent 26%) 0 0/16% 15%,radial-gradient(circle,rgba(255,236,205,.7) 0 14%,transparent 24%) 7% 8%/19% 17%,radial-gradient(circle at 34% 28%,#F7CF8A 0,#CF8F42 48%,#8A531E 100%)}
+.d-macaron{background:radial-gradient(circle at 36% 30%,#FFE6EC 0,#F6ABBF 45%,#D97A95 100%);box-shadow:0 0 0 2px #F9CBD6,0 0 0 3px rgba(194,24,91,.2),0 3px 4px rgba(58,30,20,.25)}
+.d-camafeu{width:calc(var(--d,62%) * 1.06);aspect-ratio:1.25/1;background:radial-gradient(ellipse at 40% 32%,#FFFFFF 0,#F3EEE8 55%,#D4C9BE 100%)}
+.d-camafeu::after{left:50%;top:48%;width:46%;height:56%;transform:translate(-50%,-50%) rotate(-12deg);border-radius:46% 54% 50% 50%;background:radial-gradient(circle at 30% 30%,#B07A45 0 17%,transparent 19%),radial-gradient(circle at 70% 34%,#B07A45 0 16%,transparent 18%),radial-gradient(circle at 34% 72%,#A06A38 0 17%,transparent 19%),radial-gradient(circle at 68% 70%,#A06A38 0 16%,transparent 18%),radial-gradient(ellipse,#8C5A2C,#5E3816)}
+.d-bemcasado{background:linear-gradient(90deg,transparent 44%,#C2185B 44% 56%,transparent 56%),linear-gradient(transparent 44%,#C2185B 44% 56%,transparent 56%),repeating-conic-gradient(from 10deg,rgba(0,0,0,.04) 0 8deg,rgba(255,255,255,0) 8deg 16deg),radial-gradient(circle at 38% 32%,#FFFFFF 0,#F1ECE8 58%,#D2C9C1 100%)}
+.d-bemcasado::after{left:50%;top:50%;width:40%;height:24%;transform:translate(-50%,-50%);background:radial-gradient(ellipse 34% 46% at 24% 50%,#D8357A 92%,transparent 100%),radial-gradient(ellipse 34% 46% at 76% 50%,#D8357A 92%,transparent 100%),radial-gradient(circle 18% at 50% 50%,#9E1049 92%,transparent 100%)}
+.d-trufa{border-radius:46%;background:radial-gradient(circle,rgba(170,118,86,.6) 0 20%,transparent 32%) 0 0/9% 9%,radial-gradient(circle,rgba(120,75,50,.5) 0 18%,transparent 30%) 4% 5%/11% 11%,radial-gradient(circle at 38% 32%,#8E5C42 0,#5C3422 55%,#3A1E14 100%)}
+.d-goiabada{background:radial-gradient(circle at 38% 32%,rgba(255,255,255,.4),rgba(255,255,255,0) 55%),radial-gradient(circle at 48% 46%,#E4545A 0,#B8222C 20%,#8E1620 29%,transparent 31%),repeating-conic-gradient(#F3DB9C 0 15deg,#E2BE77 15deg 30deg)}
+.d-cajuzinho{width:calc(var(--d,62%) * .8);aspect-ratio:.8/1;border-radius:50% 50% 46% 46%/62% 62% 38% 38%;background:radial-gradient(circle,rgba(255,250,240,.88) 0 16%,transparent 26%) 0 0/18% 14%,radial-gradient(ellipse at 40% 30%,#E0A866 0,#B87838 55%,#7E4A1E 100%)}
+.d-cajuzinho::after{left:50%;top:-6%;width:46%;height:30%;transform:translateX(-50%) rotate(-6deg);border-radius:50%;background:radial-gradient(ellipse at 40% 35%,#F3D7A6,#C99A5E);box-shadow:inset 0 -1px 0 rgba(90,50,20,.35)}
+
+/* a tampa, a fita e o laço */
+/* sem JavaScript a caixa já aparece aberta; com ele, a tampa fecha e abre em 3D, presa pela dobra de cima */
+.tampa,.brilho,.sombra-tampa,.confete{display:none}
+.caixa-viva .tampa{display:block;position:absolute;z-index:3;inset:-2.6%;padding:0;border:0;border-radius:9px;background:none;cursor:pointer;transform-origin:50% 0;transform-style:preserve-3d;-webkit-tap-highlight-color:transparent}
+.caixa-viva .caixa.aberta .tampa{transform:rotateX(102deg);pointer-events:none}
+.tampa:focus-visible{outline-offset:6px}
+.tampa-fora,.tampa-dentro{position:absolute;inset:0;border-radius:9px;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.tampa-fora{background:repeating-linear-gradient(115deg,rgba(255,255,255,.07) 0 2px,rgba(255,255,255,0) 2px 7px),linear-gradient(135deg,#BCD8A8,#98BE84);box-shadow:0 18px 28px -16px rgba(58,30,20,.6),inset 0 0 0 1px rgba(255,255,255,.45),inset 0 -4px 0 rgba(0,0,0,.05)}
+.tampa-dentro{display:grid;place-items:center;padding:12%;transform:rotateX(180deg);background:linear-gradient(#F1E2D2,#E2CAB2);box-shadow:inset 0 0 0 calc(var(--palco) * .02) #9DC189;color:var(--chocolate-2);font:700 calc(var(--palco) * .075)/1.05 var(--mao);text-align:center}
+.caixa-viva .caixa:not(.aberta) .laco{animation:balanca 2.4s ease-in-out .8s infinite}
+@keyframes balanca{0%,64%,100%{transform:translate(-50%,-50%) rotate(0deg) scale(1)}74%{transform:translate(-50%,-50%) rotate(-8deg) scale(1.06)}84%{transform:translate(-50%,-50%) rotate(6deg) scale(1.03)}92%{transform:translate(-50%,-50%) rotate(-2deg) scale(1)}}
+.caixa.aberta .laco,.caixa.aberta .etiqueta{opacity:0}
+.caixa.aberta .fita-v{transform:scaleY(0)}
+.caixa.aberta .fita-h{transform:scaleX(0)}
+.caixa-viva .sombra-tampa{display:block;position:absolute;z-index:2;left:0;right:0;top:0;height:42%;border-radius:7px 7px 0 0;pointer-events:none;opacity:0;background:linear-gradient(rgba(58,30,20,.36),rgba(58,30,20,0));transition:opacity .6s}
+.caixa-viva .caixa.aberta .sombra-tampa{opacity:1}
+.caixa-viva .brilho{display:block;position:absolute;z-index:2;inset:0;border-radius:7px;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 46%,rgba(255,246,222,.95),rgba(255,222,170,.4) 46%,rgba(255,222,170,0) 74%)}
+.caixa-viva .confete{display:block;position:absolute;z-index:4;left:-10%;top:-10%;width:120%;height:120%;pointer-events:none}
+.fita-v{position:absolute;top:0;bottom:0;left:43%;width:14%;background:linear-gradient(90deg,#9E1049,#D8357A 38%,#C2185B 62%,#9E1049);transform-origin:50% 100%}
+.fita-h{position:absolute;left:0;right:0;top:43%;height:14%;background:linear-gradient(#9E1049,#D8357A 38%,#C2185B 62%,#9E1049);transform-origin:100% 50%}
+.laco{position:absolute;z-index:2;left:50%;top:50%;width:60%;transform:translate(-50%,-50%);overflow:visible;filter:drop-shadow(0 4px 4px rgba(58,30,20,.3))}
+.tampa-marca{position:absolute;left:8%;bottom:7%;font:400 calc(var(--palco) * .085)/1 var(--display);color:#EEF6E7;text-shadow:0 1px 0 rgba(58,30,20,.12)}
+.etiqueta{position:absolute;z-index:3;left:57%;top:56%;padding:.35em .9em .35em 1.5em;background:var(--branco);color:var(--chocolate);font:700 calc(var(--palco) * .05)/1 var(--mao);clip-path:polygon(18% 0,100% 0,100% 100%,18% 100%,0 50%);transform:rotate(14deg);transform-origin:0 50%;box-shadow:0 2px 4px rgba(58,30,20,.2)}
+.etiqueta::before{content:"";position:absolute;left:12%;top:50%;width:.3em;height:.3em;border-radius:50%;background:var(--kraft-2);transform:translateY(-50%)}
+
+/* ===== Feito à mão ===== */
+.gota{position:absolute;left:0;top:calc(100% - 1px);z-index:2;width:100%;height:clamp(44px,7vw,100px);pointer-events:none;transform-origin:50% 0;transform:scaleY(var(--escorre,1))}
+.gota path{fill:currentColor}
+.tem-gota{z-index:3}
+#feito{z-index:5}#caixa{z-index:4}
+.g-chocolate{color:var(--chocolate)}.g-pistache{color:var(--pistache)}.g-framboesa{color:var(--framboesa)}
+.feito-grade{display:grid;gap:40px}
+.feito-txt{display:grid;gap:18px;align-content:center}
+.feito-txt>p:not(.rotulo){max-width:32em;color:var(--sub)}
+.fatos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:10px;padding-top:20px;border-top:1px solid var(--linha)}
+.fatos b{display:block;font:400 clamp(30px,7vw,50px)/1 var(--display);color:var(--pistache-3)}
+.fatos span{display:block;margin-top:6px;font-size:14.5px;line-height:1.35;color:var(--sub)}
+.feito-foto{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:5/4;background:var(--chocolate-3)}
+.feito-foto img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;left:14px;bottom:14px;padding:5px 12px 6px;border-radius:6px;background:var(--creme);color:var(--chocolate);font:700 19px/1.1 var(--mao);transform:rotate(-2deg)}
+@media (min-width:900px){.feito-grade{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:72px;align-items:center}}
+
+/* ===== Vitrine (cardápio) ===== */
+.bloco{margin-top:clamp(48px,7vw,80px)}
+.bloco-tit{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;padding-bottom:14px;border-bottom:2px solid var(--chocolate)}
+.bloco-tit h3{font:400 clamp(28px,5.4vw,40px)/1 var(--display)}
+.bloco-tit span{font:700 21px/1 var(--mao);color:var(--framboesa-2)}
+.docinhos{display:grid;column-gap:44px}
+@media (min-width:820px){.docinhos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.doce-item{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:14px;padding-block:16px;border-bottom:1px dashed var(--linha)}
+.doce-ico{position:relative;display:grid;place-items:center;width:56px;height:56px}
+.doce-ico .doce{--d:62%}
+.doce-item h4{font:700 17.5px/1.25 var(--sans)}
+.doce-item p{font-size:14.5px;line-height:1.4;color:var(--sub)}
+.preco-tag{display:grid;justify-items:end;text-align:right}
+.preco-tag b{font:400 20px/1 var(--display);white-space:nowrap}
+.preco-tag span{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);white-space:nowrap}
+.bloco-nota{margin-top:14px}
+.bolos{display:grid;gap:32px;margin-top:24px}
+@media (min-width:860px){.bolos{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}}
+.bolo-foto{position:relative;border-radius:999px 999px 18px 18px;overflow:hidden;aspect-ratio:4/5;background:var(--seda-2)}
+.bolo-foto img{width:100%;height:100%;object-fit:cover}
+.lista-simples{display:grid}
+.linha{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 18px;padding-block:16px;border-bottom:1px dashed var(--linha)}
+.linha h4{font:700 17.5px/1.25 var(--sans)}
+.linha p{font-size:14.5px;line-height:1.4;color:var(--sub)}
+.escolhas{display:grid;gap:16px;margin-top:24px}
+.escolhas p{font:700 12.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{padding:7px 13px;border-radius:999px;background:var(--branco);box-shadow:inset 0 0 0 1px var(--linha);font-size:14.5px;font-weight:600}
+.finos{display:grid;column-gap:44px}
+@media (min-width:820px){.finos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ===== Monte sua caixa ===== */
+.monte{display:grid;gap:36px;margin-top:clamp(36px,5vw,56px)}
+@media (min-width:900px){.monte{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start}}
+.monte-caixa{display:grid;justify-items:center;gap:14px}
+.palco-m{--palco:min(calc(100vw - 40px),440px);position:relative;width:var(--palco);aspect-ratio:1/1}
+@media (min-width:900px){.palco-m{--palco:min(40vw,500px)}}
+.palco-m .caixa{left:0;top:0;width:100%}
+.monte-conta{font:700 24px/1.2 var(--mao)}
+.monte-lado{display:grid;gap:22px;align-content:start}
+.passo-rot{font:700 12.5px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.tamanhos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tamanhos legend{grid-column:1/-1}
+.tamanhos label{position:relative;display:grid;justify-items:center;gap:2px;padding:12px 6px;border-radius:14px;background:rgba(255,247,241,.55);box-shadow:inset 0 0 0 2px rgba(58,30,20,.15);cursor:pointer;transition:background-color .2s,box-shadow .2s}
+.tamanhos input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.tamanhos b{font:400 26px/1 var(--display)}
+.tamanhos span{font-size:13.5px;font-weight:600}
+.tamanhos label:has(input:checked){background:var(--creme);box-shadow:inset 0 0 0 2px var(--chocolate)}
+.tamanhos label:has(input:focus-visible){outline:3px solid var(--framboesa);outline-offset:2px}
+.paleta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.paleta button{display:grid;justify-items:center;align-content:start;gap:6px;min-height:104px;padding:10px 6px 12px;border:0;border-radius:14px;background:rgba(255,247,241,.6);font:600 13.5px/1.2 var(--sans);text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .2s var(--mola),background-color .2s}
+.paleta button:hover{background:var(--creme)}
+.paleta button:active{transform:scale(.94)}
+.paleta .doce-ico{width:50px;height:50px}
+.monte-acoes{display:flex;flex-wrap:wrap;gap:8px 18px}
+.link-bt{min-height:44px;padding:0;border:0;background:none;font:700 15px/1 var(--sans);text-decoration:underline;text-underline-offset:.22em;cursor:pointer}
+.monte-resumo{display:grid;gap:12px;padding:20px;border-radius:18px;background:var(--creme);box-shadow:0 18px 30px -22px rgba(58,30,20,.5)}
+.monte-resumo .linha-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.monte-resumo .linha-total b{font:400 30px/1 var(--display)}
+.monte-resumo .falta{font:700 20px/1.2 var(--mao);color:var(--framboesa-2)}
+
+/* ===== Calculadora da festa ===== */
+.festa-grade{display:grid;gap:40px}
+@media (min-width:900px){.festa-grade{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:72px;align-items:center}}
+.calc{display:grid;gap:22px;margin-top:8px}
+.convidados{display:flex;align-items:baseline;gap:12px}
+.convidados output{font:400 clamp(64px,16vw,120px)/.9 var(--display)}
+.convidados span{font:700 26px/1 var(--mao)}
+.faixa{-webkit-appearance:none;appearance:none;width:100%;height:40px;margin:0;background:transparent;cursor:pointer}
+.faixa::-webkit-slider-runnable-track{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--creme) var(--pct,21%),rgba(255,247,241,.3) var(--pct,21%))}
+.faixa::-webkit-slider-thumb{-webkit-appearance:none;width:34px;height:34px;margin-top:-12px;border-radius:50%;border:3px solid var(--creme);background:radial-gradient(circle at 34% 28%,#8A5236 0,#4E2617 40%,#26110A 82%);box-shadow:0 4px 8px rgba(0,0,0,.3)}
+.faixa::-moz-range-track{height:10px;border-radius:999px;background:rgba(255,247,241,.3)}
+.faixa::-moz-range-progress{height:10px;border-radius:999px;background:var(--creme)}
+.faixa::-moz-range-thumb{width:28px;height:28px;border-radius:50%;border:3px solid var(--creme);background:radial-gradient(circle at 34% 28%,#8A5236 0,#4E2617 40%,#26110A 82%)}
+.faixa-pontas{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-top:-6px}
+.resultado{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.resultado div{padding:16px;border-radius:16px;background:rgba(255,247,241,.12);box-shadow:inset 0 0 0 1px rgba(255,247,241,.24)}
+.resultado dt{font-size:13.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.resultado dd{margin-top:6px;font:400 clamp(26px,6vw,38px)/1 var(--display);font-variant-numeric:tabular-nums}
+.resultado dd small{display:block;margin-top:6px;font:600 14px/1.3 var(--sans)}
+.resultado .largo{grid-column:1/-1}
+.festa-foto{position:relative;border-radius:999px 999px 18px 18px;overflow:hidden;aspect-ratio:3/4;background:var(--framboesa-2)}
+.festa-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+
+/* ===== Fotos ===== */
+.galeria{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:clamp(36px,5vw,56px)}
+.galeria figure{position:relative;aspect-ratio:3/4.3;border-radius:999px 999px 16px 16px;overflow:hidden;background:var(--seda-2)}
+.galeria figure:nth-child(even){margin-top:48px}
+.galeria img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+@media (hover:hover){.galeria figure:hover img{transform:scale(1.05)}}
+.galeria .tag{left:12px;bottom:12px;font-size:18px}
+@media (min-width:900px){.galeria{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.galeria figure:nth-child(even){margin-top:84px}}
+
+/* ===== Avaliações ===== */
+.recado{display:grid;gap:16px;max-width:720px;margin-inline:auto;padding:34px 26px;border-radius:20px;background:var(--branco);text-align:center;box-shadow:0 26px 40px -30px rgba(58,30,20,.5)}
+.recado .estrelas{display:flex;justify-content:center;gap:8px;color:var(--framboesa)}
+.recado .estrelas svg{width:26px;height:26px}
+.recado .mao{font-size:clamp(26px,6vw,36px);line-height:1.1;color:var(--framboesa-2)}
+.recado .lede{margin-inline:auto}
+
+/* ===== Onde fica ===== */
+.onde-grade{display:grid;gap:44px}
+@media (min-width:900px){.onde-grade{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:72px;align-items:start}}
+.onde-info{display:grid;gap:22px;align-content:start}
+.horas{display:grid}
+.horas div{display:flex;justify-content:space-between;gap:16px;padding:14px 10px;border-top:1px dashed var(--linha)}
+.horas div:last-child{border-bottom:1px dashed var(--linha)}
+.horas dt{color:var(--sub)}
+.horas dd{font-weight:700;text-align:right}
+.horas .hoje{border-radius:8px;background:rgba(255,255,255,.6)}
+.horas .hoje dt{color:var(--chocolate);font-weight:700}
+.horas .hoje dt::after{content:" · hoje"}
+.prazos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.prazos li{display:grid;gap:4px;padding:14px 12px;border-radius:14px;background:var(--branco);text-align:center}
+.prazos b{font:400 26px/1 var(--display);color:var(--framboesa-2)}
+.prazos span{font-size:13.5px;line-height:1.3;color:var(--sub)}
+.info-linha{font-size:15.5px;color:var(--sub)}
+.info-linha b{color:var(--chocolate)}
+.mapa{border-radius:20px;overflow:hidden;background:var(--branco);box-shadow:0 26px 40px -30px rgba(58,30,20,.5)}
+.mapa svg{width:100%;height:auto}
+.mapa figcaption{padding:12px 16px;font-size:14px;color:var(--sub);border-top:1px solid var(--linha)}
+.mapa .rota{stroke-dasharray:3 10;animation:rota 1.4s linear infinite}
+@keyframes rota{to{stroke-dashoffset:-26}}
+.mapa-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.mapa-ctas .bt{padding:0 12px;font-size:15px}
+
+/* ===== Final ===== */
+.final{padding-block:clamp(100px,14vw,190px) clamp(90px,12vw,160px)}
+.final::before{content:"";position:absolute;left:0;right:0;top:-17px;height:18px;background:radial-gradient(circle at 50% 100%,var(--chocolate) 0 17px,transparent 18px) 0 0/34px 18px repeat-x}
+.final-in{display:grid;gap:24px;justify-items:start}
+.final-tit{font:400 clamp(54px,14vw,170px)/.95 var(--display);text-wrap:balance}
+.final-tit em{font-style:normal;color:var(--pistache-3)}
+.final-ctas{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ===== Rodapé ===== */
+.rodape{background:var(--chocolate-3);color:var(--creme);padding-block:56px calc(env(safe-area-inset-bottom,0px) + 110px);--foco:var(--pistache-3)}
+.rodape-in{display:grid;gap:30px}
+.rodape .marca{color:var(--creme);font-size:38px}
+.rodape h3{margin-bottom:10px;font:700 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--pistache-3)}
+.rodape p{font-size:15px;color:var(--creme-2)}
+.rodape .aviso{display:grid;gap:8px}
+@media (min-width:900px){.rodape{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 56px)}.rodape-in{grid-template-columns:1.2fr 1fr 1fr 1.4fr}}
+
+/* ===== WhatsApp no celular ===== */
+.fab{position:fixed;right:calc(var(--gut-r) - 4px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:45;display:flex;align-items:center;gap:10px;min-height:56px;padding:0 20px 0 16px;border-radius:999px;background:var(--framboesa);color:var(--creme);box-shadow:0 14px 28px -12px rgba(158,16,73,.9);font:700 15px/1 var(--sans);text-decoration:none;transform:translateY(180%);visibility:hidden;transition:transform .5s var(--ease),visibility 0s .5s}
+.fab svg{width:24px;height:24px}
+.fab.on{transform:none;visibility:visible;transition:transform .5s var(--ease),visibility 0s}
+@media (min-width:980px){.fab{display:none}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
+}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-fita" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E04C8A"/><stop offset=".55" stop-color="#C2185B"/><stop offset="1" stop-color="#9E1049"/></linearGradient>
+    <symbol id="i-laco" viewBox="0 0 200 140"><path d="M100 70C70 28 18 22 20 58C22 90 70 86 100 70Z" fill="url(#g-fita)"/><path d="M100 70C130 28 182 22 180 58C178 90 130 86 100 70Z" fill="url(#g-fita)"/><path d="M100 70C80 48 42 42 42 60C42 74 76 78 100 70ZM100 70C120 48 158 42 158 60C158 74 124 78 100 70Z" fill="#8E0E42" opacity=".35"/><path d="M95 76L66 130L82 123L90 136L104 80Z" fill="#B0145A"/><path d="M105 76L134 130L118 123L110 136L96 80Z" fill="#9E1049"/><rect x="86" y="56" width="28" height="28" rx="9" fill="#A8124F"/><rect x="91" y="60" width="9" height="20" rx="4" fill="#D8357A" opacity=".6"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4.5 19.5l1.1-3.6A8 8 0 1 1 8.4 18.6z"/><path fill="currentColor" d="M9.3 8.6c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c-.1.1-.1.3 0 .4.5.9 1.3 1.6 2.2 2.1.2.1.3.1.4 0l.6-.6c.2-.2.4-.2.6-.1l1.4.7c.3.1.3.3.3.5 0 .5-.3 1.3-1.1 1.6-.6.2-1.6.2-3.2-.7-1.8-1-3-2.7-3.4-3.6-.4-.8-.3-1.8.5-3z"/></symbol>
+    <symbol id="i-estrela" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M10 2.6l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L2.8 7.9l5-.7z"/></symbol>
+    <symbol id="i-pino" viewBox="0 0 20 20"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M10 18s5.5-5.3 5.5-9.6A5.5 5.5 0 0 0 4.5 8.4C4.5 12.7 10 18 10 18z"/><circle cx="10" cy="8.5" r="2" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<header class="topo">
+  <div class="wrap topo-in">
+    <a class="marca" href="#inicio"><svg aria-hidden="true"><use href="#i-laco"/></svg>Laço<span class="sr"> Confeitaria, voltar ao início</span></a>
+    <nav class="topo-nav" aria-label="Seções">
+      <a href="#vitrine">Vitrine</a>
+      <a href="#caixa">Monte sua caixa</a>
+      <a href="#festa">Festa</a>
+      <a href="#onde">Onde fica</a>
+    </nav>
+    <a class="bt bt-framboesa topo-cta" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener">Encomendar</a>
+  </div>
+</header>
+
+<main>
+  <!-- Abertura: a caixa de presente abre -->
+  <section class="hero s-seda" id="inicio">
+    <div class="wrap hero-grade">
+      <div class="hero-topo">
+        <p class="rotulo">Confeitaria de encomenda · Jardim Goiás</p>
+        <h1 class="hero-tit"><span class="sr">Laço Confeitaria. </span>Cada caixa é uma <em>festinha.</em></h1>
+      </div>
+      <div class="hero-palco">
+        <div class="caixa-palco" data-caixa-hero>
+          <div class="granulado" aria-hidden="true"></div>
+          <svg class="fita-solta" viewBox="0 0 240 90" aria-hidden="true"><path d="M8 62C40 8 74 96 112 48S180 10 232 54" fill="none" stroke="#C2185B" stroke-width="11" stroke-linecap="round"/></svg>
+          <div class="caixa" style="--cols:3">
+            <div class="caixa-fundo">
+              <div class="caixa-grade" role="group" aria-label="Caixa sortida com nove docinhos">
+                <button type="button" class="cela" data-doce="brigadeiro" aria-label="Brigadeiro"><span class="forminha f-marrom"></span><span class="doce d-brigadeiro"></span></button>
+                <button type="button" class="cela" data-doce="camafeu" aria-label="Camafeu"><span class="forminha f-dourada"></span><span class="doce d-camafeu"></span></button>
+                <button type="button" class="cela" data-doce="macaron" aria-label="Macaron de framboesa"><span class="forminha f-rosa"></span><span class="doce d-macaron"></span></button>
+                <button type="button" class="cela" data-doce="beijinho" aria-label="Beijinho"><span class="forminha"></span><span class="doce d-beijinho"></span></button>
+                <button type="button" class="cela" data-doce="bemcasado" aria-label="Bem-casado"><span class="forminha f-dourada"></span><span class="doce d-bemcasado"></span></button>
+                <button type="button" class="cela" data-doce="docedeleite" aria-label="Brigadeiro de doce de leite"><span class="forminha f-dourada"></span><span class="doce d-docedeleite"></span></button>
+                <button type="button" class="cela" data-doce="cajuzinho" aria-label="Cajuzinho"><span class="forminha f-marrom"></span><span class="doce d-cajuzinho"></span></button>
+                <button type="button" class="cela" data-doce="trufa" aria-label="Trufa de cacau"><span class="forminha f-dourada"></span><span class="doce d-trufa"></span></button>
+                <button type="button" class="cela" data-doce="goiabada" aria-label="Biscoitinho de goiabada"><span class="forminha"></span><span class="doce d-goiabada"></span></button>
+              </div>
+            </div>
+            <span class="sombra-tampa" aria-hidden="true"></span>
+            <span class="brilho" aria-hidden="true"></span>
+            <button class="tampa" type="button" aria-label="Abrir a caixa">
+              <span class="tampa-fora">
+                <span class="fita-v"></span><span class="fita-h"></span>
+                <span class="tampa-marca">Laço</span>
+                <svg class="laco" viewBox="0 0 200 140" aria-hidden="true"><use href="#i-laco"/></svg>
+                <span class="etiqueta">pra você</span>
+              </span>
+              <span class="tampa-dentro" aria-hidden="true"><span>Feito à mão,<br>pra você.</span></span>
+            </button>
+          </div>
+          <canvas class="confete" aria-hidden="true"></canvas>
+        </div>
+        <p class="legenda" aria-live="polite" data-legenda>Toque num docinho</p>
+        <button class="reabrir" type="button" data-reabrir>Fechar e abrir de novo</button>
+      </div>
+      <div class="hero-pe">
+        <p class="hero-lede">Docinhos enrolados na mão, bolos de encomenda e caixas de presente com laço de fita. Pra aniversário, casamento ou pra uma terça-feira qualquer.</p>
+        <div class="ctas">
+          <a class="bt bt-framboesa" href="#caixa">Montar minha caixa</a>
+          <a class="bt bt-linha" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp</a>
+        </div>
+        <div class="pe-linha"><p class="status" data-status><i></i><span>Terça a sábado, a partir das 9h</span></p><span class="selo">Demo · Porta Studio</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feito à mão -->
+  <section class="secao s-chocolate tem-gota" id="feito">
+    <div class="wrap feito-grade">
+      <div class="feito-txt">
+        <p class="rotulo">Feito à mão</p>
+        <h2 class="tit">Um por um, enrolado na mão.</h2>
+        <p class="lede">A Laço é uma confeitaria de encomenda no Jardim Goiás. Cada docinho é enrolado na mão, passado no granulado e colocado numa forminha dobrada uma a uma.</p>
+        <p>Os bolos saem do forno no dia da entrega e o recheio é feito na véspera, pra chegar na festa como tem que ser.</p>
+        <div class="fatos">
+          <p><b>12 g</b><span>cada docinho, pesado na balança</span></p>
+          <p><b>100 g</b><span>de bolo por convidado</span></p>
+          <p><b>3 dias</b><span>de antecedência pros docinhos</span></p>
+        </div>
+      </div>
+      <figure class="feito-foto"><img src="img/maos.jpg" width="1400" height="1120" alt="Mão com saco de confeitar colocando goiabada sobre biscoitinhos amanteigados numa assadeira" loading="lazy" decoding="async"><figcaption class="tag">Biscoitinho de goiabada saindo do bico</figcaption></figure>
+    </div>
+    <svg class="gota g-chocolate" viewBox="0 0 1200 115" preserveAspectRatio="none" aria-hidden="true" data-semente="7"><path d="M0 0H1200V22H0Z"/></svg>
+  </section>
+
+  <!-- Vitrine -->
+  <section class="secao apos-gota s-seda" id="vitrine">
+    <div class="wrap">
+      <div class="secao-cab">
+        <p class="rotulo">Vitrine</p>
+        <h2 class="tit">Docinho se vende no cento, bolo no quilo.</h2>
+        <p class="lede">Do brigadeiro ao bolo de casamento. Escolha aqui e encomende pelo WhatsApp.</p>
+      </div>
+
+      <div class="bloco">
+        <div class="bloco-tit"><h3>Docinhos</h3><span>pra mesa da festa</span></div>
+        <ul class="docinhos">
+          <li class="doce-item"><span class="doce-ico" aria-hidden="true"><span class="forminha f-marrom"></span><span class="doce d-brigadeiro"></span></span><div><h4>Brigadeiro</h4><p>Chocolate meio amargo e granulado.</p></div><p class="preco-tag"><b>R$ 150</b><span>o cento</span></p></li>
+          <li class="doce-item"><span class="doce-ico" aria-hidden="true"><span class="forminha"></span><span class="doce d-beijinho"></span></span><div><h4>Beijinho</h4><p>Coco fresco e um cravo por cima.</p></div><p class="preco-tag"><b>R$ 150</b><span>o cento</span></p></li>
+          <li class="doce-item"><span class="doce-ico" aria-hidden="true"><span class="forminha f-dourada"></span><span class="doce d-docedeleite"></span></span><div><h4>Brigadeiro de doce de leite</h4><p>Doce de leite caseiro e açúcar cristal.</p></div><p class="preco-tag"><b>R$ 170</b><span>o cento</span></p></li>
+          <li class="doce-item"><span class="doce-ico" aria-hidden="true"><span class="forminha f-marrom"></span><span class="doce d-cajuzinho"></span></span><div><h4>Cajuzinho</h4><p>Amendoim torrado e açúcar cristal.</p></div><p class="preco-tag"><b>R$ 150</b><span>o cento</span></p></li>
+          <li class="doce-item"><span class="doce-ico" aria-hidden="true"><span class="forminha f-dourada"></span><span class="doce d-trufa"></span></span><div><h4>Trufa de cacau</h4><p>Ganache cremosa e cacau em pó.</p></div><p class="preco-tag"><b>R$ 220</b><span>o cento</span></p></li>
+          <li class="doce-item"><span class="doce-ico" aria-hidden="true"><span class="forminha f-dourada"></span><span class="doce d-camafeu"></span></span><div><h4>Camafeu</h4><p>Nozes, fondant e meia noz por cima.</p></div><p class="preco-tag"><b>R$ 260</b><span>o cento</span></p></li>
+          <li class="doce-item"><span class="doce-ico" aria-hidden="true"><span class="forminha f-dourada"></span><span class="doce d-bemcasado"></span></span><div><h4>Bem-casado</h4><p>Pão de ló com doce de leite, embrulhado no crepom.</p></div><p class="preco-tag"><b>R$ 3,80</b><span>a unidade</span></p></li>
+          <li class="doce-item"><span class="doce-ico" aria-hidden="true"><span class="forminha f-rosa"></span><span class="doce d-macaron"></span></span><div><h4>Macaron de framboesa</h4><p>Casquinha crocante e ganache de frutas vermelhas.</p></div><p class="preco-tag"><b>R$ 6</b><span>a unidade</span></p></li>
+          <li class="doce-item"><span class="doce-ico" aria-hidden="true"><span class="forminha"></span><span class="doce d-goiabada"></span></span><div><h4>Biscoitinho de goiabada</h4><p>Amanteigado com goiabada cascão.</p></div><p class="preco-tag"><b>R$ 70</b><span>o quilo</span></p></li>
+        </ul>
+        <p class="nota bloco-nota">Pedido mínimo de meio cento por sabor.</p>
+      </div>
+
+      <div class="bloco">
+        <div class="bloco-tit"><h3>Bolos de encomenda</h3><span>vendidos no quilo</span></div>
+        <div class="bolos">
+          <figure class="bolo-foto"><img src="img/fatia.jpg" width="1000" height="1250" alt="Fatia de bolo red velvet com recheio de cream cheese, morango e mirtilo num prato rosa" loading="lazy" decoding="async"><figcaption class="tag">Red velvet</figcaption></figure>
+          <div>
+            <div class="lista-simples">
+              <div class="linha"><div><h4>Naked cake</h4><p>Massa à mostra, frutas frescas e flores.</p></div><p class="preco-tag"><b>R$ 110</b><span>o quilo</span></p></div>
+              <div class="linha"><div><h4>Bolo decorado</h4><p>Chantininho ou ganache, no tema da festa.</p></div><p class="preco-tag"><b>R$ 140</b><span>o quilo</span></p></div>
+              <div class="linha"><div><h4>Red velvet</h4><p>Cream cheese e frutas vermelhas.</p></div><p class="preco-tag"><b>R$ 150</b><span>o quilo</span></p></div>
+              <div class="linha"><div><h4>Bolo de casamento</h4><p>Andares, pasta americana ou flores de açúcar.</p></div><p class="preco-tag"><b>Sob consulta</b><span>com degustação</span></p></div>
+            </div>
+            <div class="escolhas">
+              <div><p>Massas</p><ul class="chips"><li>Baunilha</li><li>Chocolate</li><li>Red velvet</li><li>Pão de ló</li></ul></div>
+              <div><p>Recheios</p><ul class="chips"><li>Doce de leite com nozes</li><li>Brigadeiro</li><li>Frutas vermelhas</li><li>Maracujá</li><li>Leite em pó com morango</li></ul></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bloco">
+        <div class="bloco-tit"><h3>Doces finos</h3><span>pra comer ali mesmo</span></div>
+        <div class="finos">
+          <div class="linha"><div><h4>Mini cheesecake de frutas vermelhas</h4><p>Base de chocolate e mousse de morango.</p></div><p class="preco-tag"><b>R$ 14</b><span>a unidade</span></p></div>
+          <div class="linha"><div><h4>Torta de limão individual</h4><p>Massa amanteigada e merengue maçaricado.</p></div><p class="preco-tag"><b>R$ 12</b><span>a unidade</span></p></div>
+          <div class="linha"><div><h4>Brownie com doce de leite</h4><p>Casquinha por cima, molhadinho por dentro.</p></div><p class="preco-tag"><b>R$ 10</b><span>a unidade</span></p></div>
+          <div class="linha"><div><h4>Copo da felicidade</h4><p>Brigadeiro, morango e creme de leite ninho em camadas.</p></div><p class="preco-tag"><b>R$ 18</b><span>o copo</span></p></div>
+        </div>
+      </div>
+      <p class="nota" style="margin-top:28px">Valores de exemplo, para demonstração.</p>
+    </div>
+  </section>
+
+  <!-- Monte sua caixa -->
+  <section class="secao s-pistache tem-gota" id="caixa">
+    <div class="wrap">
+      <div class="secao-cab">
+        <p class="rotulo">Monte sua caixa</p>
+        <h2 class="tit">Você escolhe os docinhos. A gente põe o laço.</h2>
+        <p class="lede">Toque num docinho pra colocar na caixa. Mudou de ideia? Toque nele dentro da caixa pra tirar.</p>
+      </div>
+      <div class="monte">
+        <div class="monte-caixa">
+          <div class="palco-m">
+            <div class="caixa"><div class="caixa-fundo"><div class="caixa-grade" data-grade style="--cols:3" role="group" aria-label="Sua caixa"></div></div></div>
+          </div>
+          <p class="monte-conta" data-conta aria-live="polite">0 de 9 docinhos</p>
+        </div>
+        <div class="monte-lado">
+          <fieldset class="tamanhos">
+            <legend class="passo-rot">Tamanho da caixa</legend>
+            <label for="tam-4"><input type="radio" name="tam" id="tam-4" value="4"><b>4</b><span>R$ 28</span></label>
+            <label for="tam-9"><input type="radio" name="tam" id="tam-9" value="9" checked><b>9</b><span>R$ 54</span></label>
+            <label for="tam-16"><input type="radio" name="tam" id="tam-16" value="16"><b>16</b><span>R$ 92</span></label>
+          </fieldset>
+          <div>
+            <p class="passo-rot">Escolha os docinhos</p>
+            <div class="paleta">
+              <button type="button" data-poe="brigadeiro"><span class="doce-ico" aria-hidden="true"><span class="forminha f-marrom"></span><span class="doce d-brigadeiro"></span></span>Brigadeiro</button>
+              <button type="button" data-poe="beijinho"><span class="doce-ico" aria-hidden="true"><span class="forminha"></span><span class="doce d-beijinho"></span></span>Beijinho</button>
+              <button type="button" data-poe="docedeleite"><span class="doce-ico" aria-hidden="true"><span class="forminha f-dourada"></span><span class="doce d-docedeleite"></span></span>Doce de leite</button>
+              <button type="button" data-poe="camafeu"><span class="doce-ico" aria-hidden="true"><span class="forminha f-dourada"></span><span class="doce d-camafeu"></span></span>Camafeu</button>
+              <button type="button" data-poe="bemcasado"><span class="doce-ico" aria-hidden="true"><span class="forminha f-dourada"></span><span class="doce d-bemcasado"></span></span>Bem-casado</button>
+              <button type="button" data-poe="macaron"><span class="doce-ico" aria-hidden="true"><span class="forminha f-rosa"></span><span class="doce d-macaron"></span></span>Macaron</button>
+              <button type="button" data-poe="trufa"><span class="doce-ico" aria-hidden="true"><span class="forminha f-dourada"></span><span class="doce d-trufa"></span></span>Trufa</button>
+              <button type="button" data-poe="cajuzinho"><span class="doce-ico" aria-hidden="true"><span class="forminha f-marrom"></span><span class="doce d-cajuzinho"></span></span>Cajuzinho</button>
+              <button type="button" data-poe="goiabada"><span class="doce-ico" aria-hidden="true"><span class="forminha"></span><span class="doce d-goiabada"></span></span>Goiabada</button>
+            </div>
+          </div>
+          <div class="monte-acoes"><button class="link-bt" type="button" data-sortido>Completar sortido</button><button class="link-bt" type="button" data-esvazia>Esvaziar a caixa</button></div>
+          <div class="monte-resumo">
+            <div class="linha-total"><span>Caixa com <span data-tam-txt>9</span></span><b data-preco-caixa>R$ 54,00</b></div>
+            <p class="falta" data-falta>Faltam 9 docinhos</p>
+            <a class="bt bt-framboesa" data-wa-caixa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Pedir esta caixa</a>
+            <p class="nota">Demo: o pedido vai para o WhatsApp da Porta Studio, que fez este site.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <svg class="gota g-pistache" viewBox="0 0 1200 115" preserveAspectRatio="none" aria-hidden="true" data-semente="31"><path d="M0 0H1200V22H0Z"/></svg>
+  </section>
+
+  <!-- Calculadora da festa -->
+  <section class="secao apos-gota s-framboesa tem-gota" id="festa">
+    <div class="wrap festa-grade">
+      <div>
+        <div class="secao-cab">
+          <p class="rotulo">Calculadora da festa</p>
+          <h2 class="tit">Quantos vêm pra festa?</h2>
+          <p class="lede">A conta da confeitaria: 100 g de bolo por pessoa e 5 docinhos por convidado, porque sempre tem quem pegue antes do parabéns.</p>
+        </div>
+        <div class="calc">
+          <label class="convidados" for="convidados"><output data-conv>50</output><span>convidados</span></label>
+          <div>
+            <input class="faixa" type="range" id="convidados" min="10" max="200" step="5" value="50" aria-describedby="festa-resultado">
+            <div class="faixa-pontas" aria-hidden="true"><span>10</span><span>200</span></div>
+          </div>
+          <dl class="resultado" id="festa-resultado" aria-live="polite">
+            <div><dt>Bolo</dt><dd data-kg>5 kg</dd></div>
+            <div><dt>Docinhos</dt><dd data-docs>250<small>2 centos e meio</small></dd></div>
+            <div class="largo"><dt>Estimativa</dt><dd data-est>R$ 975<small>Pedindo hoje, fica pronto a partir de 5 dias</small></dd></div>
+          </dl>
+          <div class="ctas"><a class="bt bt-creme" data-wa-festa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Pedir orçamento da festa</a></div>
+          <p class="nota">Estimativa para demonstração. O valor final depende dos sabores e da decoração.</p>
+        </div>
+      </div>
+      <figure class="festa-foto"><img src="img/festa.jpg" width="1000" height="1500" alt="Mesa de festa com naked cake de velas altas, macarons, docinhos em forminhas e balões verdes ao fundo" loading="lazy" decoding="async"><figcaption class="tag">Mesa de aniversário</figcaption></figure>
+    </div>
+    <svg class="gota g-framboesa" viewBox="0 0 1200 115" preserveAspectRatio="none" aria-hidden="true" data-semente="58"><path d="M0 0H1200V22H0Z"/></svg>
+  </section>
+
+  <!-- Fotos -->
+  <section class="secao apos-gota s-seda" id="fotos">
+    <div class="wrap">
+      <div class="secao-cab">
+        <p class="rotulo">Fotos</p>
+        <h2 class="tit">Saiu da nossa bancada.</h2>
+        <p class="lede">Bolo de casamento com flor de açúcar, vitrine de doces finos e caixas prontas pra presente.</p>
+      </div>
+      <div class="galeria">
+        <figure><img src="img/casamento.jpg" width="900" height="1350" alt="Bolo de casamento branco com flores de açúcar e folhas douradas num prato de cristal" loading="lazy" decoding="async"><figcaption class="tag">Bolo de casamento</figcaption></figure>
+        <figure><img src="img/vitrine.jpg" width="900" height="1350" alt="Vitrine com doces finos, macarons gigantes e cerejas de chocolate, e potes de vidro com cookies" loading="lazy" decoding="async"><figcaption class="tag">A vitrine</figcaption></figure>
+        <figure><img src="img/cheesecake.jpg" width="800" height="1152" alt="Mini cheesecake de morango com lascas de chocolate num prato, com um garfo chegando" loading="lazy" decoding="async"><figcaption class="tag">Mini cheesecake</figcaption></figure>
+        <figure><img src="img/presentes.jpg" width="900" height="1350" alt="Caixas de presente brancas com laços de fita rosa e vermelha sobre mármore" loading="lazy" decoding="async"><figcaption class="tag">Caixas de presente</figcaption></figure>
+      </div>
+      <p class="nota" style="margin-top:20px">Fotos ilustrativas.</p>
+    </div>
+  </section>
+
+  <!-- Avaliações -->
+  <section class="secao s-seda" id="avaliacoes" style="padding-top:0">
+    <div class="wrap">
+      <div class="recado">
+        <p class="rotulo">Avaliações</p>
+        <div class="estrelas" aria-hidden="true"><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg></div>
+        <h2 class="mao">Aqui entram os recados de quem já provou.</h2>
+        <p class="lede">Quando o site for da sua confeitaria, a nota e os comentários do Google aparecem neste espaço. A gente não inventa avaliação.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Onde fica -->
+  <section class="secao s-seda2" id="onde">
+    <div class="wrap onde-grade">
+      <div class="onde-info">
+        <div class="secao-cab">
+          <p class="rotulo">Onde fica</p>
+          <h2 class="tit">No Jardim Goiás, com retirada no ateliê.</h2>
+        </div>
+        <p class="status" data-status><i></i><span>Terça a sábado, a partir das 9h</span></p>
+        <dl class="horas">
+          <div data-dias="2 3 4 5"><dt>Terça a sexta</dt><dd>9h às 19h</dd></div>
+          <div data-dias="6"><dt>Sábado</dt><dd>9h às 15h</dd></div>
+          <div data-dias="0 1"><dt>Domingo e segunda</dt><dd>Ateliê fechado</dd></div>
+        </dl>
+        <div>
+          <p class="passo-rot">Encomende com antecedência</p>
+          <ul class="prazos">
+            <li><b>3 dias</b><span>docinhos e caixas</span></li>
+            <li><b>5 dias</b><span>bolos de festa</span></li>
+            <li><b>30 dias</b><span>casamento</span></li>
+          </ul>
+        </div>
+        <p class="info-linha"><b>Pagamento:</b> Pix, cartão e dinheiro. Metade do valor reserva a data.</p>
+        <p class="info-linha"><b>Entrega:</b> em toda Goiânia, com taxa por bairro. As encomendas pelo WhatsApp chegam a qualquer hora.</p>
+      </div>
+      <div>
+        <figure class="mapa">
+          <svg viewBox="0 0 600 400" role="img" aria-label="Mapa ilustrativo do Jardim Goiás com a localização da Laço">
+            <rect width="600" height="400" fill="#FFF7F1"/>
+            <path d="M380 70C440 40 560 60 580 130C600 200 520 240 450 220C380 200 330 110 380 70Z" fill="#DCEBCF"/>
+            <path d="M40 300C70 270 140 280 150 320C160 360 100 380 70 370C40 360 20 325 40 300Z" fill="#DCEBCF"/>
+            <g fill="none" stroke="#F1DDD4" stroke-width="16" stroke-linecap="round">
+              <path d="M-20 120C120 140 300 100 620 150"/><path d="M-20 250C160 230 360 280 620 260"/>
+              <path d="M140 -20C150 120 120 260 170 420"/><path d="M320 -20C300 140 340 280 310 420"/><path d="M470 -20C490 120 450 300 500 420"/>
+            </g>
+            <g fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 9">
+              <path d="M-20 120C120 140 300 100 620 150"/><path d="M-20 250C160 230 360 280 620 260"/>
+            </g>
+            <path class="rota" d="M90 330C140 300 170 270 220 252S300 220 318 190" fill="none" stroke="#C2185B" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="90" cy="330" r="7" fill="#3A1E14"/>
+            <text x="58" y="364" fill="#6B4A3A" font-family="Caveat, Segoe Print, cursive" font-size="26" font-weight="700">você</text>
+            <g transform="translate(318 168)">
+              <path d="M0 26C-10 12 -22 4 -22 -8C-22 -20 -12 -26 0 -16C12 -26 22 -20 22 -8C22 4 10 12 0 26Z" fill="#C2185B"/>
+              <ellipse cx="0" cy="34" rx="16" ry="4" fill="#3A1E14" opacity=".2"/>
+            </g>
+            <text x="348" y="176" fill="#3A1E14" font-family="Caprasimo, Georgia, serif" font-size="26">Laço</text>
+            <text x="348" y="200" fill="#6B4A3A" font-family="Caveat, Segoe Print, cursive" font-size="22" font-weight="700">é aqui!</text>
+            <text x="28" y="42" fill="#6B4A3A" font-family="Figtree, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2.5">JARDIM GOIÁS · GOIÂNIA</text>
+          </svg>
+          <figcaption>Mapa e endereço ilustrativos, para demonstração.</figcaption>
+        </figure>
+        <div class="mapa-ctas">
+          <a class="bt bt-linha" href="https://www.google.com/maps/search/?api=1&amp;query=Jardim%20Goi%C3%A1s%2C%20Goi%C3%A2nia%20-%20GO" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pino"/></svg> Abrir no mapa</a>
+          <a class="bt bt-framboesa" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final -->
+  <section class="secao s-chocolate final">
+    <div class="wrap final-in">
+      <h2 class="final-tit">Tem festa <em>vindo aí?</em></h2>
+      <p class="lede">Chama no WhatsApp com a data e o número de convidados. A gente responde com o orçamento e guarda o seu dia.</p>
+      <div class="final-ctas">
+        <a class="bt bt-framboesa" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Encomendar pelo WhatsApp</a>
+        <a class="bt bt-linha" href="#caixa">Montar minha caixa</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap rodape-in">
+    <div><p class="marca">Laço</p><p style="margin-top:10px">Confeitaria de encomenda. Cada caixa é uma festinha.</p></div>
+    <div><h3>Onde</h3><p>Jardim Goiás, Goiânia</p><p>Endereço ilustrativo</p></div>
+    <div><h3>Ateliê</h3><p>Terça a sexta, 9h às 19h</p><p>Sábado, 9h às 15h</p></div>
+    <div class="aviso"><h3>Sobre este site</h3><p>Projeto demonstrativo da Porta Studio. Nome, cardápio, valores, endereço e fotos são ilustrativos.</p><p>WhatsApp do demo: (62) 99151-7901</p><p><a data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener">Site por Porta Studio</a></p></div>
+  </div>
+</footer>
+
+<a class="fab" data-wa href="https://wa.me/5562991517901" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg> Encomendar</a>
+
+<script>
+(function(){
+  var root=document.documentElement, calmo=root.classList.contains('calmo');
+  var $=function(s,c){return (c||document).querySelector(s)};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var cl=function(v){return v<0?0:v>1?1:v};
+  var brl=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+  var brl0=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:0,maximumFractionDigits:0});
+
+  /* WhatsApp: no demo, tudo vai para a Porta Studio */
+  var WA='https://wa.me/5562991517901', MSG='Olá! Vi o demo da Laço Confeitaria e quero um site assim.';
+  var linkWa=function(t){return WA+'?text='+encodeURIComponent(t)};
+  $$('[data-wa]').forEach(function(a){a.href=linkWa(MSG)});
+
+  var DOCES={
+    brigadeiro:{nome:'Brigadeiro',desc:'chocolate meio amargo e granulado',f:'f-marrom'},
+    beijinho:{nome:'Beijinho',desc:'coco fresco e cravo',f:''},
+    docedeleite:{nome:'Brigadeiro de doce de leite',desc:'doce de leite caseiro e açúcar cristal',f:'f-dourada'},
+    camafeu:{nome:'Camafeu',desc:'nozes e fondant',f:'f-dourada'},
+    bemcasado:{nome:'Bem-casado',desc:'pão de ló com doce de leite',f:'f-dourada'},
+    macaron:{nome:'Macaron de framboesa',desc:'ganache de frutas vermelhas',f:'f-rosa'},
+    trufa:{nome:'Trufa de cacau',desc:'ganache e cacau em pó',f:'f-dourada'},
+    cajuzinho:{nome:'Cajuzinho',desc:'amendoim e açúcar cristal',f:'f-marrom'},
+    goiabada:{nome:'Biscoitinho de goiabada',desc:'amanteigado com goiabada cascão',f:''}
+  };
+
+  /* Ateliê aberto ou fechado, no horário de Goiânia */
+  var DIAS=['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+  var ABRE={0:null,1:null,2:[9,19],3:[9,19],4:[9,19],5:[9,19],6:[9,15]};
+  function agora(){
+    try{
+      var o={};
+      new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){o[x.type]=x.value});
+      return {d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday),min:(+o.hour%24)*60+(+o.minute)};
+    }catch(e){var n=new Date();return {d:n.getDay(),min:n.getHours()*60+n.getMinutes()}}
+  }
+  function status(){
+    var a=agora(), h=ABRE[a.d], txt='', aberto=false;
+    if(h&&a.min>=h[0]*60&&a.min<h[1]*60){aberto=true;txt='Ateliê aberto · até '+h[1]+'h'}
+    else if(h&&a.min<h[0]*60){txt='Ateliê fechado · abre hoje às '+h[0]+'h'}
+    else{for(var i=1;i<=7;i++){var d=(a.d+i)%7;if(ABRE[d]){txt='Ateliê fechado · abre '+(i===1?'amanhã':DIAS[d])+' às '+ABRE[d][0]+'h';break}}}
+    $$('[data-status]').forEach(function(el){el.classList.toggle('aberto',aberto);el.querySelector('span').textContent=txt});
+    $$('.horas [data-dias]').forEach(function(r){r.classList.toggle('hoje',r.getAttribute('data-dias').split(' ').indexOf(String(a.d))>-1)});
+  }
+  status();setInterval(status,60000);
+
+  /* Granulado espalhado na mesa, em volta da caixa */
+  (function(){
+    var g=$('.granulado'), cores=['#C2185B','#A8C98F','#F4C64E','#9CC8E8','#FFFFFF','#F6ABBF'], s=11, html='';
+    var rnd=function(){s=(s*9301+49297)%233280;return s/233280};
+    for(var i=0,n=0;n<30&&i<400;i++){
+      var x=rnd()*96+2, y=rnd()*96+2;
+      if(x>9&&x<91&&y>26&&y<94)continue;
+      html+='<i style="left:'+x.toFixed(1)+'%;top:'+y.toFixed(1)+'%;--c:'+cores[n%cores.length]+';--r:'+Math.round(rnd()*180)+'deg"></i>';n++;
+    }
+    g.innerHTML=html;
+  })();
+
+  /* A caixa do topo: o laço desfaz, a fita escorrega, a tampa abre em 3D, sai brilho e granulado, e os docinhos pulam */
+  var palco=$('[data-caixa-hero]'), caixaH=$('.caixa',palco), legenda=$('[data-legenda]'), tampa=$('.tampa',palco), reabrir=$('[data-reabrir]');
+  var DICA='Toque num docinho';
+  var viva=!calmo&&!!palco&&!!Element.prototype.animate;
+  function pula(el){
+    if(el&&viva)el.animate([{transform:'scale(1)'},{transform:'translateY(-10%) scale(1.25)',offset:.4},{transform:'scale(.94)',offset:.72},{transform:'scale(1)'}],{duration:440,easing:'ease-out'});
+  }
+  $$('.cela',palco).forEach(function(b){
+    var k=b.getAttribute('data-doce'), mostra=function(){legenda.textContent=DOCES[k].nome+' · '+DOCES[k].desc};
+    b.addEventListener('mouseenter',mostra);b.addEventListener('focus',mostra);
+    b.addEventListener('click',function(){mostra();pula($('.doce',b))});
+  });
+  var ocupada=false, timerAbre=0, minhas=[];
+  var ORDEM=[4,1,5,7,3,0,2,8,6];
+  function pecas(){return {laco:$('.laco',palco),fv:$('.fita-v',palco),fh:$('.fita-h',palco),et:$('.etiqueta',palco),solta:$('.fita-solta path',palco),brilho:$('.brilho',palco),doces:$$('.cela .doce',palco)}}
+  function anima(el,kf,op){var a=el.animate(kf,op);minhas.push(a);return a}
+  function limpa(){minhas.forEach(function(a){a.cancel()});minhas=[]}
+  function abrir(){
+    if(ocupada||caixaH.classList.contains('aberta'))return;
+    ocupada=true;clearTimeout(timerAbre);limpa();
+    var p=pecas(), L=p.solta.getTotalLength(), E='cubic-bezier(.2,.8,.2,1)';
+    legenda.textContent='Abrindo…';
+    anima(p.laco,[{transform:'translate(-50%,-50%) scale(1) rotate(0deg)',opacity:1},{transform:'translate(-50%,-50%) scale(1.18) rotate(-8deg)',opacity:1,offset:.35},{transform:'translate(-50%,-50%) scale(.1) rotate(90deg)',opacity:0}],{duration:520,easing:'cubic-bezier(.5,0,.7,.4)',fill:'forwards'});
+    anima(p.et,[{transform:'rotate(14deg)',opacity:1},{transform:'translate(40%,90%) rotate(60deg)',opacity:0}],{delay:80,duration:420,easing:'ease-in',fill:'forwards'});
+    anima(p.fh,[{transform:'scaleX(1)'},{transform:'scaleX(0)'}],{delay:320,duration:440,easing:'cubic-bezier(.6,0,.4,1)',fill:'forwards'});
+    anima(p.fv,[{transform:'scaleY(1)'},{transform:'scaleY(0)'}],{delay:380,duration:440,easing:'cubic-bezier(.6,0,.4,1)',fill:'forwards'});
+    anima(p.solta,[{strokeDashoffset:L+'px'},{strokeDashoffset:'0px'}],{delay:520,duration:700,easing:E,fill:'forwards'});
+    var t=anima(tampa,[{transform:'rotateX(0deg)'},{transform:'rotateX(7deg)',offset:.14},{transform:'rotateX(116deg)',offset:.66},{transform:'rotateX(97deg)',offset:.84},{transform:'rotateX(102deg)'}],{delay:780,duration:1150,easing:'cubic-bezier(.35,.05,.3,1)',fill:'forwards'});
+    p.brilho.animate([{opacity:0},{opacity:1,offset:.3},{opacity:0}],{delay:1050,duration:900,easing:'ease-out'});
+    setTimeout(confete,1150);
+    ORDEM.forEach(function(i,n){var d=p.doces[i];if(d)d.animate([{transform:'translateY(18%) scale(.4)',opacity:0},{transform:'translateY(-14%) scale(1.14)',opacity:1,offset:.55},{transform:'translateY(0) scale(1)',opacity:1}],{delay:1180+n*70,duration:520,easing:'cubic-bezier(.3,1.4,.5,1)',fill:'backwards'})});
+    t.onfinish=function(){
+      caixaH.classList.add('aberta');
+      p.solta.style.strokeDashoffset='0';
+      limpa();ocupada=false;
+      root.classList.add('ja-abriu');tampa.setAttribute('tabindex','-1');
+      legenda.textContent=DICA;
+    };
+  }
+  function fechar(){
+    if(ocupada||!caixaH.classList.contains('aberta'))return;
+    ocupada=true;limpa();
+    var p=pecas(), L=p.solta.getTotalLength();
+    caixaH.classList.remove('aberta');
+    legenda.textContent='Embrulhando de novo…';
+    anima(tampa,[{transform:'rotateX(102deg)'},{transform:'rotateX(0deg)'}],{duration:560,easing:'cubic-bezier(.5,0,.25,1)'});
+    anima(p.fh,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{delay:330,duration:300,easing:'ease-out',fill:'backwards'});
+    anima(p.fv,[{transform:'scaleY(0)'},{transform:'scaleY(1)'}],{delay:380,duration:300,easing:'ease-out',fill:'backwards'});
+    anima(p.laco,[{transform:'translate(-50%,-50%) scale(.2)',opacity:0},{transform:'translate(-50%,-50%) scale(1)',opacity:1}],{delay:520,duration:420,easing:'cubic-bezier(.3,1.5,.5,1)',fill:'backwards'});
+    anima(p.et,[{opacity:0},{opacity:1}],{delay:600,duration:300,fill:'backwards'});
+    anima(p.solta,[{strokeDashoffset:'0px'},{strokeDashoffset:L+'px'}],{duration:400,easing:'ease-in'});
+    p.solta.style.strokeDashoffset=L;
+    tampa.removeAttribute('tabindex');
+    setTimeout(function(){ocupada=false;abrir()},1300);
+  }
+  /* granulado que voa quando a tampa abre */
+  var cv=$('.confete',palco), ctx=cv&&cv.getContext?cv.getContext('2d'):null, pedacos=[], voando=false;
+  var CORES=['#C2185B','#8DB473','#F4C64E','#9CC8E8','#FFFFFF','#F6ABBF','#4E2617'];
+  function confete(){
+    if(!ctx)return;
+    var r=cv.getBoundingClientRect(), b=caixaH.getBoundingClientRect(), dpr=Math.min(2,window.devicePixelRatio||1);
+    cv.width=Math.round(r.width*dpr);cv.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+    var s=b.width, cx=b.left-r.left+s/2, cy=b.top-r.top+s*.45;
+    for(var i=0;i<90;i++){
+      var ang=-Math.PI/2+(Math.random()-.5)*Math.PI*1.15, v=s*(.016+Math.random()*.03);
+      pedacos.push({x:cx+(Math.random()-.5)*s*.5,y:cy+(Math.random()-.5)*s*.3,vx:Math.cos(ang)*v,vy:Math.sin(ang)*v,g:s*.0011,rot:Math.random()*6.28,vr:(Math.random()-.5)*.35,w:s*.017,h:s*(.04+Math.random()*.022),cor:CORES[i%CORES.length],vida:1,dec:.007+Math.random()*.008});
+    }
+    if(!voando){voando=true;requestAnimationFrame(voa)}
+  }
+  function voa(){
+    ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);ctx.restore();
+    for(var i=pedacos.length-1;i>=0;i--){
+      var q=pedacos[i];q.vy+=q.g;q.vx*=.985;q.x+=q.vx;q.y+=q.vy;q.rot+=q.vr;q.vida-=q.dec;
+      if(q.vida<=0){pedacos.splice(i,1);continue}
+      ctx.save();ctx.globalAlpha=Math.min(1,q.vida*2.2);ctx.translate(q.x,q.y);ctx.rotate(q.rot);ctx.fillStyle=q.cor;
+      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(-q.w/2,-q.h/2,q.w,q.h,q.w/2);else ctx.rect(-q.w/2,-q.h/2,q.w,q.h);ctx.fill();
+      ctx.restore();
+    }
+    if(pedacos.length)requestAnimationFrame(voa);else{voando=false;ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);ctx.restore()}
+  }
+  if(viva){
+    root.classList.add('caixa-viva');
+    var s0=$('.fita-solta path',palco), L0=s0.getTotalLength();s0.style.strokeDasharray=L0;s0.style.strokeDashoffset=L0;
+    legenda.textContent='Toque na caixa pra abrir';
+    tampa.addEventListener('click',abrir);
+    reabrir.addEventListener('click',fechar);
+    timerAbre=setTimeout(abrir,2600);
+  }
+
+  /* As seções escorrem como ganache */
+  $$('.gota').forEach(function(svg){
+    var s=+svg.getAttribute('data-semente')||1, rnd=function(){s=(s*9301+49297)%233280;return s/233280};
+    var d='M0 0H1200V22', x=1200;
+    while(x>40){
+      var w=26+rnd()*42, vao=24+rnd()*96, fundo=22+16+rnd()*72, c=x-vao-w/2;
+      if(c-w/2<10)break;
+      var a=(c+w/2).toFixed(1), b=(c-w/2).toFixed(1), m=(22+(fundo-22)*.72).toFixed(1);
+      d+='L'+a+' 22C'+a+' '+m+' '+a+' '+fundo.toFixed(1)+' '+c.toFixed(1)+' '+fundo.toFixed(1)+'C'+b+' '+fundo.toFixed(1)+' '+b+' '+m+' '+b+' 22';
+      x=c-w/2;
+    }
+    svg.querySelector('path').setAttribute('d',d+'L0 22Z');
+  });
+  if(!calmo){
+    var gotas=$$('.gota'), pedido=0;
+    var escorre=function(){
+      pedido=0;var vh=innerHeight;
+      gotas.forEach(function(g){var r=g.getBoundingClientRect();g.style.setProperty('--escorre',(.22+.78*cl((vh-r.top)/(vh*.55))).toFixed(3))});
+    };
+    addEventListener('scroll',function(){if(!pedido)pedido=requestAnimationFrame(escorre)},{passive:true});
+    addEventListener('resize',escorre);escorre();
+  }
+
+  /* Monte sua caixa */
+  var TAM={4:{cols:2,preco:28},9:{cols:3,preco:54},16:{cols:4,preco:92}};
+  var grade=$('[data-grade]'), tam=9, caixa=['brigadeiro','camafeu','brigadeiro','beijinho','macaron',null,null,null,null];
+  function celaHTML(k,i){
+    if(!k)return '<button type="button" class="cela vazia" data-i="'+i+'" aria-label="Espaço vazio" tabindex="-1"><span class="forminha f-vazia"></span></button>';
+    return '<button type="button" class="cela cheia" data-i="'+i+'" aria-label="Tirar '+DOCES[k].nome+' da caixa"><span class="forminha '+DOCES[k].f+'"></span><span class="doce d-'+k+'"></span></button>';
+  }
+  function pintaCaixa(novo){
+    grade.style.setProperty('--cols',TAM[tam].cols);
+    grade.innerHTML=caixa.map(celaHTML).join('');
+    var cheios=caixa.filter(Boolean).length, falta=tam-cheios;
+    $('[data-conta]').textContent=cheios+' de '+tam+' docinhos';
+    $('[data-tam-txt]').textContent=tam;
+    $('[data-preco-caixa]').textContent=brl.format(TAM[tam].preco);
+    $('[data-falta]').textContent=falta?('Faltam '+falta+(falta===1?' docinho':' docinhos')):'Caixa cheia, pronta pro laço!';
+    var cont={};caixa.forEach(function(k){if(k)cont[k]=(cont[k]||0)+1});
+    var l=[MSG,'','Montei esta caixa de teste ('+tam+' docinhos, '+brl.format(TAM[tam].preco)+'):'];
+    Object.keys(cont).forEach(function(k){l.push(cont[k]+'x '+DOCES[k].nome)});
+    if(falta)l.push('Faltam '+falta+', pode completar com sortidos.');
+    $('[data-wa-caixa]').href=linkWa(l.join('\n'));
+    if(novo!=null&&!calmo&&Element.prototype.animate){
+      var d=$('[data-i="'+novo+'"] .doce',grade);
+      if(d)d.animate([{transform:'translateY(-40%) scale(.5)',opacity:0},{transform:'translateY(0) scale(1.12)',opacity:1,offset:.6},{transform:'scale(1)',opacity:1}],{duration:460,easing:'cubic-bezier(.3,1.4,.5,1)'});
+    }
+  }
+  $$('[data-poe]').forEach(function(b){b.addEventListener('click',function(){
+    var i=caixa.indexOf(null);
+    if(i<0){$('[data-falta]').textContent='A caixa tá cheia. Toque num docinho da caixa pra trocar.';return}
+    caixa[i]=b.getAttribute('data-poe');pintaCaixa(i);pula($('.doce',b));
+  })});
+  grade.addEventListener('click',function(e){
+    var c=e.target.closest('.cela.cheia');if(!c)return;
+    caixa[+c.getAttribute('data-i')]=null;pintaCaixa();
+  });
+  $$('input[name="tam"]').forEach(function(r){r.addEventListener('change',function(){
+    tam=+r.value;var cheios=caixa.filter(Boolean).slice(0,tam);
+    caixa=[];for(var i=0;i<tam;i++)caixa.push(cheios[i]||null);
+    pintaCaixa();
+  })});
+  $('[data-sortido]').addEventListener('click',function(){
+    var ks=Object.keys(DOCES), j=0, primeiro=null;
+    for(var i=0;i<tam;i++){if(!caixa[i]){caixa[i]=ks[(i*4+j++)%ks.length];if(primeiro===null)primeiro=i}}
+    pintaCaixa(primeiro);
+  });
+  $('[data-esvazia]').addEventListener('click',function(){caixa=caixa.map(function(){return null});pintaCaixa()});
+  pintaCaixa();
+
+  /* Calculadora da festa */
+  var conv=$('#convidados');
+  function calcula(){
+    var n=+conv.value, kg=Math.max(1.5,Math.round(n/10*2)/2), docs=Math.ceil(n*5/25)*25, total=kg*120+docs*1.5;
+    var pronto=new Date();pronto.setDate(pronto.getDate()+5);
+    while(!ABRE[pronto.getDay()])pronto.setDate(pronto.getDate()+1);
+    var dia=DIAS[pronto.getDay()]+', '+String(pronto.getDate()).padStart(2,'0')+'/'+String(pronto.getMonth()+1).padStart(2,'0');
+    var centos=docs/100, centosTxt=centos===.5?'meio cento':centos===1?'1 cento':(centos%1===0?centos:centos.toLocaleString('pt-BR'))+' centos';
+    $('[data-conv]').textContent=n;
+    $('[data-kg]').textContent=kg.toLocaleString('pt-BR')+' kg';
+    $('[data-docs]').innerHTML=docs+'<small>'+centosTxt+'</small>';
+    $('[data-est]').innerHTML=brl0.format(total)+'<small>Pedindo hoje, fica pronto a partir de '+dia+'</small>';
+    conv.style.setProperty('--pct',((n-10)/190*100).toFixed(1)+'%');
+    var l=[MSG,'','Fiz uma conta de teste na calculadora da festa:',n+' convidados','Bolo: '+kg.toLocaleString('pt-BR')+' kg','Docinhos: '+docs+' ('+centosTxt+')','Estimativa: '+brl0.format(total)];
+    $('[data-wa-festa]').href=linkWa(l.join('\n'));
+  }
+  conv.addEventListener('input',calcula);calcula();
+
+  /* Botão do WhatsApp aparece depois da abertura */
+  var fab=$('.fab');
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){fab.classList.toggle('on',!es[0].isIntersecting)}).observe($('.hero'))}
+  else fab.classList.add('on');
+})();
+</script>
+
+<style>
+.ps-outros{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:44;display:flex;align-items:center;gap:8px;height:46px;padding:0 16px 0 12px;border-radius:999px;background:#FFFFFF;color:#16171A;font:700 14px/1 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;text-decoration:none;box-shadow:0 0 0 2px #16171A,0 12px 24px -12px rgba(0,0,0,.5);transform:translateY(180%);visibility:hidden;transition:transform .6s cubic-bezier(.3,1.4,.5,1),visibility 0s .6s}
+.ps-outros.on{transform:none;visibility:visible;transition:transform .6s cubic-bezier(.3,1.4,.5,1),visibility 0s}
+.tem-pedido .ps-outros{transform:translateY(180%);visibility:hidden}
+.ps-outros svg{width:18px;height:18px;flex:none}
+.ps-outros em{font-style:normal}
+@media (max-width:979px){.ps-outros em{display:none}.ps-outros{padding:0 14px 0 12px}}
+</style>
+<a class="ps-outros" href="../index.html"><svg viewBox="0 0 18 18" aria-hidden="true"><rect x="1.5" y="1.5" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="10.5" y="1.5" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="1.5" y="10.5" width="6" height="6" rx="1.2" fill="currentColor"/><rect x="10.5" y="10.5" width="6" height="6" rx="1.2" fill="currentColor"/></svg>Outros <em>modelos</em></a>
+<script>(function(){var b=document.querySelector('.ps-outros');if(!b)return;var f=function(){b.classList.toggle('on',scrollY>innerHeight*.7)};addEventListener('scroll',f,{passive:true});f()})();</script></body>
+</html>
