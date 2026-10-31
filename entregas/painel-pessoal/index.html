@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Porta Studio · Meu controle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Painel pessoal da Porta Studio: barra de abas no topo, uma coluna no celular, duas no computador. */
+:root{
+  --bg:#F4F4F1; --surface:#FFFFFF; --surface-2:#ECECE7; --line:#DDDCD5;
+  --text:#17181C; --text-2:#5B5E66;
+  --primary:#1F3F8C; --primary-ink:#FFFFFF; --accent:#D89A2A;
+  --good:#1E7B34; --good-bg:#DCEFE0; --bad:#B3261E; --bad-bg:#F9DEDA; --warn-bg:#FBEFD5; --warn:#8A5A00;
+  --chart-in:#2F55B5; --chart-out:#BF7F12;
+  --font:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:18px; --r-sm:12px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121316; --surface:#1B1C20; --surface-2:#25272C; --line:#2E3036;
+    --text:#EDEDEA; --text-2:#A3A6AE;
+    --primary:#7F9CE6; --primary-ink:#0E1730; --accent:#E2AC4A;
+    --good:#6FCB8A; --good-bg:#17301F; --bad:#F08A80; --bad-bg:#3A1C19; --warn-bg:#33270F; --warn:#E8B860;
+    --chart-in:#6385DD; --chart-out:#BC8019;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121316; --surface:#1B1C20; --surface-2:#25272C; --line:#2E3036;
+  --text:#EDEDEA; --text-2:#A3A6AE;
+  --primary:#7F9CE6; --primary-ink:#0E1730; --accent:#E2AC4A;
+  --good:#6FCB8A; --good-bg:#17301F; --bad:#F08A80; --bad-bg:#3A1C19; --warn-bg:#33270F; --warn:#E8B860;
+  --chart-in:#6385DD; --chart-out:#BC8019;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;text-wrap:balance}
+button,input,select,textarea{font:inherit;color:inherit}
+.num{font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+
+/* topo */
+.top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top__row{display:flex;align-items:center;gap:12px;padding:12px 0 8px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.015em;margin-right:auto;min-width:0}
+.brand svg{width:18px;height:23px;flex:none}
+.brand small{font-weight:500;color:var(--text-2)}
+@media (max-width:520px){.brand small{display:none}.sync__t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+.sync{font-size:12px;font-weight:500;color:var(--text-2);display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.sync::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--good)}
+.sync[data-s="saving"]::before{background:var(--accent)}
+.sync[data-s="off"]::before{background:var(--text-2)}
+.sync[data-s="err"]::before{background:var(--bad)}
+.month{display:flex;align-items:center;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:2px}
+.month button{border:0;background:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:18px;line-height:1;color:var(--text-2)}
+.month button:hover{background:var(--surface-2);color:var(--text)}
+.month span{min-width:76px;text-align:center;font-weight:600;font-size:14px;text-transform:capitalize}
+.tabs{display:flex;gap:4px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:none;text-decoration:none;color:var(--text-2);font-weight:500;font-size:14px;padding:7px 14px;border-radius:999px}
+.tabs a:hover{color:var(--text);background:var(--surface-2)}
+.tabs a[aria-current="page"]{background:var(--text);color:var(--bg)}
+
+main{padding:20px 0 96px}
+.view{display:none;flex-direction:column;gap:16px}
+.view.is-on{display:flex}
+.notice{border-radius:var(--r-sm);padding:12px 14px;font-size:14px;background:var(--warn-bg);color:var(--warn);display:none;margin-bottom:16px}
+.notice.is-on{display:block}
+
+/* blocos */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.card__head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.card__head h2{font-size:17px}
+.card__head p{font-size:13px;color:var(--text-2)}
+.grid2{display:grid;gap:16px;align-items:start}
+@media (min-width:860px){.grid2{grid-template-columns:1fr 1fr}.grid2--wide{grid-template-columns:1.35fr 1fr}}
+.tiles{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:760px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.tile b{font-size:clamp(20px,5vw,26px);font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile span{font-size:12px;color:var(--text-2);font-weight:500}
+.tile--hi{background:var(--primary);border-color:var(--primary);color:var(--primary-ink)}
+.tile--hi span{color:inherit;opacity:.78}
+.pos{color:var(--good)} .neg{color:var(--bad)}
+.tile--hi .neg,.tile--hi .pos{color:inherit}
+.lead{font-size:14px;color:var(--text-2)}
+.bar{height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;background:var(--accent);max-width:100%}
+.steps{display:flex;gap:6px;margin-top:10px}
+.steps i{flex:1;height:8px;border-radius:999px;background:var(--surface-2)}
+.steps i.on{background:var(--accent)}
+.big{font-size:22px;font-weight:600;letter-spacing:-.02em}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-weight:500;font-size:14px;text-decoration:none;color:var(--text);white-space:nowrap}
+.btn:hover{border-color:var(--text-2)}
+.btn--pri{background:var(--primary);border-color:var(--primary);color:var(--primary-ink)}
+.btn--pri:hover{filter:brightness(1.08);border-color:var(--primary)}
+.btn--danger{color:var(--bad);border-color:var(--bad)}
+.btn--danger.armed{background:var(--bad);color:#fff}
+.btn--sm{min-height:32px;padding:0 12px;font-size:13px}
+.link{background:none;border:0;padding:0;color:var(--primary);font-weight:500;cursor:pointer;font-size:13px}
+.fab{position:fixed;right:16px;bottom:16px;z-index:30;box-shadow:0 12px 30px -10px rgba(0,0,0,.45);min-height:52px;padding:0 22px;font-size:15px}
+
+/* segmentado */
+.seg{display:inline-flex;background:var(--surface-2);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:none;padding:6px 14px;border-radius:999px;cursor:pointer;font-weight:500;font-size:13px;color:var(--text-2)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+/* formulários */
+.form{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.form .full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.field label{font-size:12px;font-weight:600;color:var(--text-2)}
+.field input,.field select,.field textarea{width:100%;min-height:42px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--bg);padding:8px 12px;font-size:15px}
+.field textarea{min-height:70px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 22%,transparent)}
+.form__actions{grid-column:1/-1;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;align-items:center}
+.form__actions .grow{margin-right:auto}
+.inline{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.inline .field{width:150px}
+
+/* listas */
+.list{display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row__date{font-size:12px;color:var(--text-2);font-weight:600;width:38px;text-align:center;line-height:1.2}
+.row__main{min-width:0}
+.row__main b{display:block;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row__main span{font-size:12px;color:var(--text-2)}
+.row__val{font-weight:600;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.row--btn{cursor:pointer}
+.row--btn:hover .row__main b{color:var(--primary)}
+.chip{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);color:var(--text-2);white-space:nowrap}
+.chip--good{background:var(--good-bg);color:var(--good)}
+.chip--bad{background:var(--bad-bg);color:var(--bad)}
+.chip--warn{background:var(--warn-bg);color:var(--warn)}
+.chip--pri{background:color-mix(in srgb,var(--primary) 16%,transparent);color:var(--primary)}
+.empty{padding:22px 8px;text-align:center;color:var(--text-2);font-size:14px}
+
+/* preços */
+.pgroup h3{font-size:15px;margin:4px 0 8px;display:flex;align-items:center;gap:8px}
+.pgroup h3::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--accent)}
+.ptable{width:100%;min-width:520px;border-collapse:collapse;font-size:14px;table-layout:fixed}
+.ptable th{font-size:11px;font-weight:600;color:var(--text-2);text-align:right;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.ptable th:first-child{text-align:left;padding-left:0}
+.ptable td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ptable td:first-child{text-align:left;padding-left:0;white-space:normal}
+.ptable tr:last-child td{border-bottom:0}
+.ptable td b{font-weight:600}
+.ptable td small{display:block;color:var(--text-2);font-size:12px;margin-top:2px;max-width:52ch;padding-right:12px}
+.ptable .act{color:var(--text);font-weight:600}
+.ptable .inact{color:var(--text-2)}
+.scroll{overflow-x:auto}
+.ptable tbody tr{cursor:pointer}
+.ptable tbody tr:hover td:first-child b{color:var(--primary)}
+
+/* gráfico */
+.chart svg{width:100%;height:auto;display:block}
+.chart text{fill:var(--text-2);font:500 11px var(--font)}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--text-2);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.hbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;font-size:13px;align-items:center}
+.hbar .t{grid-column:1/-1;height:6px;border-radius:999px;background:var(--surface-2);overflow:hidden;margin-bottom:8px}
+.hbar .t i{display:block;height:100%;background:var(--chart-out);border-radius:999px}
+
+/* projetos */
+.proj{display:flex;flex-direction:column;gap:8px;padding:14px 0;border-top:1px solid var(--line);cursor:pointer}
+.proj:first-child{border-top:0;padding-top:0}
+.proj__top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.proj__top b{font-weight:600}
+.proj__top span{display:block;font-size:12px;color:var(--text-2)}
+.proj__nums{display:flex;gap:16px;font-size:13px;color:var(--text-2);flex-wrap:wrap}
+.proj__nums strong{color:var(--text);font-weight:600}
+
+/* switch */
+.sw{position:relative;width:40px;height:24px;flex:none}
+.sw input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.sw i{position:absolute;inset:0;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);transition:background .15s}
+.sw i::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:var(--text-2);transition:transform .15s,background .15s}
+.sw input:checked + i{background:var(--primary);border-color:var(--primary)}
+.sw input:checked + i::after{transform:translateX(16px);background:var(--primary-ink)}
+.sw input:focus-visible + i{outline:2px solid var(--primary);outline-offset:2px}
+.crow{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.crow:first-child{border-top:0}
+.crow.off .row__main b,.crow.off .row__val{color:var(--text-2)}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:50;display:none;align-items:flex-end;justify-content:center;background:rgba(10,12,18,.48)}
+.modal.is-on{display:flex}
+.modal__box{background:var(--surface);width:min(560px,100%);max-height:92%;overflow:auto;border-radius:22px 22px 0 0;padding:20px 18px 24px}
+@media (min-width:640px){.modal{align-items:center}.modal__box{border-radius:22px}}
+.modal__box h2{font-size:18px;margin-bottom:14px}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:13px;font-weight:500;z-index:60;display:none;max-width:calc(100% - 32px)}
+.toast.is-on{display:block}
+.tip{display:flex;flex-direction:column;gap:8px;font-size:14px}
+.tip ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="top__row">
+      <div class="brand"><svg viewBox="0 0 20 25" aria-hidden="true"><path d="M1 25V10a9 9 0 0 1 18 0v15z" fill="var(--primary)"/><circle cx="13.6" cy="15.6" r="1.6" fill="var(--accent)"/></svg><span>Porta Studio <small>· meu controle</small></span></div>
+      <div class="month" aria-label="Mês">
+        <button type="button" id="mPrev" aria-label="Mês anterior">‹</button>
+        <span id="mLabel" class="num">—</span>
+        <button type="button" id="mNext" aria-label="Próximo mês">›</button>
+      </div>
+      <span class="sync" id="sync" data-s="off"><span class="sync__t">Carregando</span></span>
+    </div>
+    <div class="top__row" style="padding-top:0">
+      <nav class="tabs" aria-label="Seções" id="tabs">
+        <a href="#painel">Painel</a>
+        <a href="#precos">Preços</a>
+        <a href="#lancamentos">Lançamentos</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#custos">Custos fixos</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="notice" id="notice"></p>
+
+  <!-- ============ PAINEL ============ -->
+  <section class="view" id="v-painel" aria-label="Painel">
+    <div class="tiles" id="pTiles"></div>
+    <div class="grid2 grid2--wide">
+      <div class="card">
+        <div class="card__head"><h2>Entradas e saídas</h2><p>últimos 6 meses</p></div>
+        <div class="chart" id="pChart"></div>
+        <div class="legend"><span><i style="background:var(--chart-in)"></i>Entradas</span><span><i style="background:var(--chart-out)"></i>Saídas</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card">
+          <div class="card__head"><h2>Meta do mês</h2><button class="link" type="button" data-open="cfg">Mudar meta</button></div>
+          <div id="pMeta"></div>
+        </div>
+        <div class="card">
+          <div class="card__head"><h2>Fase de preço</h2><a class="link" href="#precos">Ver preços</a></div>
+          <div id="pFase"></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card__head"><h2>Custos fixos</h2><a class="link" href="#custos">Editar</a></div>
+        <div id="pCustos"></div>
+      </div>
+      <div class="card">
+        <div class="card__head"><h2>Últimos lançamentos</h2><a class="link" href="#lancamentos">Ver todos</a></div>
+        <div class="list" id="pUltimos"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PREÇOS ============ -->
+  <section class="view" id="v-precos" aria-label="Preços">
+    <div class="card">
+      <div class="card__head">
+        <h2>Quanto cobrar agora</h2>
+        <div class="seg" role="group" aria-label="Preço em uso">
+          <button type="button" data-fase="inicio" aria-pressed="true">Preço de início</button>
+          <button type="button" data-fase="cheio" aria-pressed="false">Preço cheio</button>
+        </div>
+      </div>
+      <p class="lead" id="faseTxt"></p>
+      <div class="inline" style="margin-top:14px">
+        <div class="field"><label for="cHora">Valor-hora mínimo (R$)</label><input id="cHora" class="num" type="number" inputmode="decimal" min="0" step="1"></div>
+        <div class="field"><label for="cClientes">Clientes no preço de início</label><input id="cClientes" class="num" type="number" inputmode="numeric" min="1" step="1"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__head"><h2>Tabela de preços</h2><button class="btn btn--sm" type="button" id="addPreco">+ Pacote</button></div>
+      <div id="precosBox"></div>
+    </div>
+    <div class="card tip">
+      <h2 style="font-size:17px">Como usar o preço de início</h2>
+      <ol>
+        <li>Mostre o preço cheio e diga que é condição de lançamento para os primeiros clientes.</li>
+        <li>Em troca do desconto, peça um depoimento e a permissão para mostrar o site no seu portfólio.</li>
+        <li>Combine o preço antes de começar e mantenha metade na entrada e metade na entrega.</li>
+        <li>Quando completar os clientes da fase de início, passe para o preço cheio.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ LANÇAMENTOS ============ -->
+  <section class="view" id="v-lancamentos" aria-label="Lançamentos">
+    <div class="grid2">
+      <div class="card">
+        <div class="card__head"><h2>Novo lançamento</h2></div>
+        <form class="form" id="fLanc" autocomplete="off">
+          <div class="field full">
+            <span class="seg" role="group" aria-label="Tipo">
+              <button type="button" data-tipo="Entrada" aria-pressed="true">Entrou dinheiro</button>
+              <button type="button" data-tipo="Saída" aria-pressed="false">Saiu dinheiro</button>
+            </span>
+          </div>
+          <div class="field"><label for="lValor">Valor (R$)</label><input id="lValor" class="num" type="number" inputmode="decimal" min="0" step="0.01" required placeholder="0,00"></div>
+          <div class="field"><label for="lData">Data</label><input id="lData" type="date" required></div>
+          <div class="field"><label for="lCat">Categoria</label><select id="lCat"></select></div>
+          <div class="field"><label for="lForma">Forma</label><select id="lForma"></select></div>
+          <div class="field full"><label for="lDesc">Descrição</label><input id="lDesc" type="text" maxlength="120" placeholder="Ex.: entrada de 50% do site da hamburgueria"></div>
+          <div class="field full"><label for="lProj">Projeto (opcional)</label><input id="lProj" type="text" list="projList" maxlength="80" placeholder="Nome do projeto, se for de um cliente"></div>
+          <div class="form__actions"><button class="btn btn--pri" type="submit">Salvar lançamento</button></div>
+        </form>
+        <datalist id="projList"></datalist>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="tiles" id="lTiles" style="grid-template-columns:repeat(3,minmax(0,1fr))"></div>
+        <div class="card">
+          <div class="card__head"><h2>Para onde foi o dinheiro</h2><p id="lMesTxt"></p></div>
+          <div id="lCats"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__head"><h2>Lançamentos do mês</h2><p>Toque em um para editar</p></div>
+      <div class="list" id="lList"></div>
+    </div>
+  </section>
+
+  <!-- ============ PROJETOS ============ -->
+  <section class="view" id="v-projetos" aria-label="Projetos">
+    <div class="tiles" id="prTiles"></div>
+    <div class="card">
+      <div class="card__head"><h2>Clientes e projetos</h2><button class="btn btn--sm" type="button" id="addProj">+ Projeto</button></div>
+      <p class="lead" style="margin-bottom:12px">O recebido vem dos lançamentos com o mesmo nome de projeto.</p>
+      <div id="prList"></div>
+    </div>
+  </section>
+
+  <!-- ============ CUSTOS ============ -->
+  <section class="view" id="v-custos" aria-label="Custos fixos">
+    <div class="tiles" id="cTiles"></div>
+    <div class="card">
+      <div class="card__head"><h2>Assinaturas e custos fixos</h2><button class="btn btn--sm" type="button" id="addCusto">+ Custo</button></div>
+      <p class="lead" style="margin-bottom:8px">Ligue só o que você paga hoje. Quando a cobrança cair, registre também em Lançamentos.</p>
+      <div class="list" id="cList"></div>
+    </div>
+    <div class="card">
+      <div class="card__head"><h2>Dólar</h2><p>para converter o que é cobrado em US$</p></div>
+      <div class="inline">
+        <div class="field"><label for="cDolar">Cotação (R$)</label><input id="cDolar" class="num" type="number" inputmode="decimal" min="0" step="0.01"></div>
+        <div class="field"><label for="cIof">IOF (%)</label><input id="cIof" class="num" type="number" inputmode="decimal" min="0" step="0.1"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<button class="btn btn--pri fab" type="button" id="fab">+ Lançar</button>
+
+<!-- modal genérico -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal__box">
+    <h2 id="mTitle"></h2>
+    <form class="form" id="mForm" autocomplete="off"></form>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+'use strict';
+// ---------------------------------------------------------------- dados base
+const CAT_IN = ['Site WhatsApp','Loja virtual','SaaS / sistema','Mensalidade de cliente','Extras e ajustes','Repasse de domínio','Outras entradas'];
+const CAT_OUT = ['Inteligência artificial','Domínios','Hospedagem','Shopify e plataformas','Ferramentas e apps','Anúncios e marketing','Impostos (MEI / DAS)','Taxas de pagamento','Freelancers e terceiros','Equipamentos','Internet e celular','Outras saídas'];
+const FORMAS = ['Pix','Cartão de crédito','Cartão de débito','Boleto','Transferência','Dinheiro'];
+const STATUS = ['Orçamento','Em produção','Entregue','Cancelado'];
+const LINHAS = ['Sites com pedido no WhatsApp','Lojas virtuais','SaaS e sistemas','Extras','Mensalidades'];
+const DEFAULT_CFG = {dolar:5.5, iof:3.5, valorHoraMin:40, fase:'inicio', clientesInicio:5, metaMes:1500};
+// tabela sugerida: usada no modo de visualização e no botão "Carregar tabela sugerida"
+const SUGERIDOS = [
+  ['Sites com pedido no WhatsApp','Essencial',450,700,8,0,'1 página com até 6 seções, celular e computador, botão de WhatsApp, publicado com link'],
+  ['Sites com pedido no WhatsApp','Completo',750,1200,16,20,'Cardápio ou serviços com valores, pedido ou agenda montados no site e enviados no WhatsApp, animação de rolagem, galeria, mapa e horários'],
+  ['Sites com pedido no WhatsApp','Premium',1200,1900,28,40,'Até 4 páginas, calculadora ou simulador, Google Meu Negócio, domínio configurado, 30 dias de ajustes'],
+  ['Lojas virtuais','Loja Start',1500,2500,25,0,'Até 30 produtos, tema com a marca, Pix, cartão e boleto, frete no carrinho'],
+  ['Lojas virtuais','Loja Pro',2800,4500,45,0,'Até 150 produtos, layout com animações, cupons, vitrine no Instagram e Google, carrinho abandonado'],
+  ['Lojas virtuais','Loja Sob Medida',4500,7500,80,0,'A partir de. Design exclusivo, migração e integrações'],
+  ['SaaS e sistemas','Sistema MVP',3500,6000,80,150,'A partir de. Login, painel, um fluxo principal, até 6 telas'],
+  ['SaaS e sistemas','SaaS Completo',9000,15000,200,300,'A partir de. Várias empresas, assinatura recorrente, níveis de acesso, relatórios'],
+  ['SaaS e sistemas','Plataforma + IA',15000,25000,320,600,'A partir de. Assistente com IA, integrações, app instalável'],
+  ['Extras','Página extra',150,250,3,0,''],
+  ['Extras','Animação exclusiva extra',200,350,4,0,''],
+  ['Extras','Cadastro de 50 produtos',100,150,2,0,''],
+  ['Extras','Google Meu Negócio',100,150,2,0,'Criação e ajuste do perfil'],
+  ['Extras','Imagens e vídeos com IA',180,250,3,40,'Pacote de cenas para o site'],
+  ['Extras','Ajuste avulso',30,50,0.5,0,'Troca de preço, foto ou horário'],
+  ['Mensalidades','Plano de ajustes do site',60,90,1.5,0,'Por mês, até 4 alterações'],
+  ['Mensalidades','Manutenção da loja',200,300,5,0,'Por mês: banners, cadastros e suporte'],
+  ['Mensalidades','Hospedagem e suporte de sistemas',300,400,3,150,'Por mês, a partir de'],
+].map((r,i)=>({linha:r[0],pacote:r[1],inicio:r[2],cheio:r[3],horas:r[4],custo:r[5],inclui:r[6],ordem:i+1}));
+const CUSTOS_EXEMPLO = [
+  {nome:'Claude Pro',categoria:'Inteligência artificial',moeda:'US$',valor:20,cobranca:'Mensal',ativo:true,obs:''},
+  {nome:'Domínio .com.br (Registro.br)',categoria:'Domínios',moeda:'R$',valor:40,cobranca:'Anual',ativo:true,obs:''},
+  {nome:'Shopify Basic',categoria:'Shopify e plataformas',moeda:'US$',valor:39,cobranca:'Mensal',ativo:false,obs:''},
+];
+
+// ---------------------------------------------------------------- estado
+const S = {lanc:[], proj:[], custos:[], precos:[], cfg:{...DEFAULT_CFG}, cfgExists:false,
+  month: ym(new Date()), mode:'loading', got:new Set(), pending:0, tipo:'Entrada'};
+let db = null;
+
+// ---------------------------------------------------------------- utilidades
+const $ = (s, r=document) => r.querySelector(s);
+const brl = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+const brl0 = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+const money = v => brl.format(+v||0);
+const money0 = v => brl0.format(Math.round(+v||0));
+function esc(s){return String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function ym(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
+function today(){const d=new Date();return ym(d)+'-'+String(d.getDate()).padStart(2,'0')}
+function shiftYm(m,n){const [y,mo]=m.split('-').map(Number);return ym(new Date(y,mo-1+n,1))}
+function monthName(m,short){const [y,mo]=m.split('-').map(Number);const d=new Date(y,mo-1,1);
+  const s=d.toLocaleDateString('pt-BR',{month:short?'short':'long'}).replace('.','');return short?s:(s+' '+y)}
+function num(v){const n=parseFloat(String(v).replace(',','.'));return isFinite(n)?n:0}
+function uid(){try{return crypto.randomUUID().replace(/-/g,'').slice(0,20)}catch(e){return Date.now().toString(36)+Math.random().toString(36).slice(2,10)}}
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('is-on');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('is-on'),2600)}
+function notice(t){const el=$('#notice');el.textContent=t||'';el.classList.toggle('is-on',!!t)}
+function setSync(){const box=$('#sync');
+  const put=(s,t)=>{box.dataset.s=s;box.firstElementChild.textContent=t;box.title=t};
+  if(S.mode==='local')return put('off','Só visualização');
+  if(S.mode==='readonly')return put('off','Somente leitura');
+  if(S.mode==='loading')return put('off','Carregando');
+  if(S.mode==='error')return put('err','Sem conexão');
+  put(S.pending?'saving':'ok',S.pending?'Salvando':'Salvo')}
+
+// ---------------------------------------------------------------- cálculos
+const tipoDe = c => CAT_OUT.includes(c)?'Saída':'Entrada';
+const doMes = m => S.lanc.filter(l=>String(l.data||'').slice(0,7)===m);
+const soma = (arr,t) => arr.filter(l=>l.tipo===t).reduce((a,l)=>a+num(l.valor),0);
+function custoMes(c){if(!c.ativo)return 0;let v=num(c.valor);if(c.moeda==='US$')v=v*num(S.cfg.dolar)*(1+num(S.cfg.iof)/100);return c.cobranca==='Anual'?v/12:v}
+const custosFixos = () => S.custos.reduce((a,c)=>a+custoMes(c),0);
+function recebido(p){return S.lanc.filter(l=>l.tipo==='Entrada'&&norm(l.projeto)===norm(p.nome)).reduce((a,l)=>a+num(l.valor),0)}
+function gastoProj(p){return S.lanc.filter(l=>l.tipo==='Saída'&&norm(l.projeto)===norm(p.nome)).reduce((a,l)=>a+num(l.valor),0)}
+const norm = s => String(s||'').trim().toLowerCase();
+const ativos = () => S.proj.filter(p=>p.status==='Em produção'||p.status==='Entregue');
+const aReceber = () => ativos().reduce((a,p)=>a+Math.max(num(p.valor)-recebido(p),0),0);
+const mensalidades = () => ativos().reduce((a,p)=>a+num(p.mensalidade),0);
+const precoAtual = p => S.cfg.fase==='cheio'?num(p.cheio):num(p.inicio);
+const precosOrd = () => [...S.precos].sort((a,b)=>(LINHAS.indexOf(a.linha)-LINHAS.indexOf(b.linha))||(num(a.ordem)-num(b.ordem)));
+
+// ---------------------------------------------------------------- render
+function render(){
+  $('#mLabel').textContent = monthName(S.month,true)+'/'+S.month.slice(2,4);
+  setSync();
+  renderPainel(); renderPrecos(); renderLanc(); renderProj(); renderCustos(); syncInputs();
+}
+function tile(label,val,cls='',hi=false){return `<div class="tile${hi?' tile--hi':''}"><span>${esc(label)}</span><b class="${cls}">${val}</b></div>`}
+
+function renderPainel(){
+  const ls=doMes(S.month), e=soma(ls,'Entrada'), s=soma(ls,'Saída'), l=e-s;
+  $('#pTiles').innerHTML = tile('Entrou em '+monthName(S.month,true),money(e))+tile('Saiu',money(s))
+    +tile('Lucro do mês',money(l),l<0?'neg':'',true)+tile('A receber de clientes',money(aReceber()));
+  // gráfico 6 meses
+  const ms=[...Array(6)].map((_,i)=>shiftYm(S.month,i-5));
+  const data=ms.map(m=>{const x=doMes(m);return {m,e:soma(x,'Entrada'),s:soma(x,'Saída')}});
+  const max=Math.max(100,...data.map(d=>Math.max(d.e,d.s)));
+  const step=niceStep(max/3), top=step*3;
+  const W=Math.max(300,Math.round($('#pChart').clientWidth||560)),H=210,pl=56,pb=26,pt=10,cw=(W-pl-8)/6,bw=Math.min(22,cw/3.2);
+  const y=v=>pt+(H-pt-pb)*(1-v/top);
+  let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Entradas e saídas dos últimos 6 meses">`;
+  for(let i=0;i<=3;i++){const v=step*i,yy=y(v);svg+=`<line x1="${pl}" x2="${W-8}" y1="${yy}" y2="${yy}" stroke="var(--line)" stroke-width="1"/><text x="${pl-8}" y="${yy+4}" text-anchor="end">${esc(money0(v))}</text>`}
+  data.forEach((d,i)=>{const cx=pl+cw*i+cw/2;
+    [['e','var(--chart-in)',-bw-1,'Entradas'],['s','var(--chart-out)',1,'Saídas']].forEach(([k,c,dx,n])=>{
+      const v=d[k];if(v<=0)return;const h=Math.max(2,y(0)-y(v)),r=Math.min(4,h/2,bw/2);
+      svg+=`<path d="M${cx+dx},${y(0)} v${-(h-r)} q0,${-r} ${r},${-r} h${bw-2*r} q${r},0 ${r},${r} v${h-r}z" fill="${c}"><title>${n} em ${esc(monthName(d.m,true))}: ${esc(money(v))}</title></path>`});
+    svg+=`<text x="${cx}" y="${H-8}" text-anchor="middle" ${d.m===S.month?'style="fill:var(--text);font-weight:600"':''}>${esc(monthName(d.m,true))}</text>`});
+  svg+='</svg>';
+  $('#pChart').innerHTML=svg+(data.every(d=>!d.e&&!d.s)?'<p class="lead" style="margin-top:6px">Ainda não há lançamentos nesses meses. O gráfico aparece quando você registrar o primeiro.</p>':'');
+  // meta
+  const meta=num(S.cfg.metaMes), pct=meta>0?Math.min(e/meta,1):0;
+  $('#pMeta').innerHTML=`<div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px"><span class="big num">${money0(e)}</span><span class="lead num">de ${money0(meta)}</span></div>
+    <div class="bar"><i style="width:${(pct*100).toFixed(1)}%"></i></div>
+    <p class="lead" style="margin-top:8px">${e>=meta&&meta>0?'Meta batida neste mês.':'Faltam '+money0(Math.max(meta-e,0))+(precoBase()?', cerca de '+Math.ceil(Math.max(meta-e,0)/precoBase())+' site(s) '+esc(nomeBase())+' no preço atual.':'.')}</p>`;
+  // fase
+  $('#pFase').innerHTML=faseHtml();
+  // custos
+  const cf=custosFixos(), base=precoBase();
+  $('#pCustos').innerHTML=`<p><span class="big num">${money(cf)}</span> <span class="lead">por mês</span></p>
+    <p class="lead" style="margin-top:6px">${cf>0&&base?'Para pagar isso, basta '+(Math.ceil(cf/base)===1?'1 site ':Math.ceil(cf/base)+' sites ')+esc(nomeBase())+' por mês ('+money0(base)+' cada).':'Ligue na aba Custos fixos as assinaturas que você paga.'}</p>
+    <p class="lead" style="margin-top:4px">${S.custos.filter(c=>c.ativo).length} assinatura(s) ligada(s) · ${money0(cf*12)} por ano</p>`;
+  // últimos
+  const ult=[...S.lanc].sort((a,b)=>String(b.data).localeCompare(String(a.data))||(num(b.criadoEm)-num(a.criadoEm))).slice(0,5);
+  $('#pUltimos').innerHTML=ult.length?ult.map(rowLanc).join(''):'<p class="empty">Nenhum lançamento ainda. Toque em <b>+ Lançar</b> quando entrar ou sair dinheiro.</p>';
+}
+function niceStep(v){const p=Math.pow(10,Math.floor(Math.log10(v)));const f=v/p;return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p}
+function precoBase(){const p=S.precos.find(x=>x.pacote==='Essencial')||precosOrd()[0];return p?precoAtual(p):0}
+function nomeBase(){const p=S.precos.find(x=>x.pacote==='Essencial')||precosOrd()[0];return p?p.pacote:''}
+function faseHtml(){
+  const n=ativos().length, alvo=Math.max(1,Math.round(num(S.cfg.clientesInicio)||5)), ini=S.cfg.fase!=='cheio';
+  let h=`<p><span class="chip ${ini?'chip--warn':'chip--good'}">${ini?'Preço de início':'Preço cheio'}</span> <span class="lead num">${Math.min(n,alvo)} de ${alvo} clientes fechados</span></p>`;
+  h+=`<div class="steps">${[...Array(alvo)].map((_,i)=>`<i class="${i<n?'on':''}"></i>`).join('')}</div>`;
+  h+=`<p class="lead" style="margin-top:8px">${ini?(n>=alvo?'Você já fechou os clientes da fase de início. Hora de passar para o preço cheio.':'Use o preço de início até fechar '+alvo+' clientes. Depois, passe para o preço cheio.'):'Você está cobrando o preço cheio.'}</p>`;
+  return h;
+}
+
+function renderPrecos(){
+  const ini=S.cfg.fase!=='cheio';
+  document.querySelectorAll('[data-fase]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.fase==='inicio')===ini)));
+  const n=ativos().length, alvo=Math.max(1,Math.round(num(S.cfg.clientesInicio)||5));
+  $('#faseTxt').textContent = ini
+    ? `Você está no preço de início, para conseguir os primeiros clientes e o portfólio. ${Math.min(n,alvo)} de ${alvo} clientes fechados.`
+    : 'Você está cobrando o preço cheio.';
+  const min=num(S.cfg.valorHoraMin);
+  if(!S.precos.length){
+    $('#precosBox').innerHTML=`<div class="empty"><p>A tabela está vazia.</p><p style="margin-top:10px"><button class="btn btn--pri" type="button" id="seedPrecos">Carregar tabela sugerida</button></p></div>`;
+    $('#seedPrecos').onclick=seedPrecos; return;
+  }
+  let h='';
+  LINHAS.concat([...new Set(S.precos.map(p=>p.linha))].filter(l=>!LINHAS.includes(l))).forEach(linha=>{
+    const ps=precosOrd().filter(p=>p.linha===linha); if(!ps.length)return;
+    h+=`<div class="pgroup" style="margin-top:14px"><h3>${esc(linha)}</h3><div class="scroll"><table class="ptable"><colgroup><col><col style="width:92px"><col style="width:92px"><col style="width:64px"><col style="width:96px"></colgroup><thead><tr><th>Pacote</th><th>Início</th><th>Cheio</th><th>Horas</th><th>Sobra/hora</th></tr></thead><tbody>`;
+    ps.forEach(p=>{const pr=precoAtual(p),h1=num(p.horas),ph=h1>0?(pr-num(p.custo))/h1:0,ok=ph>=min;
+      h+=`<tr data-id="${esc(p.id)}" tabindex="0"><td><b>${esc(p.pacote)}</b>${p.inclui?`<small>${esc(p.inclui)}</small>`:''}</td>
+      <td class="${ini?'act':'inact'}">${money0(p.inicio)}</td><td class="${ini?'inact':'act'}">${money0(p.cheio)}</td>
+      <td>${esc(String(h1).replace('.',','))} h</td><td><span class="chip ${ok?'chip--good':'chip--bad'}">${money0(ph)}</span></td></tr>`});
+    h+='</tbody></table></div></div>';
+  });
+  $('#precosBox').innerHTML=h;
+  $('#precosBox').querySelectorAll('tr[data-id]').forEach(tr=>{const go=()=>openPreco(S.precos.find(p=>p.id===tr.dataset.id));tr.onclick=go;tr.onkeydown=e=>{if(e.key==='Enter')go()}});
+}
+
+function rowLanc(l){
+  const d=String(l.data||''); const neg=l.tipo==='Saída';
+  return `<div class="row row--btn" data-lid="${esc(l.id)}" tabindex="0"><span class="row__date num">${esc(d.slice(8,10))}<br>${esc(monthName(d.slice(0,7)||S.month,true))}</span>
+  <span class="row__main"><b>${esc(l.descricao||l.categoria)}</b><span>${esc(l.categoria)}${l.projeto?' · '+esc(l.projeto):''}${l.forma?' · '+esc(l.forma):''}</span></span>
+  <span class="row__val ${neg?'neg':'pos'}">${neg?'−':'+'} ${money(l.valor)}</span></div>`;
+}
+function renderLanc(){
+  const ls=doMes(S.month).sort((a,b)=>String(b.data).localeCompare(String(a.data))||(num(b.criadoEm)-num(a.criadoEm)));
+  const e=soma(ls,'Entrada'),s=soma(ls,'Saída');
+  $('#lTiles').innerHTML=tile('Entrou',money0(e),'pos')+tile('Saiu',money0(s),'neg')+tile('Sobrou',money0(e-s),e-s<0?'neg':'',true);
+  $('#lMesTxt').textContent=monthName(S.month);
+  const cats={};ls.filter(l=>l.tipo==='Saída').forEach(l=>cats[l.categoria]=(cats[l.categoria]||0)+num(l.valor));
+  const arr=Object.entries(cats).sort((a,b)=>b[1]-a[1]);const mx=arr.length?arr[0][1]:1;
+  $('#lCats').innerHTML=arr.length?`<div class="hbar">${arr.map(([c,v])=>`<span>${esc(c)}</span><span class="num">${money(v)}</span><span class="t"><i style="width:${(v/mx*100).toFixed(1)}%"></i></span>`).join('')}</div>`:'<p class="empty">Nenhuma saída neste mês.</p>';
+  $('#lList').innerHTML=ls.length?ls.map(rowLanc).join(''):`<p class="empty">Nenhum lançamento em ${esc(monthName(S.month))}.</p>`;
+  $('#projList').innerHTML=S.proj.map(p=>`<option value="${esc(p.nome)}"></option>`).join('');
+}
+
+function renderProj(){
+  const at=ativos();
+  $('#prTiles').innerHTML=tile('Clientes fechados',String(at.length))+tile('Valor fechado',money0(at.reduce((a,p)=>a+num(p.valor),0)))
+    +tile('A receber',money0(aReceber()),'',true)+tile('Mensalidades',money0(mensalidades())+'/mês');
+  const ord={'Em produção':0,'Orçamento':1,'Entregue':2,'Cancelado':3};
+  const ps=[...S.proj].sort((a,b)=>(ord[a.status]??9)-(ord[b.status]??9)||String(a.nome).localeCompare(String(b.nome)));
+  $('#prList').innerHTML=ps.length?ps.map(p=>{const r=recebido(p),v=num(p.valor),pct=v>0?Math.min(r/v,1):0;
+    const cls={'Em produção':'chip--pri','Orçamento':'chip--warn','Entregue':'chip--good','Cancelado':''}[p.status]||'';
+    return `<div class="proj" data-pid="${esc(p.id)}" tabindex="0"><div class="proj__top"><div><b>${esc(p.nome)}</b><span>${esc([p.cliente,p.pacote].filter(Boolean).join(' · '))}</span></div><span class="chip ${cls}">${esc(p.status||'—')}</span></div>
+    <div class="bar"><i style="width:${(pct*100).toFixed(1)}%;background:var(--chart-in)"></i></div>
+    <div class="proj__nums num"><span>Fechado <strong>${money0(v)}</strong></span><span>Recebido <strong>${money0(r)}</strong></span><span>Falta <strong>${money0(Math.max(v-r,0))}</strong></span>${num(p.mensalidade)?`<span>Mensalidade <strong>${money0(p.mensalidade)}</strong></span>`:''}${gastoProj(p)?`<span>Gastos <strong>${money0(gastoProj(p))}</strong></span>`:''}${p.entrega?`<span>Entrega <strong>${esc(p.entrega.split('-').reverse().join('/'))}</strong></span>`:''}</div></div>`}).join('')
+    :'<p class="empty">Nenhum projeto ainda. Quando fechar o primeiro cliente, toque em <b>+ Projeto</b>.</p>';
+}
+
+function renderCustos(){
+  const cf=custosFixos();
+  $('#cTiles').innerHTML=tile('Por mês',money(cf),'',true)+tile('Por ano',money0(cf*12))+tile('Ligadas',String(S.custos.filter(c=>c.ativo).length))+tile('Sites para pagar',precoBase()?String(Math.ceil(cf/precoBase()))+' '+nomeBase():'—');
+  const cs=[...S.custos].sort((a,b)=>(b.ativo-a.ativo)||String(a.nome).localeCompare(String(b.nome)));
+  $('#cList').innerHTML=cs.length?cs.map(c=>`<div class="crow${c.ativo?'':' off'}"><label class="sw" title="Ligar ou desligar"><input type="checkbox" data-cid="${esc(c.id)}" ${c.ativo?'checked':''} aria-label="${esc(c.nome)} ativo"><i></i></label>
+    <span class="row__main row--btn" data-edit="${esc(c.id)}" tabindex="0"><b>${esc(c.nome)}</b><span>${esc(c.moeda==='US$'?'US$ '+String(num(c.valor).toFixed(2)).replace('.',','):money(c.valor))} · ${esc(c.cobranca)}${c.obs?' · '+esc(c.obs):''}</span></span>
+    <span class="row__val">${c.ativo?money(custoMes(c)):'<span class="chip">desligado</span>'}</span></div>`).join('')
+    :'<p class="empty">Nenhum custo cadastrado. Toque em <b>+ Custo</b>.</p>';
+}
+
+function syncInputs(){
+  const set=(id,v)=>{const el=$(id);if(el&&document.activeElement!==el)el.value=v};
+  set('#cHora',num(S.cfg.valorHoraMin)); set('#cClientes',num(S.cfg.clientesInicio));
+  set('#cDolar',num(S.cfg.dolar)); set('#cIof',num(S.cfg.iof));
+}
+
+// ---------------------------------------------------------------- escrita
+function canWrite(){if(S.mode==='readonly'){toast('Somente leitura: você não pode editar esta página.');return false}
+  if(S.mode==='loading'){toast('Aguarde os dados carregarem.');return false} return true}
+function errMsg(e){const c=e&&e.code;
+  if(c==='invalid_argument'){S.mode='readonly';setSync();return 'Não foi possível salvar: esta página está em modo somente leitura.'}
+  if(c==='quota_exceeded')return 'O espaço da página encheu. Apague lançamentos antigos para continuar.';
+  if(c==='resource_exhausted')return 'Muitas mudanças seguidas. Espere alguns segundos e tente de novo.';
+  return 'Não foi possível salvar agora. Confira a internet e tente de novo.'}
+async function put(col,id,data){
+  if(S.mode==='local'){const arr=S[MAP[col]];const i=arr.findIndex(x=>x.id===id);const rec={...data,id};if(i>=0)arr[i]=rec;else arr.push(rec);render();return true}
+  S.pending++;setSync();
+  try{await db.collection(col).doc(id).set(data);return true}
+  catch(e){toast(errMsg(e));return false}
+  finally{S.pending--;setSync()}
+}
+async function del(col,id){
+  if(S.mode==='local'){const k=MAP[col];S[k]=S[k].filter(x=>x.id!==id);render();return true}
+  S.pending++;setSync();
+  try{await db.collection(col).doc(id).delete();return true}catch(e){toast(errMsg(e));return false}finally{S.pending--;setSync()}
+}
+let cfgTimer=null;
+function saveCfg(patch){
+  if(!canWrite())return; Object.assign(S.cfg,patch); render();
+  clearTimeout(cfgTimer); cfgTimer=setTimeout(async()=>{
+    if(S.mode==='local')return; S.pending++;setSync();
+    try{await db.doc('config/geral').set({...S.cfg})}catch(e){toast(errMsg(e))}finally{S.pending--;setSync()}
+  },500);
+}
+const MAP={lancamentos:'lanc',projetos:'proj',custos:'custos',precos:'precos'};
+function clean(o){const r={...o};delete r.id;return r}
+async function seedPrecos(){if(!canWrite())return;
+  for(const p of SUGERIDOS){await put('precos',uid(),{...p})}
+  toast('Tabela sugerida carregada.')}
+
+// ---------------------------------------------------------------- modal
+let mState=null;
+function openModal(title,fields,onSave,onDelete){
+  if(!canWrite())return false;
+  $('#mTitle').textContent=title;
+  const f=$('#mForm');
+  f.innerHTML=fields.map(x=>{
+    const id='m_'+x.k, cls=x.full?'field full':'field';
+    if(x.type==='select')return `<div class="${cls}"><label for="${id}">${esc(x.label)}</label><select id="${id}">${x.opts.map(o=>`<option ${String(o)===String(x.v)?'selected':''}>${esc(o)}</option>`).join('')}</select></div>`;
+    if(x.type==='textarea')return `<div class="${cls}"><label for="${id}">${esc(x.label)}</label><textarea id="${id}" maxlength="300">${esc(x.v??'')}</textarea></div>`;
+    if(x.type==='check')return `<div class="${cls}" style="flex-direction:row;align-items:center;gap:10px"><label class="sw"><input type="checkbox" id="${id}" ${x.v?'checked':''}><i></i></label><label for="${id}" style="font-size:14px;color:var(--text)">${esc(x.label)}</label></div>`;
+    return `<div class="${cls}"><label for="${id}">${esc(x.label)}</label><input id="${id}" type="${x.type||'text'}" ${x.list?`list="${x.list}"`:''} ${x.type==='number'?'inputmode="decimal" step="any" min="0" class="num"':''} value="${esc(x.v??'')}" ${x.req?'required':''} maxlength="120"></div>`;
+  }).join('')+`<div class="form__actions">${onDelete?'<button type="button" class="btn btn--danger grow" id="mDel">Apagar</button>':''}<button type="button" class="btn" id="mCancel">Cancelar</button><button type="submit" class="btn btn--pri">Salvar</button></div>`;
+  mState={fields,onSave,onDelete};
+  $('#modal').classList.add('is-on');
+  const first=f.querySelector('input,select,textarea'); if(first)first.focus();
+  $('#mCancel').onclick=closeModal;
+  if(onDelete){const b=$('#mDel');b.onclick=async()=>{if(!b.classList.contains('armed')){b.classList.add('armed');b.textContent='Toque de novo para apagar';return}
+    closeModal(); if(await onDelete())toast('Apagado.')}}
+  return true;
+}
+function closeModal(){$('#modal').classList.remove('is-on');mState=null}
+$('#mForm').addEventListener('submit',async e=>{e.preventDefault();if(!mState)return;
+  const v={};mState.fields.forEach(x=>{const el=$('#m_'+x.k);v[x.k]=x.type==='check'?el.checked:x.type==='number'?num(el.value):el.value.trim()});
+  const fn=mState.onSave; closeModal(); if(await fn(v))toast('Salvo.')});
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mState)closeModal()});
+
+function openPreco(p){const isNew=!p;p=p||{linha:LINHAS[0],pacote:'',inicio:'',cheio:'',horas:'',custo:'',inclui:'',ordem:99};
+  openModal(isNew?'Novo pacote':'Editar '+p.pacote,[
+    {k:'linha',label:'Linha',type:'select',opts:LINHAS.includes(p.linha)?LINHAS:[p.linha,...LINHAS],v:p.linha},
+    {k:'pacote',label:'Pacote',v:p.pacote,req:true},
+    {k:'inicio',label:'Preço de início (R$)',type:'number',v:p.inicio},
+    {k:'cheio',label:'Preço cheio (R$)',type:'number',v:p.cheio},
+    {k:'horas',label:'Horas de trabalho',type:'number',v:p.horas},
+    {k:'custo',label:'Custos só deste projeto (R$)',type:'number',v:p.custo},
+    {k:'inclui',label:'O que inclui',type:'textarea',v:p.inclui,full:true},
+  ],v=>put('precos',isNew?uid():p.id,{...clean(p),...v}), isNew?null:()=>del('precos',p.id))}
+function openLanc(l){
+  openModal('Editar lançamento',[
+    {k:'data',label:'Data',type:'date',v:l.data,req:true},
+    {k:'valor',label:'Valor (R$)',type:'number',v:l.valor,req:true},
+    {k:'categoria',label:'Categoria',type:'select',opts:[...CAT_IN,...CAT_OUT],v:l.categoria},
+    {k:'forma',label:'Forma',type:'select',opts:FORMAS,v:l.forma||FORMAS[0]},
+    {k:'descricao',label:'Descrição',v:l.descricao,full:true},
+    {k:'projeto',label:'Projeto',v:l.projeto,list:'projList',full:true},
+  ],v=>put('lancamentos',l.id,{...clean(l),...v,tipo:tipoDe(v.categoria)}),()=>del('lancamentos',l.id))}
+function openProj(p){const isNew=!p;p=p||{nome:'',cliente:'',tipo:'Site WhatsApp',pacote:'',valor:'',status:'Orçamento',mensalidade:'',entrega:'',obs:''};
+  openModal(isNew?'Novo projeto':'Editar projeto',[
+    {k:'nome',label:'Nome do projeto',v:p.nome,req:true,full:true},
+    {k:'cliente',label:'Cliente ou contato',v:p.cliente,full:true},
+    {k:'pacote',label:'Pacote',v:p.pacote,list:'pacList'},
+    {k:'status',label:'Status',type:'select',opts:STATUS,v:p.status},
+    {k:'valor',label:'Valor fechado (R$)',type:'number',v:p.valor},
+    {k:'mensalidade',label:'Mensalidade (R$/mês)',type:'number',v:p.mensalidade},
+    {k:'entrega',label:'Entrega prevista',type:'date',v:p.entrega},
+    {k:'obs',label:'Observações',type:'textarea',v:p.obs,full:true},
+  ],v=>put('projetos',isNew?uid():p.id,{...clean(p),...v}),isNew?null:()=>del('projetos',p.id));
+  if(!$('#m_pacote'))return;
+  if(!$('#pacList')){const dl=document.createElement('datalist');dl.id='pacList';document.body.appendChild(dl)}
+  $('#pacList').innerHTML=precosOrd().map(x=>`<option value="${esc(x.pacote)}"></option>`).join('');
+  const st=$('#m_pacote'),vl=$('#m_valor');st.addEventListener('change',()=>{const pr=S.precos.find(x=>x.pacote===st.value);if(pr&&!num(vl.value))vl.value=precoAtual(pr)});
+}
+function openCusto(c){const isNew=!c;c=c||{nome:'',categoria:'Inteligência artificial',moeda:'US$',valor:'',cobranca:'Mensal',ativo:true,obs:''};
+  openModal(isNew?'Novo custo':'Editar custo',[
+    {k:'nome',label:'Nome',v:c.nome,req:true,full:true},
+    {k:'categoria',label:'Categoria',type:'select',opts:CAT_OUT,v:c.categoria},
+    {k:'moeda',label:'Moeda',type:'select',opts:['R$','US$'],v:c.moeda},
+    {k:'valor',label:'Valor cobrado',type:'number',v:c.valor},
+    {k:'cobranca',label:'Cobrança',type:'select',opts:['Mensal','Anual'],v:c.cobranca},
+    {k:'ativo',label:'Pago hoje (ligado)',type:'check',v:c.ativo,full:true},
+    {k:'obs',label:'Observação',v:c.obs,full:true},
+  ],v=>put('custos',isNew?uid():c.id,{...clean(c),...v}),isNew?null:()=>del('custos',c.id))}
+function openCfg(){openModal('Meta do mês',[{k:'metaMes',label:'Quanto quer faturar por mês (R$)',type:'number',v:S.cfg.metaMes,full:true}],
+  async v=>{saveCfg({metaMes:v.metaMes});return true})}
+
+// ---------------------------------------------------------------- eventos
+$('#mPrev').onclick=()=>{S.month=shiftYm(S.month,-1);render()};
+$('#mNext').onclick=()=>{S.month=shiftYm(S.month,1);render()};
+$('#fab').onclick=()=>{location.hash='lancamentos';setTimeout(()=>$('#lValor').focus(),60)};
+$('#addPreco').onclick=()=>openPreco(null);
+$('#addProj').onclick=()=>openProj(null);
+$('#addCusto').onclick=()=>openCusto(null);
+document.querySelectorAll('[data-open="cfg"]').forEach(b=>b.onclick=openCfg);
+document.querySelectorAll('[data-fase]').forEach(b=>b.onclick=()=>saveCfg({fase:b.dataset.fase}));
+[['#cHora','valorHoraMin'],['#cClientes','clientesInicio'],['#cDolar','dolar'],['#cIof','iof']].forEach(([id,k])=>{
+  $(id).addEventListener('change',e=>saveCfg({[k]:num(e.target.value)}))});
+document.addEventListener('click',e=>{
+  const r=e.target.closest('[data-lid]');if(r){const l=S.lanc.find(x=>x.id===r.dataset.lid);if(l)openLanc(l);return}
+  const p=e.target.closest('[data-pid]');if(p){const x=S.proj.find(y=>y.id===p.dataset.pid);if(x)openProj(x);return}
+  const c=e.target.closest('[data-edit]');if(c){const x=S.custos.find(y=>y.id===c.dataset.edit);if(x)openCusto(x)}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('[data-lid],[data-pid],[data-edit]'))e.target.click()});
+document.addEventListener('change',async e=>{const cb=e.target.closest('input[data-cid]');if(!cb)return;
+  if(!canWrite()){cb.checked=!cb.checked;return}
+  const c=S.custos.find(x=>x.id===cb.dataset.cid);if(c)await put('custos',c.id,{...clean(c),ativo:cb.checked})});
+
+// formulário de lançamento
+function fillCats(){const list=S.tipo==='Entrada'?CAT_IN:CAT_OUT;const sel=$('#lCat');const cur=sel.value;
+  sel.innerHTML=list.map(c=>`<option>${esc(c)}</option>`).join('');if(list.includes(cur))sel.value=cur;
+  document.querySelectorAll('[data-tipo]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tipo===S.tipo)))}
+document.querySelectorAll('[data-tipo]').forEach(b=>b.onclick=()=>{S.tipo=b.dataset.tipo;fillCats()});
+$('#lForma').innerHTML=FORMAS.map(f=>`<option>${esc(f)}</option>`).join('');
+$('#lData').value=today(); fillCats();
+$('#fLanc').addEventListener('submit',async e=>{e.preventDefault();if(!canWrite())return;
+  const valor=num($('#lValor').value);if(valor<=0){toast('Digite um valor maior que zero.');$('#lValor').focus();return}
+  const data=$('#lData').value||today(), categoria=$('#lCat').value;
+  const rec={data,categoria,tipo:tipoDe(categoria),valor,descricao:$('#lDesc').value.trim(),projeto:$('#lProj').value.trim(),forma:$('#lForma').value,criadoEm:Date.now()};
+  if(await put('lancamentos',uid(),rec)){toast('Lançamento salvo.');$('#lValor').value='';$('#lDesc').value='';$('#lProj').value='';
+    if(data.slice(0,7)!==S.month){S.month=data.slice(0,7);render()}}});
+
+// rotas
+const VIEWS=['painel','precos','lancamentos','projetos','custos'];
+function route(){const h=(location.hash||'').slice(1);const v=VIEWS.includes(h)?h:'painel';
+  VIEWS.forEach(x=>$('#v-'+x).classList.toggle('is-on',x===v));
+  document.querySelectorAll('#tabs a').forEach(a=>{if(a.getAttribute('href')==='#'+v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  $('#fab').style.display=v==='lancamentos'?'none':''}
+window.addEventListener('hashchange',()=>{route();render();window.scrollTo(0,0)});
+let rzT=null;window.addEventListener('resize',()=>{clearTimeout(rzT);rzT=setTimeout(renderPainel,150)});
+
+// ---------------------------------------------------------------- dados
+function goLocal(msg){S.mode='local';
+  S.precos=SUGERIDOS.map(p=>({...p,id:uid()}));S.custos=CUSTOS_EXEMPLO.map(c=>({...c,id:uid()}));
+  notice(msg||'Modo de visualização: as mudanças desta tela não ficam salvas.');render()}
+async function boot(){
+  route(); render();
+  if(!(window.claude && typeof window.claude.use==='function')){goLocal();return}
+  const timer=setTimeout(()=>{if(!S.got.size){notice('Os dados ainda não chegaram. Confira a internet; a página continua tentando.');S.mode='error';setSync()}},10000);
+  try{db=await window.claude.use('db')}catch(e){db=null}
+  if(!db){clearTimeout(timer);goLocal('Não deu para abrir o banco de dados desta página. Entre na sua conta do Claude para salvar as mudanças.');return}
+  const need=['lanc','proj','custos','precos','cfg'];
+  const arrive=(k,snap)=>{if(!snap.metadata||!snap.metadata.fromCache){S.got.add(k)}
+    if(need.every(x=>S.got.has(x))){clearTimeout(timer);if(S.mode==='loading'||S.mode==='error'){S.mode='db';notice('')}}
+    else if(S.mode==='loading'&&S.got.size){/* ainda chegando */}
+    render()};
+  const fail=e=>{clearTimeout(timer);if(e&&e.code==='revoked'){S.mode='readonly';notice('O acesso a esta página mudou. Recarregue para continuar.')}
+    else{S.mode='error';notice('A conexão com os dados caiu. Recarregue a página para tentar de novo.')}setSync()};
+  Object.entries(MAP).forEach(([col,k])=>{
+    db.collection(col).onSnapshot(snap=>{S[k]=snap.docs.map(d=>({...d.data(),id:d.id}));arrive(k,snap)},fail)});
+  db.doc('config/geral').onSnapshot(snap=>{S.cfgExists=snap.exists;S.cfg={...DEFAULT_CFG,...(snap.exists?snap.data():{})};arrive('cfg',snap)},fail);
+  try{const user=await window.claude.use('user');if(user&&typeof user.can==='function'){const ok=await user.can('data.write');if(ok===false){S.mode='readonly';setSync()}}}catch(e){}
+}
+boot();
+})();
+</script>
+</body>
+</html>
